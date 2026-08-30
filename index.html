@@ -92,7 +92,7 @@
 </head>
 <body>
 <div class="app"><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🚀 PRO ENGINE v4.1</h2><small>early breakout · anti-pump · confidence · entry / stop / TP</small></div>
+  <div class="ph"><h2>🚀 PRO ENGINE v4.2</h2><small>CORE-first · early breakout · anti-pump · confidence · entry / stop / TP</small></div>
   <div class="pro-grid">
     <div class="pro-card"><div class="label">TOP SETUP</div><div class="n" id="proTop">—</div><div class="sub">paras riskikorjattu setup</div></div>
     <div class="pro-card"><div class="label">CONFIDENCE</div><div class="n" id="proConfidence">—</div><div class="sub">signaalien yhtäpitävyys</div></div>
@@ -104,7 +104,7 @@
     <div id="proSetups"><div class="empty">Odotetaan live-dataa…</div></div>
   </div>
 </section><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🧰 API DIAGNOSTICS v4.1</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v4.2</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
@@ -204,7 +204,7 @@
     <div class="card"><div class="label">COINMOTION</div><div class="value green">KAUPANKÄYNTI</div><div class="tiny">Avaa Kaupankäynti tai Kurssit → valitse alla näkyvä Coinmotion-nimi</div></div>
     <div class="card"><div class="label">CRYPTO.COM</div><div class="value green">TRADE</div><div class="tiny">Avaa App/Web → Trade → Buy → hae tickerillä</div></div>
   </div>
-  <div class="footer"><b>PRO v4.1 FIX POLICY:</b> TOP 5 BUY/SELL käyttää aina core-live-dataa (CoinGecko + saatavilla oleva Binance Futures). CoinGlass/LunarCrush ovat lisävahvistuksia, eivät dependencyjä. Backtest mittaa 1h/4h/24h forward-returnia, koska 30–100 % osumat 24h sisällä ovat harvinaisia ja vääristävät kalibrointia. Jos viimeinen onnistunut live-haku on yli 10 min vanha, signaalit lukitaan STALE-tilaan.</div><div class="footer"><b>PRO ENGINE POLICY:</b> PRO Score painottaa aikaisen breakout-liikkeen laatua, trendin yhtenäisyyttä, live-volyymiä, likviditeettiä ja saatavilla olevaa derivatives/social-vahvistusta. Anti-Pump pienentää pisteitä jo voimakkaasti venyneestä liikkeestä. Entry/Stop/TP ovat dynaamisia riskitasoja, eivät varmoja hintatavoitteita. Paras signaali on korkea PRO Score + korkea Confidence + matala Pump Risk + hyvä Data Coverage.</div><div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
+  <div class="footer"><b>v4.2 CORE FIX:</b> PRO Engine ja TOP 5 renderöidään nyt suoraan CoinGecko-coresta ennen yhtäkään optional API -hakua. Binance rikastaa rankingia valmistuttuaan ja aiheuttaa uuden renderöinnin. CoinGlass/LunarCrush voivat vain lisätä dataa; CORS/HTTP 402 ei voi enää jättää PRO/TOP5-näkymää odottamaan. Korjattu myös puuttunut acceleration-kenttä.</div><div class="footer"><b>PRO v4.1 FIX POLICY:</b> TOP 5 BUY/SELL käyttää aina core-live-dataa (CoinGecko + saatavilla oleva Binance Futures). CoinGlass/LunarCrush ovat lisävahvistuksia, eivät dependencyjä. Backtest mittaa 1h/4h/24h forward-returnia, koska 30–100 % osumat 24h sisällä ovat harvinaisia ja vääristävät kalibrointia. Jos viimeinen onnistunut live-haku on yli 10 min vanha, signaalit lukitaan STALE-tilaan.</div><div class="footer"><b>PRO ENGINE POLICY:</b> PRO Score painottaa aikaisen breakout-liikkeen laatua, trendin yhtenäisyyttä, live-volyymiä, likviditeettiä ja saatavilla olevaa derivatives/social-vahvistusta. Anti-Pump pienentää pisteitä jo voimakkaasti venyneestä liikkeestä. Entry/Stop/TP ovat dynaamisia riskitasoja, eivät varmoja hintatavoitteita. Paras signaali on korkea PRO Score + korkea Confidence + matala Pump Risk + hyvä Data Coverage.</div><div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
 </section><section class="panel" style="margin-bottom:14px">
   <div class="ph"><h2>🛰️ GLOBAL INTELLIGENCE STACK</h2><small>Signal fusion · cross-asset · geopolitics · sovereign debt · events</small></div>
   <div class="grid">
@@ -581,9 +581,8 @@ async function testFeeds(){
   $('feedStatus').textContent=bad?`${live} LIVE · ${bad} virhettä`:`${live} yhteyttä toimii`;
 }
 async function scan(){
-  $('status').textContent='Haetaan markkinadataa…';
+  $('status').textContent='Haetaan core-markkinadataa…';
   try{
-    // CoinGecko supplies broad universe + 7d context.
     const cg=await getJSON('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h,24h,7d');
     state.data=cg.map((c,i)=>{
       const h1=Number(c.price_change_percentage_1h_in_currency||0);
@@ -593,50 +592,57 @@ async function scan(){
       const ratio=mc?vol/mc:0;
       const spark=c.sparkline_in_7d?.price||[];
       const last=spark.at(-1)||c.current_price;
-      const hi=Math.max(...spark), lo=Math.min(...spark);
+      const hi=spark.length?Math.max(...spark):last, lo=spark.length?Math.min(...spark):last;
       const rangePos=(hi>lo)?(last-lo)/(hi-lo):.5;
-
-      // 4h proxy from 7d sparkline: compare current price with ~4h ago.
       const n=spark.length;
       const p4=n>24?spark[n-25]:last;
       const h4=p4?((last/p4)-1)*100:0;
-
-      // Acceleration: short-term move relative to 24h move.
       const accel=h1-(h24/24);
-      const momentum=Math.max(0,Math.min(100,50+h1*7+h4*2.5+h24*1.0+accel*5));
-
-      // Volume/MC is a useful activity proxy; reward unusually active small/mid caps.
+      const momentum=Math.max(0,Math.min(100,50+h1*7+h4*2.5+h24+accel*5));
       const volume=Math.max(0,Math.min(100,20+Math.min(65,ratio*140)));
-
-      // Breakout pressure: high in range + positive short-term acceleration.
       const breakout=Math.max(0,Math.min(100,rangePos*78+Math.max(0,h1)*5+Math.max(0,h4)*2+Math.max(0,accel)*4));
-
       const liquidity=Math.max(0,Math.min(100,20+Math.log10(Math.max(vol,1))*8));
       const quality=Math.max(0,Math.min(100,55+Math.min(35,Math.log10(Math.max(mc,1))-6)));
-
-      // "Early" bonus: rising 1h/4h without an already exhausted 24h move.
-      const earlyBonus=Math.max(0,Math.min(12,Math.max(0,h1)*1.2+Math.max(0,h4)*0.7-Math.max(0,h24-18)*0.4));
-
+      const earlyBonus=Math.max(0,Math.min(12,Math.max(0,h1)*1.2+Math.max(0,h4)*.7-Math.max(0,h24-18)*.4));
       let score=.27*momentum+.24*volume+.23*breakout+.11*liquidity+.07*quality+.08*earlyBonus;
-      if(h1< -2) score-=12;
-      if(h4< -5) score-=8;
-      if(h24< -15) score-=10;
+      if(h1<-2)score-=12;if(h4<-5)score-=8;if(h24<-15)score-=10;
       score=Math.max(0,Math.min(100,score));
-
-      let setup=score>=82&&h1>0&&h4>0&&ratio>.15?'ROCKET':
-                score>=72&&breakout>=72&&h1>-1?'SNIPER':
-                score>=62&&breakout>=65?'BREAKOUT WATCH':'NEUTRAL';
-
-      return {...c,h1,h4,h24,d7,vol,mc,ratio,rangePos,momentum,volume,breakout,liquidity,quality,earlyBonus,score,setup};
+      const setup=score>=82&&h1>0&&h4>0&&ratio>.15?'ROCKET':
+                  score>=72&&breakout>=72&&h1>-1?'SNIPER':
+                  score>=62&&breakout>=65?'BREAKOUT WATCH':'NEUTRAL';
+      return {...c,h1,h4,h24,d7,vol,mc,ratio,rangePos,momentum,volume,breakout,liquidity,quality,earlyBonus,accel,score,setup};
     }).filter(x=>COMMON_SYMBOLS.has(x.symbol.toUpperCase()));
-    try{await enrichLiveDerivatives(state.data);}catch(e){diagLog('Binance enrich failed: '+String(e?.message||e));}
-      if(API_KEYS.lunarcrush){try{await enrichLunarCrush(state.data);}catch(e){diagLog('LunarCrush enrich failed: '+String(e?.message||e));}}
-      if(API_KEYS.coinglass){try{await enrichCoinGlass(state.data);}catch(e){diagLog('CoinGlass enrich failed: '+String(e?.message||e));}}
-      state.last=Date.now(); localStorage.setItem('kp_last_success',String(state.last)); render(); updateAppHealth('LIVE');
-    $('status').textContent='Päivitetty';
+
+    // CORE SUCCESS: render immediately. Optional feeds are never allowed to block UI.
+    state.last=Date.now();
+    localStorage.setItem('kp_last_success',String(state.last));
+    render();
+    updateAppHealth('LIVE');
+    $('status').textContent='Core LIVE · rikastetaan dataa…';
+
+    // Binance is the primary enrichment. Re-render when it finishes.
+    try{
+      await enrichLiveDerivatives(state.data);
+      render();
+    }catch(e){ diagLog('Binance enrich failed: '+String(e?.message||e)); }
+
+    // Optional feeds run independently. Each successful enrichment triggers a fresh render.
+    const jobs=[];
+    if(API_KEYS.lunarcrush) jobs.push((async()=>{
+      try{const ok=await enrichLunarCrush(state.data);if(ok)render();}
+      catch(e){diagLog('LunarCrush optional failed: '+String(e?.message||e));}
+    })());
+    if(API_KEYS.coinglass) jobs.push((async()=>{
+      try{const ok=await enrichCoinGlass(state.data);if(ok)render();}
+      catch(e){diagLog('CoinGlass optional failed: '+String(e?.message||e));}
+    })());
+    Promise.allSettled(jobs);
+    $('status').textContent='Päivitetty · core LIVE';
   }catch(e){
-    $('status').textContent='API-virhe: '+e.message; updateAppHealth('ERROR'); markStaleUI(e.message);
-    if(!state.data.length) $('rows').innerHTML='<tr><td colspan="9" class="empty">Dataa ei saatu. Paina Skannaa nyt uudelleen.</td></tr>';
+    $('status').textContent='CORE API -virhe: '+e.message;
+    updateAppHealth('ERROR');
+    markStaleUI(e.message);
+    if(!state.data.length) $('rows').innerHTML='<tr><td colspan="9" class="empty">Core-dataa ei saatu. Paina Skannaa nyt uudelleen.</td></tr>';
   }
 }
 function renderHighRisk(all){
@@ -864,7 +870,10 @@ function heatLabel(p){
 }
 function confClass(c){return c>=75?'conf-high':c>=55?'conf-mid':'conf-low';}
 function renderProEngine(all){
-  if(!all?.length)return;
+  if(!all?.length){
+    $('proTop').textContent='—';$('proConfidence').textContent='—';$('proPump').textContent='—';
+    $('proSetups').innerHTML='<div class="empty">Ei core-dataa.</div>';return;
+  }
   const ranked=[...all].map(x=>({
     ...x,
     pro:proScore(x),
@@ -1040,6 +1049,10 @@ function render(){
   </tr>`).join('')||'<tr><td colspan="9" class="empty">Ei osumia nykyisillä suodattimilla.</td></tr>';
   renderHighRisk(all);
   $('signals').innerHTML=all.slice(0,12).map((x,i)=>`<div class="signal"><div><b>${i+1}. ${x.symbol.toUpperCase()} · ${x.setup}</b><small>Score ${x.score.toFixed(0)} · 1h ${pct(x.h1)} · 24h ${pct(x.h24)} · vol/MC ${(x.ratio*100).toFixed(1)}%</small><div class="meter"><i style="width:${x.score}%"></i></div></div><b class="${x.h1>=0?'green':'red'}">${pct(x.h1)}</b></div>`).join('');
+  updateGalaxyStates(all);
+  renderProEngine(all);
+  renderTradeSignals(all);
+
 }
 
 function pctChange(a,b){return a?((b/a)-1)*100:0}
