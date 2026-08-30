@@ -2,7 +2,7 @@
   "id": "./",
   "name": "KryptoPulse Galaxy Ultra",
   "short_name": "Galaxy Ultra",
-  "description": "KryptoPulse Galaxy Ultra crypto scanner",
+  "description": "KryptoPulse Galaxy Ultra v4.4 predictive PRO crypto scanner",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
