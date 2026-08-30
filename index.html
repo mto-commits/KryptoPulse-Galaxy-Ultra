@@ -46,9 +46,28 @@
 .api-status{font-size:10px;margin-top:6px}.api-on{color:var(--green)}.api-off{color:var(--yellow)}
 @media(max-width:1000px){.api-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.api-grid{grid-template-columns:1fr}}
 </style>
+
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#070a0f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Galaxy Ultra">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
+
 </head>
 <body>
-<div class="app"><div id="strongAlertBanner" style="display:none;position:sticky;top:0;z-index:999;background:#281018;border:1px solid #5b2030;padding:10px 14px;border-radius:10px;margin-bottom:10px;font-weight:800"></div>
+<div class="app"><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>✅ PWA INSTALL CHECK</h2><small>manifest · service worker · standalone</small></div>
+  <div class="grid">
+    <div class="card"><div class="label">MANIFEST</div><div class="value" id="manifestState">CHECK</div></div>
+    <div class="card"><div class="label">SERVICE WORKER</div><div class="value" id="swState">CHECK</div></div>
+    <div class="card"><div class="label">DISPLAY MODE</div><div class="value" id="displayState">BROWSER</div></div>
+    <div class="card"><div class="label">INSTALL EVENT</div><div class="value" id="installState">WAIT</div></div>
+  </div>
+</section><div id="strongAlertBanner" style="display:none;position:sticky;top:0;z-index:999;background:#281018;border:1px solid #5b2030;padding:10px 14px;border-radius:10px;margin-bottom:10px;font-weight:800"></div>
   <section class="panel" style="margin-bottom:14px">
       <div class="ph"><h2>📱 APP CONNECTION STATUS</h2><small>PWA · cache · live feeds</small></div>
       <div class="grid">
@@ -742,9 +761,35 @@ function updateAppHealth(state){
 window.addEventListener('online',()=>updateAppHealth('READY'));
 window.addEventListener('offline',()=>updateAppHealth('OFFLINE'));
 updateAppHealth('READY');
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  const x=$('installState'); if(x){x.textContent='READY';x.className='value green';}
+});
+window.addEventListener('appinstalled',()=>{
+  const x=$('installState'); if(x){x.textContent='INSTALLED';x.className='value green';}
+});
+async function checkPWA(){
+  try{
+    const m=await fetch('./manifest.webmanifest',{cache:'no-store'});
+    const x=$('manifestState'); if(x){x.textContent=m.ok?'OK':'ERROR';x.className='value '+(m.ok?'green':'red');}
+  }catch(e){}
+  const s=$('swState');
+  if('serviceWorker' in navigator){
+    try{
+      const reg=await navigator.serviceWorker.getRegistration('./');
+      if(s){s.textContent=reg?'OK':'WAIT';s.className='value '+(reg?'green':'yellow');}
+    }catch(e){}
+  }
+  const d=$('displayState');
+  const standalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+  if(d){d.textContent=standalone?'STANDALONE':'BROWSER';d.className='value '+(standalone?'green':'yellow');}
+}
+window.addEventListener('load',()=>setTimeout(checkPWA,1200));
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js', {scope:'./'}).catch(()=>{}));
 }
 
 
