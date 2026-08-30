@@ -77,6 +77,11 @@
 .bt-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line)}
 .bt-chip{padding:4px 8px;border:1px solid var(--line);border-radius:999px;font-size:10px}
 .stale-lock{background:#2b1118;border:1px solid #5b2030;color:#ff9bad;padding:10px 12px;border-radius:9px;margin:10px 14px;font-size:11px;font-weight:800}
+
+.unified-badge{display:inline-block;padding:3px 7px;border-radius:999px;border:1px solid var(--line);font-size:10px;font-weight:800}
+.grade-a{color:var(--green)}.grade-b{color:var(--yellow)}.grade-c{color:var(--muted)}.grade-d{color:var(--red)}
+.levels{font-size:10px;color:var(--muted);line-height:1.45;margin-top:5px}
+.levels b{color:var(--text)}
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -92,7 +97,7 @@
 </head>
 <body>
 <div class="app"><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🚀 PRO ENGINE v4.2</h2><small>CORE-first · early breakout · anti-pump · confidence · entry / stop / TP</small></div>
+  <div class="ph"><h2>🚀 PRO ENGINE v4.3</h2><small>CORE-first · early breakout · anti-pump · confidence · entry / stop / TP</small></div>
   <div class="pro-grid">
     <div class="pro-card"><div class="label">TOP SETUP</div><div class="n" id="proTop">—</div><div class="sub">paras riskikorjattu setup</div></div>
     <div class="pro-card"><div class="label">CONFIDENCE</div><div class="n" id="proConfidence">—</div><div class="sub">signaalien yhtäpitävyys</div></div>
@@ -104,7 +109,7 @@
     <div id="proSetups"><div class="empty">Odotetaan live-dataa…</div></div>
   </div>
 </section><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🧰 API DIAGNOSTICS v4.2</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v4.3</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
@@ -204,7 +209,7 @@
     <div class="card"><div class="label">COINMOTION</div><div class="value green">KAUPANKÄYNTI</div><div class="tiny">Avaa Kaupankäynti tai Kurssit → valitse alla näkyvä Coinmotion-nimi</div></div>
     <div class="card"><div class="label">CRYPTO.COM</div><div class="value green">TRADE</div><div class="tiny">Avaa App/Web → Trade → Buy → hae tickerillä</div></div>
   </div>
-  <div class="footer"><b>v4.2 CORE FIX:</b> PRO Engine ja TOP 5 renderöidään nyt suoraan CoinGecko-coresta ennen yhtäkään optional API -hakua. Binance rikastaa rankingia valmistuttuaan ja aiheuttaa uuden renderöinnin. CoinGlass/LunarCrush voivat vain lisätä dataa; CORS/HTTP 402 ei voi enää jättää PRO/TOP5-näkymää odottamaan. Korjattu myös puuttunut acceleration-kenttä.</div><div class="footer"><b>PRO v4.1 FIX POLICY:</b> TOP 5 BUY/SELL käyttää aina core-live-dataa (CoinGecko + saatavilla oleva Binance Futures). CoinGlass/LunarCrush ovat lisävahvistuksia, eivät dependencyjä. Backtest mittaa 1h/4h/24h forward-returnia, koska 30–100 % osumat 24h sisällä ovat harvinaisia ja vääristävät kalibrointia. Jos viimeinen onnistunut live-haku on yli 10 min vanha, signaalit lukitaan STALE-tilaan.</div><div class="footer"><b>PRO ENGINE POLICY:</b> PRO Score painottaa aikaisen breakout-liikkeen laatua, trendin yhtenäisyyttä, live-volyymiä, likviditeettiä ja saatavilla olevaa derivatives/social-vahvistusta. Anti-Pump pienentää pisteitä jo voimakkaasti venyneestä liikkeestä. Entry/Stop/TP ovat dynaamisia riskitasoja, eivät varmoja hintatavoitteita. Paras signaali on korkea PRO Score + korkea Confidence + matala Pump Risk + hyvä Data Coverage.</div><div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
+  <div class="footer"><b>v4.3 UNIFIED POLICY:</b> Sniper-, PRO-, BUY/SELL- ja Rocket-ranking perustuvat nyt samaan Unified Score -pohjaan. Data Coverage laskee Confidencea, stablecoinit poistetaan aggressiivisista BUY/SELL-listoista ja vahva BUY vaatii sekä korkean Unified Scoren että riittävän Confidence/coverage-tason. Entry/Stop/TP1/TP2/TP3 ja invalidation näytetään yhtenäisestä riskimallista.</div><div class="footer"><b>v4.2 CORE FIX:</b> PRO Engine ja TOP 5 renderöidään nyt suoraan CoinGecko-coresta ennen yhtäkään optional API -hakua. Binance rikastaa rankingia valmistuttuaan ja aiheuttaa uuden renderöinnin. CoinGlass/LunarCrush voivat vain lisätä dataa; CORS/HTTP 402 ei voi enää jättää PRO/TOP5-näkymää odottamaan. Korjattu myös puuttunut acceleration-kenttä.</div><div class="footer"><b>PRO v4.1 FIX POLICY:</b> TOP 5 BUY/SELL käyttää aina core-live-dataa (CoinGecko + saatavilla oleva Binance Futures). CoinGlass/LunarCrush ovat lisävahvistuksia, eivät dependencyjä. Backtest mittaa 1h/4h/24h forward-returnia, koska 30–100 % osumat 24h sisällä ovat harvinaisia ja vääristävät kalibrointia. Jos viimeinen onnistunut live-haku on yli 10 min vanha, signaalit lukitaan STALE-tilaan.</div><div class="footer"><b>PRO ENGINE POLICY:</b> PRO Score painottaa aikaisen breakout-liikkeen laatua, trendin yhtenäisyyttä, live-volyymiä, likviditeettiä ja saatavilla olevaa derivatives/social-vahvistusta. Anti-Pump pienentää pisteitä jo voimakkaasti venyneestä liikkeestä. Entry/Stop/TP ovat dynaamisia riskitasoja, eivät varmoja hintatavoitteita. Paras signaali on korkea PRO Score + korkea Confidence + matala Pump Risk + hyvä Data Coverage.</div><div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
 </section><section class="panel" style="margin-bottom:14px">
   <div class="ph"><h2>🛰️ GLOBAL INTELLIGENCE STACK</h2><small>Signal fusion · cross-asset · geopolitics · sovereign debt · events</small></div>
   <div class="grid">
@@ -828,6 +833,61 @@ function regimeMultiplier(){
   if(r.includes('RISK-OFF')||r.includes('BEAR'))return .82;
   return .96;
 }
+
+const STABLES=new Set(['USDT','USDC','DAI','FDUSD','TUSD','USDE']);
+function isStable(x){return STABLES.has(String(x.symbol||'').toUpperCase());}
+function unifiedConfidence(x){
+  const cov=liveCoverage(x).pct;
+  const base=confidenceScore(x);
+  const pump=pumpRisk(x);
+  let c=.72*base+.28*cov;
+  c-=Math.max(0,pump-60)*.25;
+  return Math.round(clamp(c));
+}
+function unifiedScore(x){
+  const p=proScore(x);
+  const cov=liveCoverage(x).pct;
+  const conf=unifiedConfidence(x);
+  const downside=downsideRisk(x);
+  const pump=pumpRisk(x);
+  let s=.62*p+.18*conf+.12*cov+.08*(100-downside);
+  s-=pump*.10;
+  if(isStable(x))s-=35;
+  return Math.round(clamp(s));
+}
+function unifiedGrade(x){
+  const s=unifiedScore(x), c=unifiedConfidence(x), cov=liveCoverage(x).pct, pump=pumpRisk(x);
+  if(s>=85&&c>=75&&cov>=75&&pump<55)return ['A+','grade-a'];
+  if(s>=75&&c>=65&&cov>=50&&pump<65)return ['A','grade-a'];
+  if(s>=65&&c>=55)return ['B','grade-b'];
+  if(s>=50)return ['C','grade-c'];
+  return ['D','grade-d'];
+}
+function invalidationText(x){
+  const parts=[];
+  if(x.h1<0)parts.push('1h momentum kääntyy negatiiviseksi');
+  if(x.breakout<45)parts.push('breakout-rakenne heikkenee');
+  if(x.orderImbalance!=null&&x.orderImbalance<-15)parts.push('order book kääntyy myyntivoittoiseksi');
+  if(pumpRisk(x)>75)parts.push('ylikuumeneminen');
+  if(!parts.length)parts.push('PRO score < 55 tai 4h trendi rikkoutuu');
+  return parts.slice(0,2).join(' · ');
+}
+function proRiskLevels3(x){
+  const r=proRiskLevels(x);
+  const price=safeNum(x.current_price,0);
+  if(!price)return {...r,tp3:'—'};
+  const h24=Math.abs(safeNum(x.h24));
+  const volPct=clamp(3+h24*.12,3,10);
+  const tp3=price*(1+Math.max(.24,volPct/100*4.0));
+  const fmt=v=>{
+    if(v>=1000)return v.toFixed(0);
+    if(v>=10)return v.toFixed(2);
+    if(v>=1)return v.toFixed(3);
+    if(v>=.01)return v.toFixed(4);
+    return v.toPrecision(4);
+  };
+  return {...r,tp3:fmt(tp3)};
+}
 function proScore(x){
   const core=safeNum(x.score,50);
   const trend=trendQuality(x);
@@ -870,30 +930,32 @@ function heatLabel(p){
 }
 function confClass(c){return c>=75?'conf-high':c>=55?'conf-mid':'conf-low';}
 function renderProEngine(all){
-  if(!all?.length){
+  const usable=(all||[]).filter(x=>!isStable(x));
+  if(!usable.length){
     $('proTop').textContent='—';$('proConfidence').textContent='—';$('proPump').textContent='—';
     $('proSetups').innerHTML='<div class="empty">Ei core-dataa.</div>';return;
   }
-  const ranked=[...all].map(x=>({
+  const ranked=[...usable].map(x=>({
     ...x,
-    pro:proScore(x),
-    conf:confidenceScore(x),
+    unified:unifiedScore(x),
+    conf:unifiedConfidence(x),
     pump:pumpRisk(x)
-  })).sort((a,b)=>b.pro-a.pro);
+  })).sort((a,b)=>b.unified-a.unified);
   const top=ranked[0];
   $('proTop').textContent=top?top.symbol.toUpperCase():'—';
   $('proConfidence').textContent=top?top.conf+'/100':'—';
   $('proPump').textContent=top?top.pump+'/100':'—';
   $('proRegime').textContent=($('regimeState')?.textContent||$('bias')?.textContent||'—');
   $('proSetups').innerHTML=ranked.slice(0,5).map((x,i)=>{
-    const r=proRiskLevels(x);
+    const r=proRiskLevels3(x);
     const [heat,hcls]=heatLabel(x.pump);
+    const [grade,gcls]=unifiedGrade(x);
     return `<div class="setup-row">
       <div><div class="setup-main">#${i+1} ${x.symbol.toUpperCase()}</div><div class="tiny">${x.name}</div><div class="heat ${hcls}">${heat} · pump ${x.pump}/100</div></div>
-      <div><b>${x.pro}/100</b><div class="${confClass(x.conf)} tiny">conf ${x.conf}/100</div><div class="tiny">${x.pro>=80?'A+':x.pro>=70?'A':x.pro>=60?'B':'C'} setup</div></div>
+      <div><b>${x.unified}/100</b><div class="${confClass(x.conf)} tiny">conf ${x.conf}/100</div><div class="unified-badge ${gcls}">${grade}</div></div>
       <div>${r.entry}</div>
       <div class="red">${r.stop}</div>
-      <div><span class="green">${r.tp1}</span> / <span class="green">${r.tp2}</span></div>
+      <div><span class="green">${r.tp1}</span> / <span class="green">${r.tp2}</span> / <span class="green">${r.tp3}</span></div>
     </div>`;
   }).join('');
 }
@@ -932,43 +994,20 @@ function signalReasons(x,side='buy'){
   return r.slice(0,5);
 }
 function buySignalScore(x){
-  const ext={};
-  if(x.coinGlassScore!=null) ext.derivatives=x.coinGlassScore;
-  else if(x.derivatives!=null) ext.derivatives=x.derivatives;
-  if(x.socialLive!=null) ext.social=x.socialLive;
-  const base=galaxyFusionScore(x,ext);
-  let s=.55*base+.45*proScore(x);
-  if(x.h1>0)s+=6;
-  if(x.h4>0)s+=6;
-  if(x.h24>0)s+=5;
-  if(x.breakout>70)s+=7;
-  if(x.ratio>.12)s+=5;
-  if(x.liquidity>55)s+=4;
-  if(x.h24>25)s-=8; // overheated
-  if(x.oi1h!=null && x.oi1h>1 && x.h1>0)s+=5;
-  if(x.oi4h!=null && x.oi4h>2 && x.h4>0)s+=4;
-  if(x.liqBias!=null && x.liqBias>20 && x.h1>0)s+=4;
-  if(x.largeImb!=null && x.largeImb>15)s+=4;
-  if(x.fundingCG!=null && Math.abs(x.fundingCG)>.03)s-=4;
+  if(isStable(x))return 0;
+  let s=unifiedScore(x);
+  if(x.h1>0)s+=4;
+  if(x.h4>0)s+=4;
+  if(x.breakout>70)s+=5;
+  if(pumpRisk(x)>70)s-=8;
   return Math.round(clamp(s));
 }
 function sellSignalScore(x){
-  let s=downsideRisk(x);
-  const p=proScore(x);
-  if(p<45)s+=8;
-  if(pumpRisk(x)>70 && safeNum(x.h1)<0)s+=10;
-  if(x.funding!=null && Math.abs(x.funding)>.08)s+=5;
-  if(x.orderImbalance!=null && x.orderImbalance<-15)s+=6;
-  if(x.h1<0)s+=8;
-  if(x.h4<0)s+=8;
-  if(x.h24<0)s+=7;
+  if(isStable(x))return 0;
+  let s=.62*downsideRisk(x)+.20*(100-unifiedScore(x))+.18*pumpRisk(x);
+  if(x.h1<0)s+=5;
+  if(x.h4<0)s+=5;
   if(x.breakout<35)s+=5;
-  if(x.liquidity<45)s+=6;
-  if(x.h24>35 && x.h1<0)s+=10; // exhaustion reversal
-  if(x.oi1h!=null && x.oi1h>1 && x.h1<0)s+=5;
-  if(x.liqBias!=null && x.liqBias<-20)s+=4;
-  if(x.largeImb!=null && x.largeImb<-15)s+=4;
-  if(x.fundingCG!=null && x.fundingCG>.03)s+=4;
   return Math.round(clamp(s));
 }
 function strengthLabel(v,side){
@@ -983,7 +1022,7 @@ function strengthLabel(v,side){
   }
 }
 function renderTradeSignals(all){
-  const usable=(all||[]).filter(coreLiveReady);
+  const usable=(all||[]).filter(x=>coreLiveReady(x)&&!isStable(x));
   const buy=[...usable].map(x=>({...x,tradeScore:buySignalScore(x)}))
     .sort((a,b)=>b.tradeScore-a.tradeScore).slice(0,5);
   const sell=[...usable].map(x=>({...x,tradeScore:sellSignalScore(x)}))
@@ -992,22 +1031,27 @@ function renderTradeSignals(all){
   const buyCard=(x,i)=>{
     const [lab,cls]=strengthLabel(x.tradeScore,'buy');
     const reasons=signalReasons(x,'buy').join(' · ')||'ei vahvaa yksittäistä ajuria';
+    const [grade,gcls]=unifiedGrade(x);
+    const r=proRiskLevels3(x);
     return `<div class="trade-card">
-      <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
-      <div class="trade-meta">1h ${pct(x.h1)} · 4h ${pct(x.h4)} · 24h ${pct(x.h24)} · breakout ${x.breakout.toFixed(0)} · liq ${x.liquidity.toFixed(0)} · Vol/MC ${(x.ratio*100).toFixed(1)}%</div>
+      <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span> <span class="unified-badge ${gcls}">${grade}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
+      <div class="trade-meta">Unified ${unifiedScore(x)}/100 · Confidence ${unifiedConfidence(x)}/100 · Data ${liveCoverage(x).pct}% · Pump ${pumpRisk(x)}/100</div>
       <div class="reason-list"><b>Miksi:</b> ${reasons}</div>
-      <div class="source-line"><span class="coverage-pill ${coverageClass(liveCoverage(x).pct)}">Data ${liveCoverage(x).pct}%</span> ${sourceSummary(x)}</div>
+      <div class="levels"><b>Entry:</b> ${r.entry} · <b>Stop:</b> ${r.stop} · <b>TP1:</b> ${r.tp1} · <b>TP2:</b> ${r.tp2} · <b>TP3:</b> ${r.tp3}<br><b>Invalidation:</b> ${invalidationText(x)}</div>
+      <div class="source-line">${sourceSummary(x)}</div>
       ${platformFinder(x)}
     </div>`;
   };
   const sellCard=(x,i)=>{
     const [lab,cls]=strengthLabel(x.tradeScore,'sell');
     const reasons=signalReasons(x,'sell').join(' · ')||'ei vahvaa yksittäistä ajuria';
+    const [grade,gcls]=unifiedGrade(x);
     return `<div class="trade-card">
-      <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
-      <div class="trade-meta">1h ${pct(x.h1)} · 4h ${pct(x.h4)} · 24h ${pct(x.h24)} · downside-risk ${downsideRisk(x)}/100 · breakout ${x.breakout.toFixed(0)}</div>
+      <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span> <span class="unified-badge ${gcls}">${grade}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
+      <div class="trade-meta">Unified ${unifiedScore(x)}/100 · Confidence ${unifiedConfidence(x)}/100 · Data ${liveCoverage(x).pct}% · Downside ${downsideRisk(x)}/100</div>
       <div class="reason-list"><b>Miksi:</b> ${reasons}</div>
-      <div class="source-line"><span class="coverage-pill ${coverageClass(liveCoverage(x).pct)}">Data ${liveCoverage(x).pct}%</span> ${sourceSummary(x)}</div>
+      <div class="levels"><b>Invalidation / exit:</b> ${invalidationText(x)}</div>
+      <div class="source-line">${sourceSummary(x)}</div>
       ${platformFinder(x)}
     </div>`;
   };
@@ -1020,8 +1064,8 @@ function renderTradeSignals(all){
   $('topBuy').innerHTML=buy.length?buy.map(buyCard).join(''):'<div class="empty">Ei käyttökelpoista core-dataa.</div>';
   $('topSell').innerHTML=sell.length?sell.map(sellCard).join(''):'<div class="empty">Ei käyttökelpoista core-dataa.</div>';
 
-  const strongBuys=buy.filter(x=>x.tradeScore>=82 && proScore(x)>=72 && confidenceScore(x)>=60 && pumpRisk(x)<70),
-        strongSells=sell.filter(x=>x.tradeScore>=78 || (proScore(x)<38 && downsideRisk(x)>=65));
+  const strongBuys=buy.filter(x=>x.tradeScore>=82 && unifiedConfidence(x)>=70 && liveCoverage(x).pct>=50 && pumpRisk(x)<70),
+        strongSells=sell.filter(x=>x.tradeScore>=78 && unifiedConfidence(x)>=55);
   const banner=$('strongAlertBanner');
   if(strongBuys.length||strongSells.length){
     banner.style.display='block';
