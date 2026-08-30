@@ -4,7 +4,7 @@
 <meta name="kp-version" content="7.6">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KryptoPulse GALAXY ONE v7.7 — AI FUSION ENGINE</title>
+<title>KryptoPulse GALAXY ONE v7.8 — PRECISION FIX</title>
 <style>
 :root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
@@ -173,7 +173,7 @@
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v7.7</span></div><div class="one-sub">AI FUSION ENGINE · unified DQ · stale gate · venue cross-check</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v7.8</span></div><div class="one-sub">PRECISION FIX · canonical DQ · symbol guard · stablecoin guard</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-market"><div><small>MARKKINA</small><br><b id="oneMarket">ODOTTAA</b></div><div style="text-align:right"><small>TOIMINTA</small><br><b id="oneDecision">EI VIELÄ</b></div></div>
   <div class="one-grid">
     <div class="one-card best" id="oneBest"><div class="one-kicker">🔥 #1 NOW · 3/3</div><div class="one-row"><div class="one-symbol" id="oneBestSym">—</div><div class="one-state" id="oneBestState">WAIT</div></div><div class="one-ignite" id="oneBestIgn">— <span>IGNITION</span></div><div class="one-why" id="oneBestWhy">Odotetaan live-dataa…</div><div class="one-block" id="oneBestBlock"></div><div class="one-delta" id="oneBestDelta"></div></div>
@@ -1372,8 +1372,25 @@ function regimeMultiplier(){
   return .96;
 }
 
-const STABLES=new Set(['USDT','USDC','DAI','FDUSD','TUSD','USDE']);
-function isStable(x){return STABLES.has(String(x.symbol||'').toUpperCase());}
+const STABLES=new Set(['USDT','USDC','DAI','FDUSD','TUSD','USDE','USDD','USDP','PYUSD','FRAX','GUSD','LUSD','EURC','EURT','USDS','USDUC']);
+function isStable(x){
+  const s=String(x?.symbol||'').toUpperCase().trim();
+  const name=String(x?.name||'').toLowerCase();
+  if(STABLES.has(s))return true;
+  if(/stablecoin|usd coin|tether|dai stablecoin|paypal usd/.test(name))return true;
+  // Guard malformed USD-like feed symbols (e.g. USDUC) from aggressive rankings.
+  if(/^USD[A-Z]{1,3}$/.test(s)&&s!=='USDT')return true;
+  return false;
+}
+const INVALID_ASSET_SYMBOLS=new Set(['DATA','NULL','NAN','UNDEFINED','ERROR','UNKNOWN','API','N/A','NA']);
+function validAssetSymbol(x){
+  const s=String(x?.symbol||'').toUpperCase().trim();
+  if(!s||INVALID_ASSET_SYMBOLS.has(s))return false;
+  if(!/^[A-Z0-9]{2,12}$/.test(s))return false;
+  const price=Number(x?.current_price ?? x?.price);
+  return Number.isFinite(price)&&price>0;
+}
+function aggressiveAsset(x){return validAssetSymbol(x)&&!isStable(x)}
 function unifiedConfidence(x){
   const cov=liveCoverage(x).pct;
   const base=confidenceScore(x);
@@ -2017,7 +2034,7 @@ function renderSmallCapHunter(all){
 
 function renderMicrocapRadar(all){
   const el=$('microRows');if(!el)return;
-  const rows=[...all].filter(x=>!isStable(x)&&(x.mc<300e6||x.vol<10e6||x.ratio>.15)).map(x=>({x,m:microMetrics(x)})).sort((a,b)=>Math.max(b.m.accumulation,b.m.fomo)-Math.max(a.m.accumulation,a.m.fomo)).slice(0,15);
+  const rows=[...all].filter(x=>aggressiveAsset(x)&&(x.mc<300e6||x.vol<10e6||x.ratio>.15)).map(x=>({x,m:microMetrics(x)})).sort((a,b)=>Math.max(b.m.accumulation,b.m.fomo)-Math.max(a.m.accumulation,a.m.fomo)).slice(0,15);
   el.innerHTML=rows.map(({x,m},i)=>{const trad=isTradableAllPlatforms(x);const cmd=trad?(m.dump>=72||m.pump>=82?'⛔ EI UUTTA OSTOA':m.accumulation>=70&&m.pump<60?'🟢 EARLY WATCH':'🟡 SEURAA'):'🌍 DISCOVERY';return `<div class="micro-card"><div class="tiny">#${i+1} ${trad?'3/3':'WORLD'} · ${fmtPrice(safeNum(x.current_price))}</div><b>${x.symbol.toUpperCase()} · ${cmd}</b><div class="micro-phase ${m.dump>=72?'red':m.accumulation>=70?'green':'yellow'}">${m.phase}</div><div class="tiny">1h ${pct(x.h1)} · 4h ${pct(x.h4)} · 24h ${pct(x.h24)} · vol/MC ${(safeNum(x.ratio)*100).toFixed(1)}%</div><div class="tiny">ACC ${m.accumulation} · FOMO ${m.fomo} · PUMP ${m.pump} · DUMP ${m.dump} · LIQ-RISK ${m.liquidityRisk}</div><div class="riskbar" style="color:${m.dump>=72?'#ff5577':m.pump>=70?'#ffbd4a':'#23d9a4'}"><i style="width:${Math.max(m.dump,m.pump)}%"></i></div></div>`}).join('')||'<div class="empty">Ei microcap/riskikohteita nykyisessä datassa.</div>';
 }
 
@@ -2668,6 +2685,7 @@ function oneSet(prefix,x,stateLabel,kind='EARLY'){
 
 function oneRankEarly(all,exclude=new Set()){
   return all
+    .filter(aggressiveAsset)
     .filter(x=>!exclude.has(oneSymbol(x)))
     .filter(x=>pumpRisk(x)<70 && lateEntryPenalty(x)<45)
     .map(x=>{
@@ -2680,6 +2698,7 @@ function oneRankEarly(all,exclude=new Set()){
 
 function oneRankMicro(all,exclude=new Set()){
   return all
+    .filter(aggressiveAsset)
     .filter(x=>!exclude.has(oneSymbol(x)))
     .filter(x=>{
       const mc=oneMC(x),vol=oneVol(x),vmc=mc>0?vol/mc:0;
@@ -2694,7 +2713,7 @@ function oneRankMicro(all,exclude=new Set()){
 }
 
 function renderGalaxyOne(all){
-  all=(all||[]).filter(x=>!isStable(x));
+  all=(all||[]).filter(aggressiveAsset);
   const health=sourceHealthDI(), reg=regimeMatrixDI(all);
   $('oneLive').textContent='DATA '+(dataIsStale()?'STALE':'LIVE')+' · CORE '+health.coreLive+'/2';
   $('oneMarket').textContent=reg.state;
@@ -2769,6 +2788,142 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 </script>
-\n<script>\n/* ===== v7.7 AI FUSION ENGINE =====\n   One canonical DQ, freshness/reliability gate, venue verification and\n   3/3 + Discovery cross-validation. Discovery never becomes an execution\n   signal without venue confirmation. */\nfunction fusion77Fresh(){\n  const age=typeof uxAgeMinutes==='function'?uxAgeMinutes():999;\n  return {age,ok:!dataIsStale() && age<=4.0};\n}\nfunction fusion77Venue(x){\n  try{\n    const v=v74Venue(x)||{count:0};\n    return {count:Number(v.count)||0, any:(Number(v.count)||0)>=1, all:(Number(v.count)||0)>=3};\n  }catch(e){return {count:0,any:false,all:false}}\n}\nfunction fusion77DQ(x){\n  const vals=[oneH1(x),oneH4(x),oneH24(x),oneMC(x)||null,oneVol(x)||null,onePrice(x)];\n  const complete=vals.filter(v=>v!=null&&Number.isFinite(Number(v))&&Number(v)!==0).length/vals.length;\n  const health=sourceHealthDI();\n  const core=Math.max(0,Math.min(1,(Number(health.coreLive)||0)/2));\n  const cov=Math.max(0,Math.min(1,liveCoverage(x).pct/100));\n  const fresh=fusion77Fresh();\n  const freshness=fresh.ok?1:Math.max(0,1-fresh.age/12);\n  const venue=fusion77Venue(x);\n  const venueTrust=venue.all?1:venue.any?.72:.35;\n  return Math.max(0,Math.min(1,.34*complete+.24*core+.20*cov+.14*freshness+.08*venueTrust));\n}\nfunction dq76(x){return fusion77DQ(x)}\nfunction confidence76(x){\n  const dq=fusion77DQ(x),liq=Math.max(0,Math.min(100,safeNum(x?.liquidity,0))),v=fusion77Venue(x),f=fusion77Fresh();\n  return Math.round(Math.max(0,Math.min(100,dq*58+liq*.22+(v.all?14:v.any?7:0)+(f.ok?6:0))));\n}\nfunction fusion77Cross(x){\n  const v=fusion77Venue(x),dq=fusion77DQ(x),fresh=fusion77Fresh(),ph=phase76(x);\n  const early=earlySniperScore(x),br=breakoutProScore(x),integrity=signalIntegrity(x);\n  const discovery=(ph==='PRE-BREAKOUT'||ph==='BREAKOUT') && early>=55 && br>=55;\n  const execution=v.all && discovery && dq>=.70 && fresh.ok && integrity>=62;\n  return {v,dq,fresh,ph,discovery,execution,early,br,integrity};\n}\nfunction gate76(x,mode='EARLY'){\n  const score=aiScore76(x,mode),c=fusion77Cross(x),conf=confidence76(x);\n  let state='WATCH';\n  if(c.ph==='LATE-PUMP') state='ÄLÄ JAHTAA';\n  else if(!c.fresh.ok) state='STALE WAIT';\n  else if(c.dq<.55) state='DATA WAIT';\n  else if(!c.v.any) state='DISCOVERY ONLY';\n  else if(!c.v.all) state='VENUE CHECK';\n  else if(!c.discovery) state='WATCH';\n  else if(c.execution && score>=82 && conf>=70) state='READY';\n  else if(score>=72 && conf>=60) state='EARLY';\n  return {score,dq:c.dq,conf,phase:c.ph,state,cross:c};\n}\nfunction oneBlock(x){\n  const g=gate76(x,'NOW'),r=[];\n  if(!g.cross.fresh.ok)r.push('data stale '+g.cross.fresh.age.toFixed(1)+' min');\n  if(g.dq<.70)r.push('DQ '+Math.round(g.dq*100)+'% < 70%');\n  if(!g.cross.v.all)r.push('venue '+g.cross.v.count+'/3');\n  if(!g.cross.discovery)r.push('Discovery-rakenne ei vahvista');\n  const legacy=v64FireReasons(x); if(legacy.length)r.push(legacy[0]);\n  return r.length?'EI VIELÄ: '+r[0]:'FUSION FIRE -portti valmis';\n}\n\n// Hyper Summary uses the same canonical DQ as GALAXY ONE.\nconst renderResultAnalysisV77Base=renderResultAnalysis;\nrenderResultAnalysis=function(all){\n  renderResultAnalysisV77Base(all);\n  const el=$('analysisGrid'); if(!el)return;\n  const assets=(all||[]).filter(x=>!isStable(x));\n  const avg=assets.length?Math.round(assets.reduce((a,x)=>a+fusion77DQ(x),0)/assets.length*100):0;\n  const cards=[...el.querySelectorAll('.analysis-card')];\n  const dqCard=cards.find(c=>c.querySelector('h3')?.textContent.trim()==='DATA QUALITY');\n  if(dqCard){\n    const big=dqCard.querySelector('.big'),p=dqCard.querySelector('p');\n    if(big)big.textContent=avg+'% avg';\n    if(p)p.textContent=(avg>=75?'Hyvä':avg>=55?'Kohtalainen':'Heikko')+' — sama Unified DQ ohjaa nyt GALAXY ONE-, Hyper Summary- ja READY-portteja. Stale data tai puuttuva venue-vahvistus estää READY-tilan.';\n    dqCard.classList.toggle('warn',avg<75);\n  }\n};\n\nconst renderGalaxyOneV77Base=renderGalaxyOne;\nrenderGalaxyOne=function(all){\n  renderGalaxyOneV77Base(all);\n  const health=sourceHealthDI(),f=fusion77Fresh();\n  if($('oneLive'))$('oneLive').textContent='DATA '+(f.ok?'LIVE':'STALE')+' · CORE '+health.coreLive+'/2 · FUSION';\n};\n</script>\n
+
+<script>
+/* ===== v7.8 PRECISION FIX =====
+   One canonical DQ, freshness/reliability gate, venue verification and
+   3/3 + Discovery cross-validation. Discovery never becomes an execution
+   signal without venue confirmation. */
+function fusion77Fresh(){
+  const age=typeof uxAgeMinutes==='function'?uxAgeMinutes():999;
+  return {age,ok:!dataIsStale() && age<=4.0};
+}
+function fusion77Venue(x){
+  try{
+    const v=v74Venue(x)||{count:0};
+    return {count:Number(v.count)||0, any:(Number(v.count)||0)>=1, all:(Number(v.count)||0)>=3};
+  }catch(e){return {count:0,any:false,all:false}}
+}
+function fusion77DQ(x){
+  const vals=[oneH1(x),oneH4(x),oneH24(x),oneMC(x)||null,oneVol(x)||null,onePrice(x)];
+  const complete=vals.filter(v=>v!=null&&Number.isFinite(Number(v))&&Number(v)!==0).length/vals.length;
+  const health=sourceHealthDI();
+  const core=Math.max(0,Math.min(1,(Number(health.coreLive)||0)/2));
+  const cov=Math.max(0,Math.min(1,liveCoverage(x).pct/100));
+  const fresh=fusion77Fresh();
+  const freshness=fresh.ok?1:Math.max(0,1-fresh.age/12);
+  const venue=fusion77Venue(x);
+  const venueTrust=venue.all?1:venue.any?.72:.35;
+  return Math.max(0,Math.min(1,.34*complete+.24*core+.20*cov+.14*freshness+.08*venueTrust));
+}
+function dq76(x){return fusion77DQ(x)}
+function confidence76(x){
+  const dq=fusion77DQ(x),liq=Math.max(0,Math.min(100,safeNum(x?.liquidity,0))),v=fusion77Venue(x),f=fusion77Fresh();
+  return Math.round(Math.max(0,Math.min(100,dq*58+liq*.22+(v.all?14:v.any?7:0)+(f.ok?6:0))));
+}
+function fusion77Cross(x){
+  const v=fusion77Venue(x),dq=fusion77DQ(x),fresh=fusion77Fresh(),ph=phase76(x);
+  const early=earlySniperScore(x),br=breakoutProScore(x),integrity=signalIntegrity(x);
+  const discovery=(ph==='PRE-BREAKOUT'||ph==='BREAKOUT') && early>=55 && br>=55;
+  const execution=v.all && discovery && dq>=.70 && fresh.ok && integrity>=62;
+  return {v,dq,fresh,ph,discovery,execution,early,br,integrity};
+}
+function gate76(x,mode='EARLY'){
+  const score=aiScore76(x,mode),c=fusion77Cross(x),conf=confidence76(x);
+  let state='WATCH';
+  if(c.ph==='LATE-PUMP') state='ÄLÄ JAHTAA';
+  else if(!c.fresh.ok) state='STALE WAIT';
+  else if(c.dq<.55) state='DATA WAIT';
+  else if(!c.v.any) state='DISCOVERY ONLY';
+  else if(!c.v.all) state='VENUE CHECK';
+  else if(!c.discovery) state='WATCH';
+  else if(c.execution && score>=82 && conf>=70) state='READY';
+  else if(score>=72 && conf>=60) state='EARLY';
+  return {score,dq:c.dq,conf,phase:c.ph,state,cross:c};
+}
+function oneBlock(x){
+  const g=gate76(x,'NOW'),r=[];
+  if(!g.cross.fresh.ok)r.push('data stale '+g.cross.fresh.age.toFixed(1)+' min');
+  if(g.dq<.70)r.push('DQ '+Math.round(g.dq*100)+'% < 70%');
+  if(!g.cross.v.all)r.push('venue '+g.cross.v.count+'/3');
+  if(!g.cross.discovery)r.push('Discovery-rakenne ei vahvista');
+  const legacy=v64FireReasons(x); if(legacy.length)r.push(legacy[0]);
+  return r.length?'EI VIELÄ: '+r[0]:'FUSION FIRE -portti valmis';
+}
+
+// Hyper Summary uses the same canonical DQ as GALAXY ONE.
+const renderResultAnalysisV77Base=renderResultAnalysis;
+renderResultAnalysis=function(all){
+  renderResultAnalysisV77Base(all);
+  const el=$('analysisGrid'); if(!el)return;
+  const assets=(all||[]).filter(aggressiveAsset);
+  const avg=assets.length?Math.round(assets.reduce((a,x)=>a+fusion77DQ(x),0)/assets.length*100):0;
+  const cards=[...el.querySelectorAll('.analysis-card')];
+  const dqCard=cards.find(c=>c.querySelector('h3')?.textContent.trim()==='DATA QUALITY');
+  if(dqCard){
+    const big=dqCard.querySelector('.big'),p=dqCard.querySelector('p');
+    if(big)big.textContent=avg+'% avg';
+    if(p)p.textContent=(avg>=75?'Hyvä':avg>=55?'Kohtalainen':'Heikko')+' — sama Unified DQ ohjaa nyt GALAXY ONE-, Hyper Summary- ja READY-portteja. Stale data tai puuttuva venue-vahvistus estää READY-tilan.';
+    dqCard.classList.toggle('warn',avg<75);
+  }
+};
+
+const renderGalaxyOneV77Base=renderGalaxyOne;
+renderGalaxyOne=function(all){
+  renderGalaxyOneV77Base(all);
+  const health=sourceHealthDI(),f=fusion77Fresh();
+  if($('oneLive'))$('oneLive').textContent='DATA '+(f.ok?'LIVE':'STALE')+' · CORE '+health.coreLive+'/2 · FUSION';
+};
+</script>
+
+<script>
+/* ===== v7.8 CANONICAL DQ + RANKING GUARDS ===== */
+function v78Universe(all){return (all||[]).filter(validAssetSymbol);}
+function v78Aggressive(all){return v78Universe(all).filter(x=>!isStable(x));}
+
+// Every visible signal card gets the same canonical DQ. This removes legacy 25% coverage labels.
+function v78SyncDQ(root=document){
+  root.querySelectorAll('.trade-card,.analysis-card').forEach(card=>{
+    const text=card.textContent||'';
+    const m=text.match(/(?:#\d+\s+)?([A-Z0-9]{2,12})/);
+    if(!m)return;
+    const sym=m[1];
+    const x=(state.data||[]).find(z=>oneSymbol(z)===sym);
+    if(!x||!validAssetSymbol(x))return;
+    const dq=Math.round(fusion77DQ(x)*100);
+    card.querySelectorAll('*').forEach(n=>{
+      if(n.children.length===0 && /data\s+\d+%/i.test(n.textContent||''))
+        n.textContent=n.textContent.replace(/data\s+\d+%/ig,'data '+dq+'%');
+    });
+  });
+}
+
+const renderV78Base=render;
+render=function(){
+  // Invalid pseudo-assets never enter ranking/rendering. Stablecoins may remain in neutral market data,
+  // but aggressive NOW/EARLY/MICRO engines already use aggressiveAsset().
+  if(Array.isArray(state.data)) state.data=v78Universe(state.data);
+  renderV78Base();
+  v78SyncDQ(document);
+};
+
+// Make the Hyper Summary average explicitly canonical and aggressive-universe only.
+const renderResultAnalysisV78Base=renderResultAnalysis;
+renderResultAnalysis=function(all){
+  const clean=v78Universe(all);
+  renderResultAnalysisV78Base(clean);
+  const assets=v78Aggressive(clean);
+  const avg=assets.length?Math.round(assets.reduce((a,x)=>a+fusion77DQ(x),0)/assets.length*100):0;
+  const card=[...document.querySelectorAll('#analysisGrid .analysis-card')].find(c=>c.querySelector('h3')?.textContent.trim()==='DATA QUALITY');
+  if(card){
+    const big=card.querySelector('.big'),p=card.querySelector('p');
+    if(big)big.textContent=avg+'% avg';
+    if(p)p.textContent=(avg>=75?'Hyvä':avg>=55?'Kohtalainen':'Heikko')+' — canonical Unified DQ. Sama arvo ohjaa rankingia, Hyper Summarya ja READY/FIRE-porttia.';
+    card.classList.toggle('warn',avg<75);
+  }
+  v78SyncDQ(document);
+};
+</script>
+
 </body>
 </html>
