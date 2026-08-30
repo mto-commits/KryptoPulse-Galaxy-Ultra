@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v7.4 DISCOVERY CORE",
+  "name": "KryptoPulse GALAXY ONE v7.4.1 AI DISCOVERY",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=7.4",
+  "start_url": "./index.html?v=7.4.1",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",

@@ -133,7 +133,7 @@
 .one-shell{display:block;margin-bottom:14px}.one-head{padding:18px 18px 10px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.one-title{font-size:24px;font-weight:900;line-height:1.05}.one-sub{font-size:12px;color:#8fa2b7;margin-top:6px}.one-live{font-size:12px;border:1px solid #24523f;border-radius:999px;padding:7px 10px;color:var(--one);white-space:nowrap}.one-market{margin:0 16px 12px;padding:14px;border:1px solid #1d3547;border-radius:16px;background:#08131c;display:flex;justify-content:space-between;align-items:center}.one-market b{font-size:18px}.one-market small{color:#8294a8}.one-grid{display:grid;grid-template-columns:1fr;gap:10px;padding:0 14px}.one-card{border:1px solid #1e3445;border-radius:17px;padding:15px;background:linear-gradient(145deg,#09141d,#071018)}.one-card.best{border-color:#216a55}.one-card.micro{border-color:#6a5521}.one-kicker{font-size:11px;letter-spacing:.08em;color:#8ea1b4;font-weight:800}.one-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-top:5px}.one-symbol{font-size:25px;font-weight:950}.one-state{font-size:13px;font-weight:900;padding:5px 8px;border-radius:9px;background:#10202b}.one-ignite{font-size:28px;font-weight:950;margin-top:8px}.one-ignite span{font-size:12px;color:#8fa2b7;font-weight:700}.one-why{font-size:13px;color:#c9d5df;margin-top:7px;line-height:1.35}.one-block{font-size:12px;color:#ffc857;margin-top:7px}.one-delta{font-size:12px;color:#75d7ff;margin-top:5px}.one-position{margin:12px 14px 0;padding:14px;border:1px solid #25405a;border-radius:16px;background:#08131d}.one-position .big{font-size:19px;font-weight:900}.one-actions{display:flex;gap:9px;padding:12px 14px 15px}.one-actions button{flex:1;min-height:48px;font-size:15px;font-weight:850}.one-actions .primary{background:#0b654c;border-color:#168263}.one-advanced{margin:0 14px 16px;width:calc(100% - 28px);min-height:42px}.one-note{padding:0 16px 14px;color:#73869a;font-size:11px;text-align:center}.app>section:not(#galaxyOne){display:none}.app.advanced>section{display:block}.app.advanced>#galaxyOne{display:block}.app.advanced .one-advanced{border-color:#75424a}.trend-up{color:var(--one)}.trend-flat{color:var(--warn)}.trend-down{color:var(--bad)}
 
 
-/* ===== v7.4 DISCOVERY CORE UI ===== */
+/* ===== v7.4.1 AI DISCOVERY UI ===== */
 #v74Discovery{margin:12px 0}
 .v74-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
 .v74-card{border:1px solid #243244;border-radius:14px;padding:11px;background:#0a1018;min-height:132px}
@@ -149,6 +149,11 @@
 .v74-list{margin-top:8px;display:grid;gap:6px}
 .v74-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #1a2634;padding-top:6px;font-size:11px}
 @media(max-width:760px){.v74-grid{grid-template-columns:1fr 1fr}.v74-card{min-height:122px}}
+
+
+/* ===== v7.4.1 AI DISCOVERY ===== */
+.ai741{margin-top:7px;padding-top:7px;border-top:1px solid #1b2a38;font-size:10px;line-height:1.45;color:#9fb0c2}
+.ai741 b{color:#dce8f5}.ai741-good{color:#58e5a0}.ai741-warn{color:#ffd166}.ai741-bad{color:#ff8b8b}
 
 </style>
 
@@ -182,7 +187,7 @@
 
 
 <section id="v74Discovery" class="panel">
-  <div class="ph"><h2>🛰️ DISCOVERY CORE v7.4</h2><small>WORLD → EARLY → MICRO → NOW · kaupat vain Kvarn X / Coinmotion / Crypto.com</small></div>
+  <div class="ph"><h2>🛰️ AI DISCOVERY CORE v7.4.1</h2><small>WORLD → EARLY → MICRO → NOW · kaupat vain Kvarn X / Coinmotion / Crypto.com</small></div>
   <div class="v74-grid">
     <div class="v74-card" id="v74World"><div class="v74-k">🌍 WORLD DISCOVERY</div><div class="v74-sym">—</div></div>
     <div class="v74-card" id="v74Early"><div class="v74-k">🚀 EARLY DISCOVERY</div><div class="v74-sym">—</div></div>
@@ -192,7 +197,7 @@
   <details class="v74-more"><summary>🛰️ Näytä Discovery-lista</summary><div id="v74DiscoveryList" class="v74-list"></div></details>
 </section>
 
-<section class="panel" style="margin-bottom:14px" id="decisionCenter"><div class="ph"><h2>🧠 GALAXY ONE v7.4 — PRE-IGNITION INTELLIGENCE</h2><small>NO-TRADE first · alpha/risk · integrity · EV · memory · shadow</small></div><div class="di-grid"><div class="di-card"><div class="label">DECISION</div><div class="di-v" id="diDecision">WAIT</div><div class="di-note" id="diWhy">odottaa dataa</div></div><div class="di-card"><div class="label">BEST 3/3</div><div class="di-v" id="diAsset">—</div><div class="di-note" id="diGate">gate —</div></div><div class="di-card"><div class="label">ALPHA / FAILURE</div><div class="di-v" id="diAlpha">—</div><div class="di-note">opportunity vs failure risk</div></div><div class="di-card"><div class="label">BREAKOUT / EV</div><div class="di-v" id="diEV">—</div><div class="di-note">heuristic probability · R multiple</div></div><div class="di-card"><div class="label">INTEGRITY / MEMORY</div><div class="di-v" id="diIntegrity">—</div><div class="di-note" id="diMemory">—</div></div><div class="di-card"><div class="label">REGIME / SOURCE HEALTH</div><div class="di-v" id="diRegime">—</div><div class="di-note" id="diRegimeMeta">breadth · core feeds</div></div><div class="di-card"><div class="label">SHADOW EDGE</div><div class="di-v" id="diShadow">—</div><div class="di-note">local paper outcomes · not live trading</div></div><div class="di-card"><div class="label">FIRE REQUIREMENT</div><div class="di-v">STRICT</div><div class="di-note">3/3 · fresh · coverage · integrity · low failure</div></div></div></section>
+<section class="panel" style="margin-bottom:14px" id="decisionCenter"><div class="ph"><h2>🧠 GALAXY ONE v7.4.1 — PRE-IGNITION INTELLIGENCE</h2><small>NO-TRADE first · alpha/risk · integrity · EV · memory · shadow</small></div><div class="di-grid"><div class="di-card"><div class="label">DECISION</div><div class="di-v" id="diDecision">WAIT</div><div class="di-note" id="diWhy">odottaa dataa</div></div><div class="di-card"><div class="label">BEST 3/3</div><div class="di-v" id="diAsset">—</div><div class="di-note" id="diGate">gate —</div></div><div class="di-card"><div class="label">ALPHA / FAILURE</div><div class="di-v" id="diAlpha">—</div><div class="di-note">opportunity vs failure risk</div></div><div class="di-card"><div class="label">BREAKOUT / EV</div><div class="di-v" id="diEV">—</div><div class="di-note">heuristic probability · R multiple</div></div><div class="di-card"><div class="label">INTEGRITY / MEMORY</div><div class="di-v" id="diIntegrity">—</div><div class="di-note" id="diMemory">—</div></div><div class="di-card"><div class="label">REGIME / SOURCE HEALTH</div><div class="di-v" id="diRegime">—</div><div class="di-note" id="diRegimeMeta">breadth · core feeds</div></div><div class="di-card"><div class="label">SHADOW EDGE</div><div class="di-v" id="diShadow">—</div><div class="di-note">local paper outcomes · not live trading</div></div><div class="di-card"><div class="label">FIRE REQUIREMENT</div><div class="di-v">STRICT</div><div class="di-note">3/3 · fresh · coverage · integrity · low failure</div></div></div></section>
 <section class="panel" id="ultraActionMatrix" style="margin-bottom:14px">
   <div class="ph"><h2>🛸 ULTRA ACTION MATRIX v7.4</h2><small>toimi vain vahvistetusta tilasta · signaalin ikä · syylista · automaattinen anti-chase</small></div>
   <div class="ultra-matrix">
@@ -838,9 +843,9 @@ async function enrichSmallCapUniverse(){
 }
 
 
-/* ===== v7.4 DISCOVERY CORE ===== */
-const KP_CORE_CACHE='kp_core_cache_v74';
-const KP_CORE_CACHE_TS='kp_core_cache_v74_ts';
+/* ===== v7.4.1 AI DISCOVERY ===== */
+const KP_CORE_CACHE='kp_core_cache_v741';
+const KP_CORE_CACHE_TS='kp_core_cache_v741_ts';
 
 function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
@@ -987,7 +992,7 @@ function kpRankUniverse(mode='early'){
           .sort((a,b)=>b.score-a.score);
 }
 
-/* ===== v7.4 DISCOVERY CORE ENGINE ===== */
+/* ===== v7.4.1 AI DISCOVERY ENGINE ===== */
 function v74n(v, d=null){const n=Number(v);return Number.isFinite(n)?n:d}
 function v74m(x){
   const h1=v74n(x.h1 ?? x.price_change_percentage_1h_in_currency);
@@ -1017,6 +1022,43 @@ function v74Venue(x){
   d=d||!!(raw.cryptoCom||raw.cryptocom||x.cryptoCom||x.cryptocom);
   return {k,c,d,count:[k,c,d].filter(Boolean).length};
 }
+
+function ai741Features(x){
+  const m=v74m(x);
+  const momentum =
+    (m.h1==null?0:Math.max(-20,Math.min(20,m.h1*2.0))) +
+    (m.h4==null?0:Math.max(-15,Math.min(15,m.h4*.65))) +
+    (m.h24==null?0:Math.max(-10,Math.min(10,m.h24*.12)));
+  const liquidity=Math.max(0,Math.min(20,m.vmc*18));
+  const accel=(m.h1!=null&&m.h4!=null) ? Math.max(-12,Math.min(12,(m.h1-(m.h4/4))*2.2)) : 0;
+  let chase=0;
+  if(m.h1!=null&&m.h1>12) chase += Math.min(15,(m.h1-12)*.9);
+  if(m.h24!=null&&m.h24>45) chase += Math.min(15,(m.h24-45)*.3);
+  let pump=0, fake=0;
+  try{pump=pumpRisk(x)||0}catch(e){}
+  try{fake=falseBreakoutRisk(x)||0}catch(e){}
+  const venue=v74Venue(x);
+  const completeness=[m.h1,m.h4,m.h24,m.mc,m.vol].filter(v=>v!=null&&v!==0).length/5;
+  const confidence=Math.round(Math.max(20,Math.min(99,35+completeness*35+Math.min(15,liquidity)+venue.count*4)));
+  return {momentum,liquidity,accel,chase,pump,fake,venue,confidence,m};
+}
+function ai741Decision(x,score,kind){
+  const f=ai741Features(x);
+  const risk=Math.round(Math.max(0,Math.min(100,f.chase+f.pump*.30+f.fake*.30)));
+  let label='SEURAA', cls='ai741-warn', why=[];
+  if(f.accel>3) why.push('kiihtyy');
+  else if(f.accel<-3) why.push('hidastuu');
+  if(f.liquidity>10) why.push('volyymi vahva');
+  if(risk>35) why.push('ylikuumenemisriski');
+  if(f.venue.count===0) why.push('ei 3 kauppapaikassa');
+  if(f.confidence<55) why.push('data vajaa');
+  const tradeGate=f.venue.count>0 && f.confidence>=55 && risk<45;
+  if(kind==='NOW' && score>=82 && tradeGate){label='FIRE-KANDIDAATTI';cls='ai741-good'}
+  else if(score>=72 && tradeGate){label='READY/WATCH';cls='ai741-good'}
+  else if(risk>=45){label='ÄLÄ JAHTAA';cls='ai741-bad'}
+  else if(f.venue.count===0){label='DISCOVERY ONLY';cls='ai741-warn'}
+  return {label,cls,risk,why:why.slice(0,3),confidence:f.confidence};
+}
 function v74Score(x,mode='world'){
   const m=v74m(x); let s=32;
   if(m.h1!=null)s+=Math.max(-16,Math.min(24,m.h1*2.6));
@@ -1042,7 +1084,12 @@ function v74Score(x,mode='world'){
 }
 function v74Rank(mode){
   let a=(state.data||[]).filter(x=>x&&!isStable(x));
-  if(mode==='micro')a=a.filter(x=>{const m=v74m(x);return m.mc>0&&m.mc<25e6&&m.vol>25000});
+  if(mode==='micro')a=a.filter(x=>{
+    const m=v74m(x);
+    if(!(m.mc>0&&m.mc<25e6&&m.vol>25000)) return false;
+    const hasMomentum=(m.h1!=null||m.h4!=null||m.h24!=null);
+    return hasMomentum && m.vmc>=0.003;
+  });
   if(mode==='now')a=a.filter(x=>v74Venue(x).count>0);
   return a.map(x=>({x,score:v74Score(x,mode==='now'?'early':mode)}))
           .sort((a,b)=>b.score-a.score);
@@ -1058,7 +1105,8 @@ function v74Card(id,item,kind){
   else if(kind.includes('MICRO')) action=tradeable?'EARLY · OSTETTAVISSA':'EARLY · OUTSIDE';
   else action=tradeable?'EARLY · OSTETTAVISSA':'OUTSIDE / EARLY';
   const venues=`<span class="${v.k?'v74-ok':'v74-no'}">Kvarn X ${v.k?'✓':'—'}</span> · <span class="${v.c?'v74-ok':'v74-no'}">Coinmotion ${v.c?'✓':'—'}</span> · <span class="${v.d?'v74-ok':'v74-no'}">Crypto.com ${v.d?'✓':'—'}</span>`;
-  el.innerHTML=`<div class="v74-k">${kind}</div><div class="v74-sym">${sym}</div><div class="v74-score">IGNITION ${item.score}%</div><div class="v74-meta">1h ${v74Pct(m.h1)} · 4h ${v74Pct(m.h4)} · 24h ${v74Pct(m.h24)}<br>MC ${v74Money(m.mc)} · vol/MC ${(m.vmc*100).toFixed(1)}%</div><div class="v74-venue">${venues}</div><div class="v74-action ${tradeable?'v74-ok':'v74-warn'}">${action}</div>`;
+  const ai=ai741Decision(x,item.score,kind.includes('NOW')?'NOW':kind);
+  el.innerHTML=`<div class="v74-k">${kind}</div><div class="v74-sym">${sym}</div><div class="v74-score">IGNITION ${item.score}%</div><div class="v74-meta">1h ${v74Pct(m.h1)} · 4h ${v74Pct(m.h4)} · 24h ${v74Pct(m.h24)}<br>MC ${v74Money(m.mc)} · vol/MC ${(m.vmc*100).toFixed(1)}%</div><div class="v74-venue">${venues}</div><div class="v74-action ${tradeable?'v74-ok':'v74-warn'}">${action}</div><div class="ai741"><b>AI</b> · <span class="${ai.cls}">${ai.label}</span> · confidence ${ai.confidence}% · risk ${ai.risk}/100${ai.why.length?`<br>${ai.why.join(' · ')}`:''}</div>`;
 }
 function renderDiscoveryCoreV74(){
   const world=v74Rank('world'),early=v74Rank('early'),micro=v74Rank('micro'),now=v74Rank('now');
