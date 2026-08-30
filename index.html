@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KryptoPulse GALAXY PRO ULTRA v5.2 — HYPER MICROCAP ROCKET HUNTER PRO</title>
+<title>KryptoPulse GALAXY PRO ULTRA v5.3 — HYPER MICROCAP ROCKET HUNTER PRO</title>
 <style>
 :root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
@@ -133,7 +133,7 @@
 <body>
 <div class="app">
 <section class="panel command-center" id="commandCenter">
-  <div class="ph"><h2>⚡ HYPER COMMAND CENTER v5.2 ROCKET HUNTER PRO</h2><div class="actions"><button id="addExistingPosition">➕ Lisää jo ostettu</button><small>OSTA · PIDÄ · SUOJAA · MYY — vain Kvarn X / Coinmotion / Crypto.com</small></div></div>
+  <div class="ph"><h2>⚡ HYPER COMMAND CENTER v5.3 ROCKET HUNTER PRO</h2><div class="actions"><button id="addExistingPosition">➕ Lisää jo ostettu</button><small>OSTA · PIDÄ · SUOJAA · MYY — vain Kvarn X / Coinmotion / Crypto.com</small></div></div>
   <div class="command-summary">
     <div class="command-stat"><div class="s">OSTA NYT</div><div class="n green" id="ccBuyCount">0</div></div>
     <div class="command-stat"><div class="s">VALMISTAUDU</div><div class="n yellow" id="ccPrepCount">0</div></div>
@@ -144,8 +144,14 @@
   <div class="notice-strong"><b>NOPEA TOIMINTA:</b> vihreä OSTA tarkoittaa mallin 3/3-vahvistettua ostoaluetta, ei automaattista toimeksiantoa. Kun oikeasti ostat, paina valitsemasi alustan <b>OSTIN</b>-painiketta. Sen jälkeen Position Engine seuraa kohdetta, vaikka se katoaisi TOP-listoilta, ja antaa PIDÄ / TP / trailing-stop / EXIT -ohjeen.</div>
   <div id="commandRows" class="command-list"><div class="empty">Odotetaan live-dataa…</div></div>
 </section>
+<section class="panel" id="tradeableRocketPanel">
+  <div class="ph"><h2>🎯 TRADEABLE ROCKETS v5.3 — 3/3</h2><small>vain Kvarn X · Coinmotion · Crypto.com · ostettavuus ensin</small></div>
+  <div class="notice-strong"><b>TRADEABLE SCORE:</b> erottaa maailman Discovery-löydöt niistä kohteista, joilla voit toimia nykyisillä alustoillasi. Listalle pääsee vain tämän sovelluksen vahvistettuun <b>Kvarn X + Coinmotion + Crypto.com 3/3</b> -universumiin kuuluva krypto. Score yhdistää BUY-signaalin, dataluottamuksen, likviditeetin, breakout/early-rakenteen sekä chase-, pump- ja false-breakout-riskit.</div>
+  <div class="micro-table-wrap"><table class="micro-top-table"><thead><tr><th>#</th><th>Krypto</th><th>Tradeable</th><th>BUY</th><th>Conf</th><th>1h</th><th>24h</th><th>Risk</th><th>Toiminto</th></tr></thead><tbody id="tradeableRocketRows"><tr><td colspan="9" class="empty">Odotetaan 3/3 live-dataa…</td></tr></tbody></table></div>
+  <div class="hunter-legend"><b>TOIMINTARAJA:</b> OSTA-ALUE näytetään vain, kun Tradeable Score ≥ 78, Confidence ≥ 70, Data Coverage ≥ 50 %, pump-risk &lt; 65 ja kohde ei ole LATE/EXHAUSTED. Muuten tila on VALMISTAUDU / SEURAA / ÄLÄ JAHTAA. Tämä ei lähetä toimeksiantoa.</div>
+</section>
 <section class="panel" id="smallCapHunter">
-  <div class="ph"><h2>🚀 SMALL CAP / MICROCAP ROCKET HUNTER v5.2</h2><small>pienet markkina-arvot · aikainen kiihtyminen · EUR · riskikorjattu</small></div>
+  <div class="ph"><h2>🚀 SMALL CAP / MICROCAP ROCKET HUNTER v5.3</h2><small>pienet markkina-arvot · aikainen kiihtyminen · EUR · riskikorjattu</small></div>
   <div class="notice-strong"><b>ROCKET HUNTER:</b> nostaa pienet kolikot näkyville jo ennen Top Gainers -vaihetta. Pieni yksikköhinta ei tarkoita microcapia: luokitus perustuu markkina-arvoon, volyymiin ja likviditeettiin. <b>OSTA/MYY-komennot sallitaan edelleen vain Kvarn X + Coinmotion + Crypto.com 3/3 -vahvistetuille kohteille.</b></div>
   <div class="hunter-summary">
     <div><small>MICROCAP &lt; €25M</small><b id="microCount">0</b></div>
@@ -154,7 +160,7 @@
     <div><small>DANGER / DUMP</small><b id="dangerMicroCount">0</b></div>
   </div>
   <div class="micro-table-wrap"><table class="micro-top-table"><thead><tr><th>#</th><th>Krypto</th><th>MC</th><th>1h</th><th>24h</th><th>Rocket</th><th>Trust</th><th>Risk</th><th>Tila</th></tr></thead><tbody id="smallCapTopRows"><tr><td colspan="9" class="empty">Odotetaan small-cap live-dataa…</td></tr></tbody></table></div><div id="smallCapRows" class="smallcap-grid"><div class="empty">Odotetaan small-cap live-dataa…</div></div>
-  <div class="hunter-legend"><b>PISTEYTYS v5.2:</b> 90+ on poikkeuksellinen ja sallitaan vain erittäin korkealla dataluottamuksella; DISCOVERY-kohteet rajataan alle toimeksiantotason. ROCKET SCORE on riskikorjattu löytöpiste, ei tuottolupaus. DATA CHECK = poikkeava hintapiikki, erittäin ohut markkina tai muu syy vahvistaa hinta toisesta lähteestä. DISCOVERY = 3/3-saatavuutta ei ole vahvistettu. H4* = arvio, jos CoinGecko-snapshotissa ei ollut sparkline-historiaa.</div>
+  <div class="hunter-legend"><b>PISTEYTYS v5.3:</b> 90+ on poikkeuksellinen ja sallitaan vain erittäin korkealla dataluottamuksella; DISCOVERY-kohteet rajataan alle toimeksiantotason. ROCKET SCORE on riskikorjattu löytöpiste, ei tuottolupaus. DATA CHECK = poikkeava hintapiikki, erittäin ohut markkina tai muu syy vahvistaa hinta toisesta lähteestä. DISCOVERY = 3/3-saatavuutta ei ole vahvistettu. H4* = arvio, jos CoinGecko-snapshotissa ei ollut sparkline-historiaa.</div>
 </section>
 
 <section class="panel" id="moversRadar">
@@ -163,7 +169,7 @@
   <div id="moversRows" class="discovery-watch"><div class="empty">Odotetaan live-dataa…</div></div>
 </section>
 <section class="panel" id="microcapRadar">
-  <div class="ph"><h2>🧬 MICROCAP / FOMO / PUMP-DUMP ENGINE v5.2</h2><small>pieni volyymi · early accumulation · FOMO · pump/dump · liquidity risk</small></div>
+  <div class="ph"><h2>🧬 MICROCAP / FOMO / PUMP-DUMP ENGINE v5.3</h2><small>pieni volyymi · early accumulation · FOMO · pump/dump · liquidity risk</small></div>
   <div class="notice-strong"><b>HYPER GUARD:</b> pump/FOMO ei ole ostosignaali. Moottori etsii myös pieniä kohteita, mutta korkea manipulation-, dump- tai liquidity-riski muuttaa tilan ÄLÄ JAHTAA / EXIT WATCH. OSTA/MYY pysyy vain Kvarn X + Coinmotion + Crypto.com 3/3 -kohteissa.</div>
   <div id="microRows" class="micro-grid"><div class="empty">Odotetaan live-dataa…</div></div>
   <div class="micro-note">Scores 0–100: ACC = early accumulation, FOMO = kiihtyvä huomio/hinta, PUMP = ylikuumenemis/manipulaatioriski, DUMP = kääntymisriski, LIQ = likviditeettiriski. Nämä ovat heuristisia riskimittareita, eivät todiste manipuloinnista.</div>
@@ -174,7 +180,7 @@
   <div class="small-risk">Position Engine tallentaa merkinnän vain tähän selaimeen/PWA:han. Se ei lue pörssitiliä eikä tee kauppaa puolestasi. Tarkista aina todellinen täyttöhinta ja toimeksianto omalta alustaltasi.</div>
 </section>
 <section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🚀 PRO ENGINE v5.2 HYPER GALAXY</h2><small>3/3 actionable · early breakout · anti-chase · confidence · entry / stop / TP</small></div>
+  <div class="ph"><h2>🚀 PRO ENGINE v5.3 HYPER GALAXY</h2><small>3/3 actionable · early breakout · anti-chase · confidence · entry / stop / TP</small></div>
   <div class="pro-grid">
     <div class="pro-card"><div class="label">TOP SETUP</div><div class="n" id="proTop">—</div><div class="sub">paras riskikorjattu setup</div></div>
     <div class="pro-card"><div class="label">CONFIDENCE</div><div class="n" id="proConfidence">—</div><div class="sub">signaalien yhtäpitävyys</div></div>
@@ -206,7 +212,7 @@
     <thead><tr><th>#</th><th>Krypto</th><th>Vaihe</th><th>3/3</th><th>PRO adj/raw</th><th>Early</th><th>Breakout</th><th>Momentum</th><th>Conf.</th><th>Data</th><th>Late</th><th>False BO</th><th>Δ</th><th>Ikä</th></tr></thead>
     <tbody id="proTop10"><tr><td colspan="14" class="empty">Odotetaan live-dataa…</td></tr></tbody>
   </table></div>
-  <div class="footer" style="padding:0 14px 14px"><b>v5.2 LOGIC:</b> Small-cap Rocket Score kalibroitu uudelleen: 100/100-saturaatio poistettu, trust-, likviditeetti-, chase-, anomaly- ja pump/dump-portit kiristetty. DISCOVERY-kohde ei voi saada toimeksiantotason 90+ pistettä. TOP 10 microcap -pikataulukko nostettu ylös. OSTA/MYY/EXIT säilyy vain Kvarn X + Coinmotion + Crypto.com 3/3 -universumissa.<br><br><b>v5.1 LOGIC:</b> WORLD DISCOVERY skannaa CoinGecko-coresta jopa 1000 korkean volyymin markkinaa + erillisen cap-ranked small-cap -rikastuksen (noin sijoitukset 501–1500 saatavuuden mukaan). EARLY SNIPER käyttää kovaa anti-chase-porttia: 4h/24h jo venynyt liike siirtyy LATE/EXHAUSTED-vaiheeseen eikä saa hallita Early-listaa. BREAKOUT ja MOMENTUM saavat edelleen näyttää jo käynnissä olevan liikkeen. PRO Engine, HYPER EXECUTION ja BUY/SELL/EXIT käyttävät vain 3/3-vahvistettuja Kvarn X + Coinmotion + Crypto.com -kohteita. Lifecycle: PRE-BREAKOUT → READY → FIRING → LATE → EXHAUSTED. Confidence Gate: 50 % data → max 69, 75 % → max 84, 100 % → max 100. Puutteellinen data ei voi näyttää pseudo-varmaa 90+ signaalia.</div>
+  <div class="footer" style="padding:0 14px 14px"><b>v5.3 LOGIC:</b> Uusi TRADEABLE ROCKETS -kerros rankkaa vain Kvarn X + Coinmotion + Crypto.com 3/3 -kohteet ja käyttää tiukkaa OSTA-ALUE-porttia (score/confidence/coverage/pump/chase/lifecycle). Discovery ja toimeksiantokelpoinen ranking erotetaan nyt näkyvästi. Small-cap Rocket Score säilyy löytömoottorina. <br><br><b>v5.2 LOGIC:</b> Small-cap Rocket Score kalibroitu uudelleen: 100/100-saturaatio poistettu, trust-, likviditeetti-, chase-, anomaly- ja pump/dump-portit kiristetty. DISCOVERY-kohde ei voi saada toimeksiantotason 90+ pistettä. TOP 10 microcap -pikataulukko nostettu ylös. OSTA/MYY/EXIT säilyy vain Kvarn X + Coinmotion + Crypto.com 3/3 -universumissa.<br><br><b>v5.1 LOGIC:</b> WORLD DISCOVERY skannaa CoinGecko-coresta jopa 1000 korkean volyymin markkinaa + erillisen cap-ranked small-cap -rikastuksen (noin sijoitukset 501–1500 saatavuuden mukaan). EARLY SNIPER käyttää kovaa anti-chase-porttia: 4h/24h jo venynyt liike siirtyy LATE/EXHAUSTED-vaiheeseen eikä saa hallita Early-listaa. BREAKOUT ja MOMENTUM saavat edelleen näyttää jo käynnissä olevan liikkeen. PRO Engine, HYPER EXECUTION ja BUY/SELL/EXIT käyttävät vain 3/3-vahvistettuja Kvarn X + Coinmotion + Crypto.com -kohteita. Lifecycle: PRE-BREAKOUT → READY → FIRING → LATE → EXHAUSTED. Confidence Gate: 50 % data → max 69, 75 % → max 84, 100 % → max 100. Puutteellinen data ei voi näyttää pseudo-varmaa 90+ signaalia.</div>
 
   <div class="ph"><h2>🧰 API DIAGNOSTICS v5.0</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
@@ -1584,6 +1590,34 @@ function smallCapRocketMetrics(x){
   else if(score>=62&&h1>0)action=trad?'WATCH 3/3':'WATCH DISCOVERY';
   return {...m,score,raw:Math.round(raw),trust:Math.round(trust),anomaly,action};
 }
+
+function tradeableRocketMetrics(x){
+  const buy=buySignalScore(x), conf=unifiedConfidence(x), cov=liveCoverage(x).pct;
+  const pump=pumpRisk(x), late=lateEntryPenalty(x), fake=falseBreakoutRisk(x), liq=safeNum(x.liquidity,0);
+  const stage=lifecycleStage(x);
+  let score=.52*buy+.16*conf+.10*liq+.11*earlySniperScore(x)+.11*breakoutProScore(x)-.10*pump-.07*late-.05*fake;
+  score=Math.round(clamp(score));
+  if(cov<50)score=Math.min(score,64);
+  if(conf<60)score=Math.min(score,67);
+  if(pump>=75||late>=45||/LATE|EXHAUSTED/.test(stage.label))score=Math.min(score,69);
+  const risk=Math.round(clamp(.42*pump+.33*late+.25*fake));
+  let action='SEURAA';
+  if(pump>=75||late>=45||/EXHAUSTED/.test(stage.label))action='ÄLÄ JAHTAA';
+  else if(score>=78&&conf>=70&&cov>=50&&pump<65&&!/LATE|EXHAUSTED/.test(stage.label))action='OSTA-ALUE';
+  else if(score>=68&&conf>=62)action='VALMISTAUDU';
+  return {score,buy,conf,cov,pump,late,fake,risk,stage,action};
+}
+function renderTradeableRockets(all){
+  const el=$('tradeableRocketRows'); if(!el)return;
+  const rows=(all||[]).filter(x=>isTradableAllPlatforms(x)&&coreLiveReady(x)&&!isStable(x))
+    .map(x=>({x,m:tradeableRocketMetrics(x)}))
+    .sort((a,b)=>b.m.score-a.m.score||b.m.conf-a.m.conf).slice(0,10);
+  el.innerHTML=rows.length?rows.map(({x,m},i)=>{
+    const cls=m.action==='OSTA-ALUE'?'green':m.action==='ÄLÄ JAHTAA'?'red':'yellow';
+    return `<tr><td>${i+1}</td><td><b>${x.symbol.toUpperCase()}</b><div class="tiny">${x.name}</div></td><td><b>${m.score}/100</b><div class="tiny">3/3 ✓</div></td><td>${m.buy}</td><td>${m.conf}<div class="tiny">data ${m.cov}%</div></td><td>${pct(x.h1)}</td><td>${pct(x.h24)}</td><td>${m.risk}<div class="tiny">pump ${m.pump} · late ${m.late}</div></td><td class="${cls}"><b>${m.action}</b><div class="tiny">${m.stage.label}</div></td></tr>`;
+  }).join(''):'<tr><td colspan="9" class="empty">Ei käyttökelpoista 3/3 live-dataa.</td></tr>';
+}
+
 function renderSmallCapHunter(all){
   const el=$('smallCapRows');if(!el)return;
   const universe=all.filter(x=>!isStable(x)&&safeNum(x.mc)>0&&safeNum(x.mc)<250e6);
@@ -1620,6 +1654,7 @@ function renderMoversRadar(all){
 
 function render(){
   renderCommandCenter(state.data);
+  renderTradeableRockets(state.data);
   renderSmallCapHunter(state.data);
   renderMoversRadar(state.data);
   renderMicrocapRadar(state.data);
