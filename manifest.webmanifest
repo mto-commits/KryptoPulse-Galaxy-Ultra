@@ -1,6 +1,6 @@
 {
-  "name": "KryptoPulse GALAXY v6.4 PRIME PRECISION",
-  "short_name": "KryptoPulse",
+  "name": "KryptoPulse GALAXY ONE v7.0",
+  "short_name": "GALAXY ONE",
   "start_url": "./index.html?v=6.4",
   "scope": "./",
   "display": "standalone",
@@ -8,7 +8,15 @@
   "theme_color": "#070a0f",
   "description": "KryptoPulse GALAXY v6.4 Prime Precision Fire Engine",
   "icons": [
-    {"src":"./icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"./icon-512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }
