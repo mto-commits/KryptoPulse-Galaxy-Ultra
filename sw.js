@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v7-fmt-hotfix-20260830';
+const CACHE='kryptopulse-galaxy-v7-1-data-resilient-20260830';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{

@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v7.0",
+  "name": "KryptoPulse GALAXY ONE v7.1",
   "short_name": "GALAXY ONE",
-  "start_url": "./index.html?v=6.4",
+  "start_url": "./index.html?v=7.1",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
