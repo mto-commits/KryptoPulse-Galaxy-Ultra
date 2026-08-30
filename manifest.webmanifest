@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v7.6 ANTI-CHASE + DATA QUALITY",
+  "name": "KryptoPulse GALAXY ONE v7.9 SINGLE SOURCE OF TRUTH",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=760-acdq",
+  "start_url": "./index.html?v=790-ssot",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
