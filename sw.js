@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v7-2-dual-source-20260830';
+const CACHE='kryptopulse-galaxy-v7-3-clean-20260830';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
