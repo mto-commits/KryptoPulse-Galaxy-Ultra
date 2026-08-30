@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v7-6-anti-chase-dq-20260830';
+const CACHE='kryptopulse-galaxy-v8-1-canonical-bus-20260830';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{

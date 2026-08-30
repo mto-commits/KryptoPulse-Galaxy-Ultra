@@ -173,7 +173,7 @@
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v8.0</span></div><div class="one-sub">SINGLE SOURCE AI · canonical DQ · unified gates · direct render</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v8.1</span></div><div class="one-sub">CANONICAL DATA BUS · one DQ · unified gates · direct render</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-market"><div><small>MARKKINA</small><br><b id="oneMarket">ODOTTAA</b></div><div style="text-align:right"><small>TOIMINTA</small><br><b id="oneDecision">EI VIELÄ</b></div></div>
   <div class="one-grid">
     <div class="one-card best" id="oneBest"><div class="one-kicker">🔥 #1 NOW · 3/3</div><div class="one-row"><div class="one-symbol" id="oneBestSym">—</div><div class="one-state" id="oneBestState">WAIT</div></div><div class="one-ignite" id="oneBestIgn">— <span>IGNITION</span></div><div class="one-why" id="oneBestWhy">Odotetaan live-dataa…</div><div class="one-block" id="oneBestBlock"></div><div class="one-delta" id="oneBestDelta"></div></div>
@@ -2924,6 +2924,68 @@ renderResultAnalysis=function(all){
   v78SyncDQ(document);
 };
 </script>
-\n<script>\n/* ===== v8.0 SINGLE SOURCE AI — DIRECT CANONICAL DQ =====\n   Removes legacy liveCoverage() from visible BUY/EXIT and execution gates.\n   One canonical source now drives DQ, confidence, integrity, WATCH/READY/FIRE,\n   Hyper Summary and visible trade cards. */\nfunction v80DQpct(x){ return Math.round(fusion77DQ(x)*100); }\nfunction v80Confidence(x){ return confidence76(x); }\n\n// Canonical integrity: momentum agreement + canonical DQ + false-breakout penalty.\nsignalIntegrity=function(x){\n  const dirs=[oneH1(x)>0,oneH4(x)>0,oneH24(x)>0,safeNum(x.breakout,0)>=60,safeNum(x.liquidity,0)>=55];\n  const agree=Math.max(dirs.filter(Boolean).length,dirs.filter(v=>!v).length)/dirs.length;\n  return diClamp(35+agree*45+v80DQpct(x)*.20-falseBreakoutRisk(x)*.15);\n};\n\ntradeabilityGateDI=function(x){\n  const cov=v80DQpct(x), conf=v80Confidence(x), fresh=fusion77Fresh().ok;\n  const venue=fusion77Venue(x).all, liq=safeNum(x.liquidity)>=50;\n  const fail=failureRiskDI(x)<62, integrity=signalIntegrity(x);\n  const watchPass=venue&&fresh&&cov>=55&&conf>=50&&liq&&fail;\n  const firePass=watchPass&&cov>=70&&conf>=70&&integrity>=62&&failureRiskDI(x)<=42&&\n    pumpRisk(x)<65&&falseBreakoutRisk(x)<55&&lateEntryPenalty(x)<35&&\n    ['READY','FIRING'].includes(lifecycleStage(x).key);\n  return {pass:watchPass,watchPass,firePass,cov,conf,venue,fresh,liq,fail,integrity};\n};\n\ndecisionStateDI=function(x){\n  const g=tradeabilityGateDI(x),a=alphaScoreDI(x),f=failureRiskDI(x),p=breakoutProbDI(x),i=signalIntegrity(x);\n  if(!g.watchPass)return {state:'WAIT',g,a,f,p,i};\n  if(g.firePass&&a>=70&&p>=60&&f<=40&&i>=65)return {state:'FIRE',g,a,f,p,i};\n  if(g.cov>=65&&g.conf>=60&&a>=60&&p>=54&&f<=50)return {state:'READY',g,a,f,p,i};\n  return {state:'WATCH',g,a,f,p,i};\n};\n\n// Direct renderer: no post-render text replacement and no legacy 25% coverage.\nrenderTradeSignals=function(all){\n  const usable=(all||[]).filter(x=>coreLiveReady(x)&&!isStable(x)&&fusion77Venue(x).all&&validAssetSymbol(x));\n  const ranked=[...usable].map(x=>({...x,tradeScore:buySignalScore(x),_d:decisionStateDI(x)})).sort((a,b)=>b._d.a-a._d.a);\n  const fire=ranked.filter(x=>x._d.state==='FIRE').slice(0,5);\n  const ready=ranked.filter(x=>x._d.state==='READY'||x._d.state==='WATCH').slice(0,3);\n  const sell=[...usable].map(x=>({...x,tradeScore:sellSignalScore(x),_d:decisionStateDI(x)})).sort((a,b)=>b.tradeScore-a.tradeScore).slice(0,5);\n  const card=(x,i,lab)=>{const r=proRiskLevels3(x),dq=v80DQpct(x),cf=v80Confidence(x);return `<div class="trade-card"><div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="decision-badge">${lab}</span></div><div class="trade-score">α ${x._d.a}/100</div></div><div class="trade-meta">BUY ${x.tradeScore}/100 · Breakout P ${x._d.p}% · Failure ${x._d.f}/100 · Integrity ${x._d.i}/100 · Confidence ${cf}/100 · DQ ${dq}%</div><div class="levels"><b>Entry:</b> ${r.entry} · <b>Stop:</b> ${r.stop} · <b>TP1:</b> ${r.tp1} · <b>TP2:</b> ${r.tp2} · <b>TP3:</b> ${r.tp3}<br><b>Invalidation:</b> ${invalidationText(x)}</div><div class="source-line">Canonical DQ ${dq}% · venue ${fusion77Venue(x).count}/3 · ${sourceSummary(x)}</div>${platformFinder(x)}</div>`};\n  if(dataIsStale()){ $('topBuy').innerHTML='<div class="stale-lock">⚠ DATA STALE — ei BUY/FIRE-signaaleja.</div>';$('topSell').innerHTML='<div class="stale-lock">⚠ DATA STALE — odota live-päivitystä.</div>';return; }\n  if($('buySignalTitle'))$('buySignalTitle').textContent=fire.length?'🟢 FIRE / OSTA-ALUE':'🟡 EI BUY-SIGNAALIA';\n  if($('buySignalSub'))$('buySignalSub').textContent=fire.length?'canonical DQ + verified 3/3 gate läpäisty':'NO-TRADE first · parhaat READY/WATCH alla';\n  $('topBuy').innerHTML=fire.length?fire.map((x,i)=>card(x,i,'FIRE · OSTA-ALUE')).join(''):'<div class="empty no-trade"><b>EI BUY-SIGNAALIA</b><br>Yksikään 3/3-kohde ei läpäise strict FIRE-porttia.</div>'+ready.map(x=>`<div class="watch-candidate"><b>${x.symbol.toUpperCase()} · ${x._d.state}</b> · α ${x._d.a} · fail ${x._d.f} · P ${x._d.p}% · DQ ${v80DQpct(x)}% · C ${v80Confidence(x)}%<div class="tiny">Seuranta vain — ei OSTA-käskyä.</div></div>`).join('');\n  $('topSell').innerHTML=sell.map((x,i)=>`<div class="trade-card"><div class="trade-row"><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><div class="trade-score">${x.tradeScore}/100</div></div><div class="trade-meta">RISK WATCH · Unified ${unifiedScore(x)}/100 · Confidence ${v80Confidence(x)}/100 · DQ ${v80DQpct(x)}% · Downside ${downsideRisk(x)}/100</div><div class="tiny">Ei automaattinen MYY. Varsinainen EXIT määräytyy aktiivisen position Position Enginessä.</div>${platformFinder(x)}</div>`).join('')||'<div class="empty">Ei riskikohteita.</div>';\n  const banner=$('strongAlertBanner');if(fire.length){banner.style.display='block';banner.textContent='🟢 FIRE / OSTA-ALUE: '+fire.map(x=>x.symbol.toUpperCase()).join(', ')+' · varmista hinta alustalta ennen toimeksiantoa';}else banner.style.display='none';\n};\n\n// Disable legacy text-patcher: v8.0 renders canonical DQ at source.\nv78SyncDQ=function(){};\n\n// Make DI panel use the same canonical labels.\nconst renderDecisionIntelligenceV80Base=renderDecisionIntelligence;\nrenderDecisionIntelligence=function(all){\n  renderDecisionIntelligenceV80Base(all);\n  const ranked=(all||[]).filter(x=>!isStable(x)&&fusion77Venue(x).all&&validAssetSymbol(x)).map(x=>({x,d:decisionStateDI(x)})).sort((a,b)=>b.d.a-a.d.a);\n  const z=ranked[0]; if(z&&$('diGate')) $('diGate').textContent=`${z.d.g.firePass?'FIRE PASS':z.d.g.watchPass?'WATCH PASS':'BLOCK'} · DQ ${z.d.g.cov}% · C ${z.d.g.conf}% · venue ${fusion77Venue(z.x).count}/3`;\n};\n</script>\n
+
+<script>
+/* ===== v8.1 CANONICAL DATA BUS — DIRECT CANONICAL DQ =====
+   Removes legacy liveCoverage() from visible BUY/EXIT and execution gates.
+   One canonical source now drives DQ, confidence, integrity, WATCH/READY/FIRE,
+   Hyper Summary and visible trade cards. */
+function v80DQpct(x){ return Math.round(fusion77DQ(x)*100); }
+function v80Confidence(x){ return confidence76(x); }
+
+// Canonical integrity: momentum agreement + canonical DQ + false-breakout penalty.
+signalIntegrity=function(x){
+  const dirs=[oneH1(x)>0,oneH4(x)>0,oneH24(x)>0,safeNum(x.breakout,0)>=60,safeNum(x.liquidity,0)>=55];
+  const agree=Math.max(dirs.filter(Boolean).length,dirs.filter(v=>!v).length)/dirs.length;
+  return diClamp(35+agree*45+v80DQpct(x)*.20-falseBreakoutRisk(x)*.15);
+};
+
+tradeabilityGateDI=function(x){
+  const cov=v80DQpct(x), conf=v80Confidence(x), fresh=fusion77Fresh().ok;
+  const venue=fusion77Venue(x).all, liq=safeNum(x.liquidity)>=50;
+  const fail=failureRiskDI(x)<62, integrity=signalIntegrity(x);
+  const watchPass=venue&&fresh&&cov>=55&&conf>=50&&liq&&fail;
+  const firePass=watchPass&&cov>=70&&conf>=70&&integrity>=62&&failureRiskDI(x)<=42&&
+    pumpRisk(x)<65&&falseBreakoutRisk(x)<55&&lateEntryPenalty(x)<35&&
+    ['READY','FIRING'].includes(lifecycleStage(x).key);
+  return {pass:watchPass,watchPass,firePass,cov,conf,venue,fresh,liq,fail,integrity};
+};
+
+decisionStateDI=function(x){
+  const g=tradeabilityGateDI(x),a=alphaScoreDI(x),f=failureRiskDI(x),p=breakoutProbDI(x),i=signalIntegrity(x);
+  if(!g.watchPass)return {state:'WAIT',g,a,f,p,i};
+  if(g.firePass&&a>=70&&p>=60&&f<=40&&i>=65)return {state:'FIRE',g,a,f,p,i};
+  if(g.cov>=65&&g.conf>=60&&a>=60&&p>=54&&f<=50)return {state:'READY',g,a,f,p,i};
+  return {state:'WATCH',g,a,f,p,i};
+};
+
+// Direct renderer: no post-render text replacement and no legacy 25% coverage.
+renderTradeSignals=function(all){
+  const usable=(all||[]).filter(x=>coreLiveReady(x)&&!isStable(x)&&fusion77Venue(x).all&&validAssetSymbol(x));
+  const ranked=[...usable].map(x=>({...x,tradeScore:buySignalScore(x),_d:decisionStateDI(x)})).sort((a,b)=>b._d.a-a._d.a);
+  const fire=ranked.filter(x=>x._d.state==='FIRE').slice(0,5);
+  const ready=ranked.filter(x=>x._d.state==='READY'||x._d.state==='WATCH').slice(0,3);
+  const sell=[...usable].map(x=>({...x,tradeScore:sellSignalScore(x),_d:decisionStateDI(x)})).sort((a,b)=>b.tradeScore-a.tradeScore).slice(0,5);
+  const card=(x,i,lab)=>{const r=proRiskLevels3(x),dq=v80DQpct(x),cf=v80Confidence(x);return `<div class="trade-card"><div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="decision-badge">${lab}</span></div><div class="trade-score">α ${x._d.a}/100</div></div><div class="trade-meta">BUY ${x.tradeScore}/100 · Breakout P ${x._d.p}% · Failure ${x._d.f}/100 · Integrity ${x._d.i}/100 · Confidence ${cf}/100 · DQ ${dq}%</div><div class="levels"><b>Entry:</b> ${r.entry} · <b>Stop:</b> ${r.stop} · <b>TP1:</b> ${r.tp1} · <b>TP2:</b> ${r.tp2} · <b>TP3:</b> ${r.tp3}<br><b>Invalidation:</b> ${invalidationText(x)}</div><div class="source-line">Canonical DQ ${dq}% · venue ${fusion77Venue(x).count}/3 · ${sourceSummary(x)}</div>${platformFinder(x)}</div>`};
+  if(dataIsStale()){ $('topBuy').innerHTML='<div class="stale-lock">⚠ DATA STALE — ei BUY/FIRE-signaaleja.</div>';$('topSell').innerHTML='<div class="stale-lock">⚠ DATA STALE — odota live-päivitystä.</div>';return; }
+  if($('buySignalTitle'))$('buySignalTitle').textContent=fire.length?'🟢 FIRE / OSTA-ALUE':'🟡 EI BUY-SIGNAALIA';
+  if($('buySignalSub'))$('buySignalSub').textContent=fire.length?'canonical DQ + verified 3/3 gate läpäisty':'NO-TRADE first · parhaat READY/WATCH alla';
+  $('topBuy').innerHTML=fire.length?fire.map((x,i)=>card(x,i,'FIRE · OSTA-ALUE')).join(''):'<div class="empty no-trade"><b>EI BUY-SIGNAALIA</b><br>Yksikään 3/3-kohde ei läpäise strict FIRE-porttia.</div>'+ready.map(x=>`<div class="watch-candidate"><b>${x.symbol.toUpperCase()} · ${x._d.state}</b> · α ${x._d.a} · fail ${x._d.f} · P ${x._d.p}% · DQ ${v80DQpct(x)}% · C ${v80Confidence(x)}%<div class="tiny">Seuranta vain — ei OSTA-käskyä.</div></div>`).join('');
+  $('topSell').innerHTML=sell.map((x,i)=>`<div class="trade-card"><div class="trade-row"><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><div class="trade-score">${x.tradeScore}/100</div></div><div class="trade-meta">RISK WATCH · Unified ${unifiedScore(x)}/100 · Confidence ${v80Confidence(x)}/100 · DQ ${v80DQpct(x)}% · Downside ${downsideRisk(x)}/100</div><div class="tiny">Ei automaattinen MYY. Varsinainen EXIT määräytyy aktiivisen position Position Enginessä.</div>${platformFinder(x)}</div>`).join('')||'<div class="empty">Ei riskikohteita.</div>';
+  const banner=$('strongAlertBanner');if(fire.length){banner.style.display='block';banner.textContent='🟢 FIRE / OSTA-ALUE: '+fire.map(x=>x.symbol.toUpperCase()).join(', ')+' · varmista hinta alustalta ennen toimeksiantoa';}else banner.style.display='none';
+};
+
+// Disable legacy text-patcher: v8.1 renders canonical DQ at source.
+v78SyncDQ=function(){};
+
+// Make DI panel use the same canonical labels.
+const renderDecisionIntelligenceV80Base=renderDecisionIntelligence;
+renderDecisionIntelligence=function(all){
+  renderDecisionIntelligenceV80Base(all);
+  const ranked=(all||[]).filter(x=>!isStable(x)&&fusion77Venue(x).all&&validAssetSymbol(x)).map(x=>({x,d:decisionStateDI(x)})).sort((a,b)=>b.d.a-a.d.a);
+  const z=ranked[0]; if(z&&$('diGate')) $('diGate').textContent=`${z.d.g.firePass?'FIRE PASS':z.d.g.watchPass?'WATCH PASS':'BLOCK'} · DQ ${z.d.g.cov}% · C ${z.d.g.conf}% · venue ${fusion77Venue(z.x).count}/3`;
+};
+</script>
+
 </body>
 </html>

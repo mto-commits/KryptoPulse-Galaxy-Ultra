@@ -1,12 +1,12 @@
 {
-  "name": "KryptoPulse GALAXY ONE v7.6 ANTI-CHASE + DATA QUALITY",
+  "name": "KryptoPulse GALAXY ONE v8.1 CANONICAL DATA BUS",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=760-acdq",
+  "start_url": "./index.html?v=810-canonical",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
   "theme_color": "#070a0f",
-  "description": "KryptoPulse GALAXY ONE v7.1.1 — Data Resilient Pre-Ignition Engine",
+  "description": "KryptoPulse GALAXY ONE v8.1 — Canonical Data Bus",
   "icons": [
     {
       "src": "./icon-192.png",
