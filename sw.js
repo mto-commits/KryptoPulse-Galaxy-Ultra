@@ -1,5 +1,5 @@
 
-const CACHE='kp-galaxy-ultra-v3-1-diagfix';
+const CACHE='kp-galaxy-ultra-v3-2-livecore';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(()=>self.skipWaiting()));

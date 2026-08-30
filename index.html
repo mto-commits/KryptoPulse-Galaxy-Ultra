@@ -57,6 +57,10 @@
 .diag-log div{padding:3px 0;border-bottom:1px dotted #17202a}
 .diag-actions{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--line)}
 @media(max-width:750px){.diag-grid{grid-template-columns:1fr}}
+
+.coverage-pill{display:inline-block;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:800;border:1px solid var(--line)}
+.coverage-high{color:var(--green)}.coverage-mid{color:var(--yellow)}.coverage-low{color:var(--red)}
+.source-line{font-size:10px;color:var(--muted);margin-top:4px}
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -72,7 +76,7 @@
 </head>
 <body>
 <div class="app"><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🧰 API DIAGNOSTICS v3.1</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v3.2</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
@@ -172,7 +176,7 @@
     <div class="card"><div class="label">COINMOTION</div><div class="value green">KAUPANKÄYNTI</div><div class="tiny">Avaa Kaupankäynti tai Kurssit → valitse alla näkyvä Coinmotion-nimi</div></div>
     <div class="card"><div class="label">CRYPTO.COM</div><div class="value green">TRADE</div><div class="tiny">Avaa App/Web → Trade → Buy → hae tickerillä</div></div>
   </div>
-  <div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
+  <div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
 </section><section class="panel" style="margin-bottom:14px">
   <div class="ph"><h2>🛰️ GLOBAL INTELLIGENCE STACK</h2><small>Signal fusion · cross-asset · geopolitics · sovereign debt · events</small></div>
   <div class="grid">
@@ -597,9 +601,9 @@ async function scan(){
 
       return {...c,h1,h4,h24,d7,vol,mc,ratio,rangePos,momentum,volume,breakout,liquidity,quality,earlyBonus,score,setup};
     }).filter(x=>COMMON_SYMBOLS.has(x.symbol.toUpperCase()));
-    await enrichLiveDerivatives(state.data);
-      if(API_KEYS.lunarcrush) await enrichLunarCrush(state.data);
-      if(API_KEYS.coinglass) await enrichCoinGlass(state.data);
+    try{await enrichLiveDerivatives(state.data);}catch(e){diagLog('Binance enrich failed: '+String(e?.message||e));}
+      if(API_KEYS.lunarcrush){try{await enrichLunarCrush(state.data);}catch(e){diagLog('LunarCrush enrich failed: '+String(e?.message||e));}}
+      if(API_KEYS.coinglass){try{await enrichCoinGlass(state.data);}catch(e){diagLog('CoinGlass enrich failed: '+String(e?.message||e));}}
       state.last=Date.now(); localStorage.setItem('kp_last_success',String(state.last)); render(); updateAppHealth('LIVE');
     $('status').textContent='Päivitetty';
   }catch(e){
@@ -655,20 +659,12 @@ function intelligenceFlags(all){
 }
 function clamp(v,a=0,b=100){return Math.max(a,Math.min(b,v));}
 function galaxyFusionScore(x,ext={}){
-  const market=x.score||0;
-  const derivatives=ext.derivatives??50;
-  const social=ext.social??50;
-  const catalyst=ext.catalyst??50;
-  const macro=ext.macro??50;
-  const debt=ext.debt??50;
-  const geopolitics=ext.geopolitics??50;
-  const crossAsset=ext.crossAsset??50;
-  const manipulation=ext.manipulation??0;
-  return clamp(
-    .34*market + .13*derivatives + .10*social + .09*catalyst +
-    .08*macro + .07*debt + .06*geopolitics + .05*crossAsset +
-    .08*(100-manipulation)
-  );
+  const parts=[{v:x.score||0,w:.60}];
+  if(ext.derivatives!=null)parts.push({v:ext.derivatives,w:.22});
+  if(ext.social!=null)parts.push({v:ext.social,w:.10});
+  if(ext.catalyst!=null)parts.push({v:ext.catalyst,w:.08});
+  let sw=parts.reduce((s,p)=>s+p.w,0)||1;
+  return clamp(parts.reduce((s,p)=>s+p.v*p.w,0)/sw);
 }
 function downsideRisk(x,ext={}){
   let r=20;
@@ -702,8 +698,34 @@ function updateGalaxyStates(all){
   set("riskState",risk+"/100");
 }
 
+
+function liveCoverage(x){
+  let total=4, live=0;
+  // Core market feed is represented by CoinGecko-derived fields.
+  if(Number.isFinite(x.current_price)||Number.isFinite(x.h24)) live++;
+  // Binance derivatives/public feed
+  if(x.derivatives!=null || x.funding!=null || x.orderImbalance!=null) live++;
+  // CoinGlass
+  if(x.coinGlassScore!=null) live++;
+  // LunarCrush
+  if(x.socialLive!=null) live++;
+  return {live,total,pct:Math.round(live/total*100)};
+}
+function coverageClass(p){return p>=75?'coverage-high':p>=50?'coverage-mid':'coverage-low';}
+function sourceSummary(x){
+  const s=[];
+  s.push('CoinGecko ✓');
+  s.push((x.derivatives!=null||x.funding!=null||x.orderImbalance!=null)?'Binance ✓':'Binance —');
+  s.push(x.coinGlassScore!=null?'CoinGlass ✓':'CoinGlass —');
+  s.push(x.socialLive!=null?'LunarCrush ✓':'LunarCrush —');
+  return s.join(' · ');
+}
 function buySignalScore(x){
-  const base=galaxyFusionScore(x,{derivatives:x.coinGlassScore??x.derivatives??50,social:x.socialLive??50});
+  const ext={};
+  if(x.coinGlassScore!=null) ext.derivatives=x.coinGlassScore;
+  else if(x.derivatives!=null) ext.derivatives=x.derivatives;
+  if(x.socialLive!=null) ext.social=x.socialLive;
+  const base=galaxyFusionScore(x,ext);
   let s=base;
   if(x.h1>0)s+=6;
   if(x.h4>0)s+=6;
@@ -759,6 +781,8 @@ function renderTradeSignals(all){
     return `<div class="trade-card">
       <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
       <div class="trade-meta">1h ${pct(x.h1)} · 4h ${pct(x.h4)} · 24h ${pct(x.h24)} · breakout ${x.breakout.toFixed(0)} · liq ${x.liquidity.toFixed(0)} · Vol/MC ${(x.ratio*100).toFixed(1)}%${x.funding!=null?` · funding ${x.funding.toFixed(3)}% · book ${x.orderImbalance.toFixed(0)}%`:''}${x.lunar?` · social ${x.socialLive.toFixed(0)}/100 · LC Galaxy ${x.lunar.galaxyScore.toFixed(0)} · AltRank ${x.lunar.altRank}`:''}${x.coinGlassScore!=null?` · CG ${x.coinGlassScore.toFixed(0)}/100 · OI1h ${x.oi1h.toFixed(2)}% · OI4h ${x.oi4h.toFixed(2)}% · liq ${x.liqBias.toFixed(0)} · large ${x.largeImb.toFixed(0)}`:''}</div>
+      <div class="source-line"><span class="coverage-pill ${coverageClass(liveCoverage(x).pct)}">Data ${liveCoverage(x).pct}%</span> ${sourceSummary(x)}</div>
+      <div class="source-line"><span class="coverage-pill ${coverageClass(liveCoverage(x).pct)}">Data ${liveCoverage(x).pct}%</span> ${sourceSummary(x)}</div>
       ${platformFinder(x)}
     </div>`;
   };
