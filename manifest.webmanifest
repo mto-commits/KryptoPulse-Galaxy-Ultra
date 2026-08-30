@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v7.5 AI DISCOVERY ENGINE",
+  "name": "KryptoPulse GALAXY ONE v7.6 ANTI-CHASE + DATA QUALITY",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=750-ai",
+  "start_url": "./index.html?v=760-acdq",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
