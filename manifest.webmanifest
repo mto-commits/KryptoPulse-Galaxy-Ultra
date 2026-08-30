@@ -2,7 +2,7 @@
   "id": "./",
   "name": "KryptoPulse Galaxy Ultra",
   "short_name": "Galaxy Ultra",
-  "description": "KryptoPulse Galaxy Ultra v4.7 HYPER execution scanner",
+  "description": "KryptoPulse Galaxy Ultra v4.8 HYPER command + position engine",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

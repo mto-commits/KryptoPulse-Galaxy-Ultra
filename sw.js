@@ -1,5 +1,5 @@
 
-const CACHE='kp-galaxy-ultra-v4-7-hyper-execution';
+const CACHE='kp-galaxy-ultra-v4-8-hyper-command';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(()=>self.skipWaiting()));
