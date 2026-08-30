@@ -120,6 +120,15 @@
 
 /* v5.5 SIGNAL FOCUS / NOISE GUARD */
 .focus-note{margin:0 12px 10px;padding:9px 10px;border:1px solid #23483e;border-radius:9px;background:#081713;font-size:10px;line-height:1.45;color:#cce1db}.risk-vault{margin:8px 10px 12px;border:1px solid #452432;border-radius:10px;background:#0d0a0e}.risk-vault summary{cursor:pointer;padding:10px 12px;color:#ff9bad;font-size:11px;font-weight:900}.risk-vault-body{padding:0 10px 10px}.risk-row{display:grid;grid-template-columns:80px 1fr auto;gap:8px;padding:8px 0;border-top:1px solid #24141b;font-size:10px}.risk-row .why{color:var(--muted)}.focus-pill{display:inline-block;padding:3px 7px;border-radius:999px;border:1px solid #245a4d;color:#80f4cf;font-size:9px;font-weight:900}.muted-pill{display:inline-block;padding:3px 7px;border-radius:999px;border:1px solid #39424d;color:#9aa9b8;font-size:9px;font-weight:800}
+
+/* v6.0 OUT-OF-GALAXY PREDICTIVE / EXECUTION QUALITY */
+.v6-matrix{margin-bottom:14px;border-color:#305d76;box-shadow:0 10px 34px rgba(0,0,0,.22)}
+.v6-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:11px}
+.v6-kpi{background:#081119;border:1px solid #1d3341;border-radius:11px;padding:9px;min-width:0}.v6-kpi .k{font-size:8px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase}.v6-kpi .v{font-size:18px;font-weight:950;margin-top:3px}.v6-decision{font-weight:950}.v6-fire{color:var(--green)}.v6-ready{color:var(--blue)}.v6-watch{color:var(--yellow)}.v6-wait{color:var(--muted)}.v6-block{color:var(--red)}
+.v6-table-wrap{overflow-x:auto;padding:0 10px 10px}.v6-table{min-width:980px;width:100%;border-collapse:collapse;font-size:10px}.v6-table th,.v6-table td{padding:8px;border-bottom:1px solid #182733;text-align:left;white-space:nowrap}.v6-table th{color:var(--muted);font-size:8px;text-transform:uppercase}.v6-reason{white-space:normal!important;min-width:220px;line-height:1.35;color:#b9c8d4}
+.v6-doctrine{margin:0 11px 11px;padding:9px;border:1px solid #284d55;border-radius:9px;background:#091718;font-size:10px;line-height:1.5;color:#c4d3dd}
+@media(max-width:850px){.v6-kpis{grid-template-columns:repeat(2,1fr)}.v6-table{min-width:900px}.ph{align-items:flex-start}.ph small{display:block;margin-top:4px}}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -136,7 +145,7 @@
 <body>
 <div class="app">
 <section class="panel command-center" id="commandCenter">
-  <div class="ph"><h2>⚡ HYPER COMMAND CENTER v5.4 PRO HYPER</h2><div class="actions"><button id="addExistingPosition">➕ Lisää jo ostettu</button><small>OSTA · PIDÄ · SUOJAA · MYY — vain Kvarn X / Coinmotion / Crypto.com</small></div></div>
+  <div class="ph"><h2>⚡ GALAXY COMMAND CENTER v6.0 · EXECUTION FIRST</h2><div class="actions"><button id="addExistingPosition">➕ Lisää jo ostettu</button><small>OSTA · PIDÄ · SUOJAA · MYY — vain Kvarn X / Coinmotion / Crypto.com</small></div></div>
   <div class="command-summary">
     <div class="command-stat"><div class="s">OSTA NYT</div><div class="n green" id="ccBuyCount">0</div></div>
     <div class="command-stat"><div class="s">VALMISTAUDU</div><div class="n yellow" id="ccPrepCount">0</div></div>
@@ -147,8 +156,21 @@
   <div class="notice-strong"><b>NOPEA TOIMINTA v5.4:</b> järjestys on <b>OSTA → VALMISTAUDU → PIDÄ → OTA VOITTOA → MYY/EXIT</b>. Vihreä OSTA tarkoittaa mallin 3/3-vahvistettua ostoaluetta, ei automaattista toimeksiantoa. Kun oikeasti ostat, paina valitsemasi alustan <b>OSTIN</b>-painiketta. Sen jälkeen Position Engine seuraa kohdetta, vaikka se katoaisi TOP-listoilta, ja antaa PIDÄ / TP / trailing-stop / EXIT -ohjeen.</div>
   <div id="commandRows" class="command-list"><div class="empty">Odotetaan live-dataa…</div></div>
 </section>
+<section class="panel v6-matrix" id="predictiveMatrixPanel">
+  <div class="ph"><h2>🛸 OUT-OF-GALAXY PREDICTIVE MATRIX v6.0</h2><small>PRE-MOVE · ANTI-ILLUSION · COUNTERFACTUAL · FRESHNESS · EXECUTION QUALITY</small></div>
+  <div class="v6-kpis">
+    <div class="v6-kpi"><div class="k">PARAS 3/3</div><div class="v" id="v6Best">—</div></div>
+    <div class="v6-kpi"><div class="k">EXEC QUALITY</div><div class="v" id="v6Exec">—</div></div>
+    <div class="v6-kpi"><div class="k">PRE-MOVE</div><div class="v" id="v6PreMove">—</div></div>
+    <div class="v6-kpi"><div class="k">FRESHNESS</div><div class="v" id="v6Fresh">—</div></div>
+    <div class="v6-kpi"><div class="k">BEAR CASE</div><div class="v" id="v6Bear">—</div></div>
+    <div class="v6-kpi"><div class="k">TOIMINTO</div><div class="v" id="v6Action">—</div></div>
+  </div>
+  <div class="v6-doctrine"><b>v6.0 DOCTRINE:</b> löydä aikaisin, yritä kumota oma signaali, tarkista datan riippumattomuus ja toteutettavuus, ja vasta sitten nosta toiminnaksi. <b>FIRE / OSTA-ALUE</b> voi syntyä vain Kvarn X + Coinmotion + Crypto.com 3/3 -kohteelle. WORLD Discovery pysyy tutkimus-/seurantakerroksena.</div>
+  <div class="v6-table-wrap"><table class="v6-table"><thead><tr><th>#</th><th>Kohde</th><th>Luokka</th><th>Exec</th><th>Pre-move</th><th>Fresh</th><th>Anti-illusion</th><th>Bear case</th><th>Data</th><th>Pysyvyys</th><th>Toiminto</th><th>Miksi</th></tr></thead><tbody id="v6MatrixRows"><tr><td colspan="12" class="empty">Odotetaan live-dataa…</td></tr></tbody></table></div>
+</section>
 <section class="panel" id="tradeableRocketPanel">
-  <div class="ph"><h2>🎯 TRADEABLE ACTION BOARD v5.5 — 3/3</h2><small>vain Kvarn X · Coinmotion · Crypto.com · ostettavuus ensin</small></div>
+  <div class="ph"><h2>🎯 EXECUTION ACTION BOARD v6.0 — 3/3</h2><small>vain Kvarn X · Coinmotion · Crypto.com · ostettavuus ensin</small></div>
   <div class="notice-strong"><b>ACTION BOARD:</b> vain <b>Kvarn X + Coinmotion + Crypto.com 3/3</b> -kohteet. CORE / ROCKET / MICRO SNIPER erotellaan markkina-arvon mukaan, mutta sama confidence-, liquidity-, anti-pump-, anti-chase- ja lifecycle-portti koskee kaikkia. WORLD Discovery ei voi antaa OSTA/MYY-käskyä.</div>
   <div class="micro-table-wrap"><table class="micro-top-table" style="min-width:1180px"><thead><tr><th>#</th><th>Kori</th><th>Krypto</th><th>Tradeable</th><th>Toiminto</th><th>Nyt</th><th>Entry</th><th>Stop</th><th>TP1 / TP2 / TP3</th><th>Max</th><th>Pidä</th><th>Viimeistään ulos</th><th>Conf/Data</th></tr></thead><tbody id="tradeableRocketRows"><tr><td colspan="13" class="empty">Odotetaan 3/3 live-dataa…</td></tr></tbody></table></div>
   <div class="hunter-legend"><b>TOIMINTARAJA v5.4:</b> OSTA-ALUE vaatii korkean Tradeable Scoren, Confidence/Data Coveragen, riittävän likviditeetin sekä matalan pump/chase/false-breakout-riskin. MICRO SNIPER -korissa vaaditaan lisäksi korkeampi Data Trust. Jos mikään 3/3-kohde ei täytä ehtoja, oikea tulos on ODOTA.</div>
@@ -172,7 +194,7 @@
   <div id="moversRows" class="discovery-watch"><div class="empty">Odotetaan live-dataa…</div></div>
 </section>
 <section class="panel" id="microcapRadar">
-  <div class="ph"><h2>🧬 MICROCAP / FOMO / PUMP-DUMP ENGINE v5.5</h2><small>pieni volyymi · early accumulation · FOMO · pump/dump · liquidity risk</small></div>
+  <div class="ph"><h2>🧬 MICROCAP / FOMO / PUMP-DUMP ENGINE v6.0</h2><small>pieni volyymi · early accumulation · FOMO · pump/dump · liquidity risk</small></div>
   <div class="notice-strong"><b>HYPER GUARD:</b> pump/FOMO ei ole ostosignaali. Moottori etsii myös pieniä kohteita, mutta korkea manipulation-, dump- tai liquidity-riski muuttaa tilan ÄLÄ JAHTAA / EXIT WATCH. OSTA/MYY pysyy vain Kvarn X + Coinmotion + Crypto.com 3/3 -kohteissa.</div>
   <div id="microRows" class="micro-grid"><div class="empty">Odotetaan live-dataa…</div></div>
   <div class="micro-note">Scores 0–100: ACC = early accumulation, FOMO = kiihtyvä huomio/hinta, PUMP = ylikuumenemis/manipulaatioriski, DUMP = kääntymisriski, LIQ = likviditeettiriski. Nämä ovat heuristisia riskimittareita, eivät todiste manipuloinnista.</div>
@@ -183,7 +205,7 @@
   <div class="small-risk">Position Engine tallentaa merkinnän vain tähän selaimeen/PWA:han. Se ei lue pörssitiliä eikä tee kauppaa puolestasi. Tarkista aina todellinen täyttöhinta ja toimeksianto omalta alustaltasi.</div>
 </section>
 <section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🚀 PRO ENGINE v5.5 HYPER GALAXY</h2><small>3/3 actionable · early breakout · anti-chase · confidence · entry / stop / TP</small></div>
+  <div class="ph"><h2>🚀 PRO ENGINE v6.0 · QUALITY GATED</h2><small>3/3 actionable · early breakout · anti-chase · confidence · entry / stop / TP</small></div>
   <div class="pro-grid">
     <div class="pro-card"><div class="label">TOP SETUP</div><div class="n" id="proTop">—</div><div class="sub">paras riskikorjattu setup</div></div>
     <div class="pro-card"><div class="label">CONFIDENCE</div><div class="n" id="proConfidence">—</div><div class="sub">signaalien yhtäpitävyys</div></div>
@@ -195,7 +217,7 @@
     <div id="proSetups"><div class="empty">Odotetaan live-dataa…</div></div>
   </div>
 </section><section class="panel" style="margin-bottom:14px" id="tradePlanPanel">
-  <div class="ph"><h2>🧭 HYPER EXECUTION PLAN v5.1</h2><small>mitä · milloin · tavoite · max-nousu · viimeinen exit · pitoarvio</small></div>
+  <div class="ph"><h2>🧭 HYPER EXECUTION PLAN v6.0</h2><small>mitä · milloin · tavoite · max-nousu · viimeinen exit · pitoarvio</small></div>
   <div class="notify-box"><button id="enableNotifications" class="primary">🔔 Ota HYPER trade -ilmoitukset käyttöön</button><span id="notifyStatus" class="status">Ilmoitukset: tarkistetaan…</span></div>
   <div class="notice-strong"><b>TOIMEKSIANTOUNIVERSUMI:</b> vain Kvarn X + Coinmotion + Crypto.com (3/3 vahvistetut). WORLD DISCOVERY ei saa OSTA/MYY-toimeksiantosignaalia ennen 3/3-vahvistusta. Hinnat ovat mallin tasoja — tarkista aina toteutushinta valitsemaltasi alustalta.</div>
   <div class="signal-ladder"><b>Ilmoitusketju:</b> 🟡 VALMISTAUDU → 🟢 OSTA-ALUE → 🚀 BREAKOUT → 💰 TP1 → 💰 TP2 → 🏁 TP3/MAX → 🔴 EXIT. Ilmoitukset annetaan vain 3/3-kohteista ja vain silloin, kun sovellus/PWA pystyy ajamaan skannauksen.</div>
@@ -204,20 +226,20 @@
   <div class="ph" style="border-top:1px solid var(--line)"><h2>🌍 DISCOVERY WATCH — EI TOIMEKSIANTOA</h2><small>maailman kandidaatit, joita ei ole vahvistettu 3/3-alustoille</small></div><div id="discoveryWatch" class="discovery-watch"><div class="empty">Odotetaan live-dataa…</div></div>
   <div class="footer">* Max-skenaario on volatiliteetti-, momentum-, breakout- ja lifecycle-pohjainen riskiskenaario, ei ennuste, tuottolupaus tai varma tavoite. Pitoaika on dynaaminen enimmäisikkuna: Stop, invalidation, EXIT-signaali tai TP-taso voi päättää position aiemmin. Selain/PWA-ilmoitukset eivät ole taattuja taustalla; täysin suljetun sovelluksen jatkuva push vaatii erillisen push-palvelun.</div>
 </section><section class="panel" style="margin-bottom:14px" id="proScannerPanel">
-  <div class="ph"><h2>🎯 PRO SCANNER v5.5 — SIGNAL FOCUS PREDICTIVE</h2><small>WORLD DISCOVERY · EARLY SNIPER · BREAKOUT · MOMENTUM · lifecycle / chase guard</small></div>
+  <div class="ph"><h2>🎯 PRO SCANNER v6.0 — PRE-MOVE / SIGNAL FOCUS</h2><small>WORLD DISCOVERY · EARLY SNIPER · BREAKOUT · MOMENTUM · lifecycle / chase guard</small></div>
   <div class="proscan-grid">
     <div class="proscan-col"><div class="proscan-title green">🎯 EARLY SNIPER — ennen liikettä</div><div id="earlySniperList"><div class="empty">Odotetaan dataa…</div></div></div>
     <div class="proscan-col"><div class="proscan-title blue">⚡ BREAKOUT — käynnistyvä liike</div><div id="breakoutProList"><div class="empty">Odotetaan dataa…</div></div></div>
     <div class="proscan-col"><div class="proscan-title yellow">🔥 MOMENTUM — jo liikkeessä</div><div id="momentumProList"><div class="empty">Odotetaan dataa…</div></div></div>
   </div>
-  <div class="ph" style="border-top:1px solid var(--line)"><h2>🏆 TOP 10 PRO CANDIDATES</h2><small>global discovery · 3/3 venue flag · lifecycle · strict confidence gate · raw vs adjusted · confidence</small></div>
+  <div class="ph" style="border-top:1px solid var(--line)"><h2>🏆 TOP 10 WORLD FOCUS CANDIDATES</h2><small>global discovery · 3/3 venue flag · lifecycle · strict confidence gate · raw vs adjusted · confidence</small></div>
   <div class="tablewrap" style="max-height:520px"><table class="proscan-table">
     <thead><tr><th>#</th><th>Krypto</th><th>Vaihe</th><th>3/3</th><th>PRO adj/raw</th><th>Early</th><th>Breakout</th><th>Momentum</th><th>Conf.</th><th>Data</th><th>Late</th><th>False BO</th><th>Δ</th><th>Ikä</th></tr></thead>
     <tbody id="proTop10"><tr><td colspan="14" class="empty">Odotetaan live-dataa…</td></tr></tbody>
   </table></div>
-  <div class="footer" style="padding:0 14px 14px"><b>v5.5 LOGIC:</b> SIGNAL FOCUS vähentää Discovery-kohinaa: vain EARLY/READY/FIRING + riittävä trust/liquidity pääsee päälistoille. DUMP/EXHAUSTED/anomaly/heikko trust siirtyy supistettuun Risk Vaultiin. Coverage-pisteytys on nyt pehmeästi skaalattu, joten 50 % datan kohteet eivät kasaannu samaan 69/100-kattoon. 3/3 Execution pysyy vain Kvarn X + Coinmotion + Crypto.com -universumissa. <br><br><b>v5.4 LOGIC:</b> Yläosan ACTION BOARD synkronoi 3/3-toimeksiantokelpoiset kohteet CORE / ROCKET / MICRO SNIPER -koreihin. Jokaiselle näytetään nyt action, nykyhinta, entry, stop, TP1–TP3, max-skenaario, pitoaika, viimeinen exit sekä confidence/data. Position Engine nostaa TP- ja EXIT-tilat Command Centeriin eikä avoin positio katoa rankingin mukana. OSTA/MYY/EXIT pysyy vain Kvarn X + Coinmotion + Crypto.com -universumissa. <br><br><b>v5.3 LOGIC:</b> Uusi TRADEABLE ROCKETS -kerros rankkaa vain Kvarn X + Coinmotion + Crypto.com 3/3 -kohteet ja käyttää tiukkaa OSTA-ALUE-porttia (score/confidence/coverage/pump/chase/lifecycle). Discovery ja toimeksiantokelpoinen ranking erotetaan nyt näkyvästi. Small-cap Rocket Score säilyy löytömoottorina. <br><br><b>v5.2 LOGIC:</b> Small-cap Rocket Score kalibroitu uudelleen: 100/100-saturaatio poistettu, trust-, likviditeetti-, chase-, anomaly- ja pump/dump-portit kiristetty. DISCOVERY-kohde ei voi saada toimeksiantotason 90+ pistettä. TOP 10 microcap -pikataulukko nostettu ylös. OSTA/MYY/EXIT säilyy vain Kvarn X + Coinmotion + Crypto.com 3/3 -universumissa.<br><br><b>v5.1 LOGIC:</b> WORLD DISCOVERY skannaa CoinGecko-coresta jopa 1000 korkean volyymin markkinaa + erillisen cap-ranked small-cap -rikastuksen (noin sijoitukset 501–1500 saatavuuden mukaan). EARLY SNIPER käyttää kovaa anti-chase-porttia: 4h/24h jo venynyt liike siirtyy LATE/EXHAUSTED-vaiheeseen eikä saa hallita Early-listaa. BREAKOUT ja MOMENTUM saavat edelleen näyttää jo käynnissä olevan liikkeen. PRO Engine, HYPER EXECUTION ja BUY/SELL/EXIT käyttävät vain 3/3-vahvistettuja Kvarn X + Coinmotion + Crypto.com -kohteita. Lifecycle: PRE-BREAKOUT → READY → FIRING → LATE → EXHAUSTED. Confidence Gate: 50 % data → max 69, 75 % → max 84, 100 % → max 100. Puutteellinen data ei voi näyttää pseudo-varmaa 90+ signaalia.</div>
+  <div class="footer" style="padding:0 14px 14px"><b>v6.0 LOGIC:</b> PRE-MOVE etsii kiihtymistä ennen näkyvää karkailua. ANTI-ILLUSION vähentää samaan hintaliikkeeseen perustuvaa näennäistä monivahvistusta. COUNTERFACTUAL BEAR CASE yrittää kumota bullish-setuppia ennen FIRE-tilaa. FRESHNESS, volume quality, slippage-proxy, asset-type guard, persistence ja tiukempi coverage/confidence gate vaikuttavat Execution Qualityyn. FIRE vaatii 3/3 Kvarn X + Coinmotion + Crypto.com -saatavuuden sekä riittävän datan; heikko 3/3-kohde ei enää saa TOP SETUP -leimaa vain siksi, ettei parempaa ole. <br><br><b>v5.5 LOGIC:</b> SIGNAL FOCUS vähentää Discovery-kohinaa: vain EARLY/READY/FIRING + riittävä trust/liquidity pääsee päälistoille. DUMP/EXHAUSTED/anomaly/heikko trust siirtyy supistettuun Risk Vaultiin. Coverage-pisteytys on nyt pehmeästi skaalattu, joten 50 % datan kohteet eivät kasaannu samaan 69/100-kattoon. 3/3 Execution pysyy vain Kvarn X + Coinmotion + Crypto.com -universumissa. <br><br><b>v5.4 LOGIC:</b> Yläosan ACTION BOARD synkronoi 3/3-toimeksiantokelpoiset kohteet CORE / ROCKET / MICRO SNIPER -koreihin. Jokaiselle näytetään nyt action, nykyhinta, entry, stop, TP1–TP3, max-skenaario, pitoaika, viimeinen exit sekä confidence/data. Position Engine nostaa TP- ja EXIT-tilat Command Centeriin eikä avoin positio katoa rankingin mukana. OSTA/MYY/EXIT pysyy vain Kvarn X + Coinmotion + Crypto.com -universumissa. <br><br><b>v5.3 LOGIC:</b> Uusi TRADEABLE ROCKETS -kerros rankkaa vain Kvarn X + Coinmotion + Crypto.com 3/3 -kohteet ja käyttää tiukkaa OSTA-ALUE-porttia (score/confidence/coverage/pump/chase/lifecycle). Discovery ja toimeksiantokelpoinen ranking erotetaan nyt näkyvästi. Small-cap Rocket Score säilyy löytömoottorina. <br><br><b>v5.2 LOGIC:</b> Small-cap Rocket Score kalibroitu uudelleen: 100/100-saturaatio poistettu, trust-, likviditeetti-, chase-, anomaly- ja pump/dump-portit kiristetty. DISCOVERY-kohde ei voi saada toimeksiantotason 90+ pistettä. TOP 10 microcap -pikataulukko nostettu ylös. OSTA/MYY/EXIT säilyy vain Kvarn X + Coinmotion + Crypto.com 3/3 -universumissa.<br><br><b>v5.1 LOGIC:</b> WORLD DISCOVERY skannaa CoinGecko-coresta jopa 1000 korkean volyymin markkinaa + erillisen cap-ranked small-cap -rikastuksen (noin sijoitukset 501–1500 saatavuuden mukaan). EARLY SNIPER käyttää kovaa anti-chase-porttia: 4h/24h jo venynyt liike siirtyy LATE/EXHAUSTED-vaiheeseen eikä saa hallita Early-listaa. BREAKOUT ja MOMENTUM saavat edelleen näyttää jo käynnissä olevan liikkeen. PRO Engine, HYPER EXECUTION ja BUY/SELL/EXIT käyttävät vain 3/3-vahvistettuja Kvarn X + Coinmotion + Crypto.com -kohteita. Lifecycle: PRE-BREAKOUT → READY → FIRING → LATE → EXHAUSTED. Confidence Gate: 50 % data → max 69, 75 % → max 84, 100 % → max 100. Puutteellinen data ei voi näyttää pseudo-varmaa 90+ signaalia.</div>
 
-  <div class="ph"><h2>🧰 API DIAGNOSTICS v5.5</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v6.0</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
@@ -1717,6 +1739,7 @@ function renderMoversRadar(all){
 
 function render(){
   renderCommandCenter(state.data);
+  renderPredictiveMatrixV6(state.data);
   renderTradeableRockets(state.data);
   renderSmallCapHunter(state.data);
   renderMoversRadar(state.data);
@@ -1868,6 +1891,153 @@ async function runBacktest(){
 function loadCalibration(){
   try{const j=JSON.parse(localStorage.getItem("kp_galaxy_backtest")||"null"); if(j&&j.results)renderBacktest(j.results)}catch(e){}
 }
+
+/* ================= v6.0 OUT-OF-GALAXY PREDICTIVE ENGINE ================= */
+function assetTypeGuardV6(x){
+  const n=String(x?.name||'').toLowerCase(),s=String(x?.symbol||'').toUpperCase();
+  const tokenized=/robinhood token|tokenized|stock token|equity token|etf token/.test(n)||['AAPL','SPY','MSTR'].includes(s)&&/token|robinhood|stock|etf/.test(n);
+  return tokenized?{ok:false,label:'TOKENIZED/ASSET TYPE',penalty:35}:{ok:true,label:'CRYPTO',penalty:0};
+}
+function freshnessScoreV6(x){
+  let mins=0;
+  try{
+    const m=JSON.parse(localStorage.getItem('kp_sig_age_v45')||'{}')||{};
+    const sym=String(x.symbol||'').toUpperCase();
+    const t=m[sym+':pro']||m[sym+':early']||0;
+    if(t)mins=Math.max(0,(Date.now()-Number(t))/60000);
+  }catch(e){}
+  const feedAge=state.last?Math.max(0,(Date.now()-state.last)/60000):999;
+  mins=Math.max(mins,feedAge);
+  if(mins<=5)return 100;if(mins<=15)return 92;if(mins<=30)return 78;if(mins<=60)return 58;return 30;
+}
+function volumeQualityV6(x){
+  const ratio=safeNum(x.ratio)*100,vol=safeNum(x.vol),mc=safeNum(x.mc),h1=Math.abs(safeNum(x.h1));
+  let q=50;
+  if(vol>=20e6)q+=15;else if(vol>=5e6)q+=10;else if(vol>=1e6)q+=4;else if(vol<150000)q-=22;else if(vol<500000)q-=12;
+  if(ratio>=5&&ratio<=80)q+=15;else if(ratio>80&&ratio<=180)q+=5;else if(ratio>300)q-=20;else if(ratio<1)q-=12;
+  if(mc>0&&vol>mc*5)q-=18;if(h1>25)q-=15;
+  return Math.round(clamp(q));
+}
+function slippageRiskV6(x){
+  const liq=safeNum(x.liquidity,45),vol=safeNum(x.vol),mc=safeNum(x.mc),ratio=safeNum(x.ratio)*100;
+  let r=(100-liq)*.55;
+  if(vol<150000)r+=25;else if(vol<500000)r+=16;else if(vol<2e6)r+=8;
+  if(mc>0&&mc<10e6)r+=12;else if(mc>0&&mc<25e6)r+=7;
+  if(ratio>250)r+=10;
+  return Math.round(clamp(r));
+}
+function antiIllusionScoreV6(x){
+  const cov=liveCoverage(x).pct;
+  const independent=[trendQuality(x),volumeQualityV6(x),safeNum(x.liquidity,50),derivativeQuality(x),earlyBreakoutScore(x),100-falseBreakoutRisk(x)];
+  const mean=independent.reduce((a,b)=>a+b,0)/independent.length;
+  const variance=independent.reduce((a,b)=>a+(b-mean)*(b-mean),0)/independent.length;
+  const dispersion=Math.sqrt(variance);
+  let q=mean-dispersion*.32;
+  if(cov<=25)q-=22;else if(cov<=50)q-=10;
+  // prevent the same price move from masquerading as many independent confirmations
+  if(Math.abs(safeNum(x.h1))>8&&x.coinGlassScore==null&&x.socialLive==null)q-=10;
+  return Math.round(clamp(q));
+}
+function counterfactualBearRiskV6(x){
+  const fake=falseBreakoutRisk(x),late=lateEntryPenalty(x),pump=pumpRisk(x),slip=slippageRiskV6(x),vq=volumeQualityV6(x);
+  let r=.30*fake+.22*late+.20*pump+.16*slip+.12*(100-vq);
+  if(safeNum(x.h1)<0)r+=8;if(safeNum(x.h24)<-8)r+=6;
+  return Math.round(clamp(r));
+}
+function preMoveScoreV6(x){
+  const st=lifecycleStage(x).key,acc=accelerationQuality(x),early=earlyBreakoutScore(x),vq=volumeQualityV6(x),br=safeNum(x.breakout,50),h1=safeNum(x.h1),h24=safeNum(x.h24);
+  let s=.30*acc+.24*early+.18*vq+.16*br+.12*trendQuality(x);
+  if(st==='PRE'||st==='READY')s+=8;if(st==='FIRING')s+=2;if(st==='LATE')s-=14;if(st==='EXHAUSTED')s-=25;
+  if(h1>7)s-=10;if(h24>20)s-=10;if(h1>0&&h1<3&&h24<10)s+=5;
+  return Math.round(clamp(s));
+}
+function updateSignalMemoryV6(all){
+  if(!state.last)return;
+  let mem={last:0,rows:{}};try{mem=JSON.parse(localStorage.getItem('kp_v6_signal_memory')||'null')||mem}catch(e){}
+  if(Number(mem.last)===Number(state.last))return;
+  for(const x of (all||[]).filter(z=>isTradableAllPlatforms(z)&&!isStable(z))){
+    const sym=String(x.symbol||'').toUpperCase(),q=executionQualityV6(x);let a=mem.rows[sym]||[];
+    a.push({t:state.last,q});if(a.length>12)a=a.slice(-12);mem.rows[sym]=a;
+  }
+  mem.last=state.last;try{localStorage.setItem('kp_v6_signal_memory',JSON.stringify(mem))}catch(e){}
+}
+function persistenceScoreV6(x){
+  try{const mem=JSON.parse(localStorage.getItem('kp_v6_signal_memory')||'{}'),a=mem?.rows?.[String(x.symbol||'').toUpperCase()]||[];if(!a.length)return 50;const strong=a.filter(z=>safeNum(z.q)>=60).length/a.length*100;const stable=a.length>1?100-Math.min(60,Math.abs(a[a.length-1].q-a[0].q)*2):60;return Math.round(clamp(.65*strong+.35*stable));}catch(e){return 50}
+}
+function executionQualityV6(x){
+  if(!isTradableAllPlatforms(x)||isStable(x))return 0;
+  const guard=assetTypeGuardV6(x);if(!guard.ok)return 0;
+  const pred=predictiveProScore(x),conf=unifiedConfidence(x),cov=liveCoverage(x).pct,fresh=freshnessScoreV6(x),anti=antiIllusionScoreV6(x),pre=preMoveScoreV6(x),liq=safeNum(x.liquidity,50),vq=volumeQualityV6(x),bear=counterfactualBearRiskV6(x),slip=slippageRiskV6(x);
+  let q=.22*pred+.14*conf+.11*cov+.09*fresh+.12*anti+.10*pre+.08*liq+.07*vq+.07*(100-bear);
+  q-=Math.max(0,slip-55)*.10;
+  if(cov<50)q=Math.min(q,49);else if(cov<75)q=Math.min(q,68);
+  if(conf<55)q=Math.min(q,54);
+  if(dataIsStale())q=Math.min(q,35);
+  return Math.round(clamp(q));
+}
+function decisionV6(x){
+  if(!isTradableAllPlatforms(x))return {key:'WORLD',label:'WORLD ONLY',cls:'v6-watch'};
+  const guard=assetTypeGuardV6(x);if(!guard.ok)return {key:'BLOCK',label:'BLOCK · ASSET TYPE',cls:'v6-block'};
+  const q=executionQualityV6(x),cov=liveCoverage(x).pct,conf=unifiedConfidence(x),fresh=freshnessScoreV6(x),bear=counterfactualBearRiskV6(x),pump=pumpRisk(x),fake=falseBreakoutRisk(x),late=lateEntryPenalty(x),stage=lifecycleStage(x).key,slip=slippageRiskV6(x);
+  if(dataIsStale()||fresh<55)return {key:'WAIT',label:'WAIT · STALE',cls:'v6-wait'};
+  if(bear>=70||pump>=75||fake>=72||late>=45||stage==='EXHAUSTED'||slip>=82)return {key:'BLOCK',label:'ÄLÄ JAHTAA',cls:'v6-block'};
+  if(q>=72&&cov>=75&&conf>=68&&fresh>=78&&bear<55&&pump<60&&fake<58&&late<30&&/READY|FIRING/.test(stage))return {key:'FIRE',label:'FIRE / OSTA-ALUE',cls:'v6-fire'};
+  if(q>=60&&cov>=50&&conf>=58&&bear<65)return {key:'READY',label:'READY / VALMISTAUDU',cls:'v6-ready'};
+  if(q>=50)return {key:'WATCH',label:'WATCH',cls:'v6-watch'};
+  return {key:'WAIT',label:'WAIT',cls:'v6-wait'};
+}
+function v6Reason(x){
+  const r=[];const pre=preMoveScoreV6(x),anti=antiIllusionScoreV6(x),bear=counterfactualBearRiskV6(x),vq=volumeQualityV6(x),slip=slippageRiskV6(x),cov=liveCoverage(x).pct;
+  if(pre>=70)r.push('pre-move vahva');if(anti>=65)r.push('riippumaton vahvistus');if(vq>=65)r.push('volyymi terve');if(bear>=60)r.push('bear-case korkea');if(slip>=65)r.push('slippage-riski');if(cov<75)r.push('data '+cov+'%');if(assetTypeGuardV6(x).ok===false)r.push('asset-type guard');
+  return r.slice(0,4).join(' · ')||'ei dominoivaa etua';
+}
+function renderPredictiveMatrixV6(all){
+  updateSignalMemoryV6(all);
+  const rows=(all||[]).filter(x=>isTradableAllPlatforms(x)&&coreLiveReady(x)&&!isStable(x)).map(x=>({x,q:executionQualityV6(x),d:decisionV6(x)})).sort((a,b)=>{
+    const ord={FIRE:0,READY:1,WATCH:2,WAIT:3,BLOCK:4};return (ord[a.d.key]??9)-(ord[b.d.key]??9)||b.q-a.q;
+  }).slice(0,10);
+  const top=rows[0];
+  const set=(id,v,cls='')=>{const e=$(id);if(e){e.textContent=v;e.className='v '+cls}};
+  if(top){set('v6Best',top.x.symbol.toUpperCase());set('v6Exec',top.q+'/100');set('v6PreMove',preMoveScoreV6(top.x)+'/100');set('v6Fresh',freshnessScoreV6(top.x)+'/100');set('v6Bear',counterfactualBearRiskV6(top.x)+'/100');set('v6Action',top.d.label,top.d.cls)}else{['v6Best','v6Exec','v6PreMove','v6Fresh','v6Bear','v6Action'].forEach(id=>set(id,'—'))}
+  const el=$('v6MatrixRows');if(!el)return;
+  el.innerHTML=rows.length?rows.map(({x,q,d},i)=>`<tr><td>${i+1}</td><td><b>${x.symbol.toUpperCase()}</b><div class="tiny">${x.name}</div></td><td>${executionBucket(x).label}</td><td><b>${q}</b></td><td>${preMoveScoreV6(x)}</td><td>${freshnessScoreV6(x)}</td><td>${antiIllusionScoreV6(x)}</td><td>${counterfactualBearRiskV6(x)}</td><td>${liveCoverage(x).pct}%</td><td>${persistenceScoreV6(x)}</td><td class="v6-decision ${d.cls}">${d.label}</td><td class="v6-reason">${v6Reason(x)}</td></tr>`).join(''):'<tr><td colspan="12" class="empty">Ei 3/3 live-kohteita.</td></tr>';
+}
+// v6 execution gate overrides the older action method everywhere (Action Board, plan, notifications).
+function tradeAction(x){
+  const d=decisionV6(x);
+  if(d.key==='FIRE')return ['OSTA-ALUE','action-buy'];
+  if(d.key==='READY')return ['VALMISTAUDU','action-wait'];
+  if(d.key==='BLOCK')return ['ÄLÄ JAHTAA','action-exit'];
+  return ['ODOTA','action-wait'];
+}
+function tradeableRocketMetrics(x){
+  const baseBuy=buySignalScore(x),conf=unifiedConfidence(x),cov=liveCoverage(x).pct,pump=pumpRisk(x),late=lateEntryPenalty(x),fake=falseBreakoutRisk(x),stage=lifecycleStage(x),bucket=executionBucket(x),micro=smallCapRocketMetrics(x);
+  const score=executionQualityV6(x),risk=counterfactualBearRiskV6(x),d=decisionV6(x);
+  const action=d.key==='FIRE'?'OSTA-ALUE':d.key==='READY'?'VALMISTAUDU':d.key==='BLOCK'?'ÄLÄ JAHTAA':'SEURAA';
+  return {score,buy:baseBuy,conf,cov,pump,late,fake,risk,stage,action,bucket,micro,preMove:preMoveScoreV6(x),fresh:freshnessScoreV6(x),antiIllusion:antiIllusionScoreV6(x)};
+}
+function renderProEngine(all){
+  const usable=(all||[]).filter(x=>!isStable(x)&&isTradableAllPlatforms(x)&&assetTypeGuardV6(x).ok);
+  if(!usable.length){$('proTop').textContent='EI SETUP';$('proConfidence').textContent='—';$('proPump').textContent='—';$('proSetups').innerHTML='<div class="empty">Ei 3/3 core-dataa.</div>';return;}
+  const ranked=usable.map(x=>({...x,unified:executionQualityV6(x),conf:unifiedConfidence(x),pump:pumpRisk(x),dec:decisionV6(x)})).sort((a,b)=>b.unified-a.unified);
+  const qualified=ranked.find(x=>x.unified>=60&&x.conf>=58&&liveCoverage(x).pct>=50&&x.dec.key!=='BLOCK');
+  $('proTop').textContent=qualified?qualified.symbol.toUpperCase():'EI SETUP';$('proConfidence').textContent=qualified?qualified.conf+'/100':'—';$('proPump').textContent=qualified?qualified.pump+'/100':'—';$('proRegime').textContent=($('regimeState')?.textContent||$('bias')?.textContent||'—');
+  $('proSetups').innerHTML=ranked.slice(0,10).map((x,i)=>{const r=proRiskLevels3(x),[heat,hcls]=heatLabel(x.pump);return `<div class="setup-row"><div><div class="setup-main">#${i+1} ${x.symbol.toUpperCase()}</div><div class="tiny">${x.name} · ${x.dec.label}</div><div class="heat ${hcls}">${heat} · bear ${counterfactualBearRiskV6(x)}/100</div></div><div><b>${x.unified}/100</b><div class="${confClass(x.conf)} tiny">conf ${x.conf}/100 · data ${liveCoverage(x).pct}%</div></div><div>${r.entry}</div><div class="red">${r.stop}</div><div><span class="green">${r.tp1}</span> / <span class="green">${r.tp2}</span> / <span class="green">${r.tp3}</span></div></div>`}).join('');
+}
+// tighten WORLD focus and block tokenized/non-crypto wrappers from crypto discovery prominence
+function discoveryFocus(x,kind='early'){
+  if(isStable(x))return {tier:'REJECT',why:'stablecoin'};
+  const ag=assetTypeGuardV6(x);if(!ag.ok)return {tier:'REJECT',why:ag.label};
+  if(isTradableAllPlatforms(x))return {tier:'EXEC',why:'3/3'};
+  const sc=smallCapRocketMetrics(x),stage=lifecycleStage(x),cov=liveCoverage(x).pct,pump=Math.max(pumpRisk(x),sc.pump),dump=sc.dump,fake=falseBreakoutRisk(x),late=lateEntryPenalty(x);
+  if(sc.anomaly||stage.key==='EXHAUSTED'||dump>=72||pump>=82||sc.liquidityRisk>=80)return {tier:'REJECT',why:'risk gate'};
+  if(cov<50&&sc.trust<70)return {tier:'BACKGROUND',why:'data/trust'};
+  const pre=preMoveScoreV6(x),anti=antiIllusionScoreV6(x),bear=counterfactualBearRiskV6(x);
+  if((stage.key==='READY'||stage.key==='FIRING'||stage.key==='PRE')&&sc.trust>=65&&late<32&&fake<62&&pre>=58&&anti>=52&&bear<68)return {tier:'FOCUS',why:stage.label};
+  return {tier:'BACKGROUND',why:'low priority'};
+}
+/* ================= end v6.0 ================= */
+
 $('runBacktest').onclick=runBacktest;
 $('clearCalibration').onclick=()=>{localStorage.removeItem("kp_galaxy_backtest");$('btRows').innerHTML='<tr><td colspan="7" class="empty">Kalibrointi tyhjennetty.</td></tr>';$('btSignals').textContent='0';$('btBal').textContent=$('btHigh').textContent=$('btRocket').textContent='—';};
 loadCalibration();
