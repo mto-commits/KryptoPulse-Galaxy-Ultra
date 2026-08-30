@@ -45,6 +45,18 @@
 .api-box input{width:100%;margin-top:7px;background:#060b10;border:1px solid var(--line);color:var(--text);padding:8px;border-radius:7px}
 .api-status{font-size:10px;margin-top:6px}.api-on{color:var(--green)}.api-off{color:var(--yellow)}
 @media(max-width:1000px){.api-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.api-grid{grid-template-columns:1fr}}
+
+.diag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:14px}
+.diag-card{border:1px solid var(--line);border-radius:10px;background:#091018;padding:12px}
+.diag-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.diag-name{font-weight:900;font-size:14px}
+.diag-status{font-weight:900;font-size:12px}
+.diag-live{color:var(--green)}.diag-warn{color:var(--yellow)}.diag-bad{color:var(--red)}
+.diag-meta{font-size:10px;color:var(--muted);line-height:1.5;margin-top:7px;word-break:break-word}
+.diag-log{max-height:220px;overflow:auto;padding:10px 14px;border-top:1px solid var(--line);font-family:monospace;font-size:10px;color:#b8c4d1;background:#070b10}
+.diag-log div{padding:3px 0;border-bottom:1px dotted #17202a}
+.diag-actions{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--line)}
+@media(max-width:750px){.diag-grid{grid-template-columns:1fr}}
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -60,6 +72,22 @@
 </head>
 <body>
 <div class="app"><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v3</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="diag-grid">
+    <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
+    <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
+    <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGlass</span><span id="diag-cl-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cl-meta" class="diag-meta">Ei testattu.</div></div>
+    <div class="diag-card"><div class="diag-head"><span class="diag-name">LunarCrush</span><span id="diag-lc-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-lc-meta" class="diag-meta">Ei testattu.</div></div>
+    <div class="diag-card"><div class="diag-head"><span class="diag-name">CryptoPanic</span><span id="diag-cp-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cp-meta" class="diag-meta">Ei testattu / avain vapaaehtoinen.</div></div>
+    <div class="diag-card"><div class="diag-head"><span class="diag-name">FRED</span><span id="diag-fr-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-fr-meta" class="diag-meta">Ei testattu / avain vapaaehtoinen.</div></div>
+  </div>
+  <div class="diag-actions">
+    <button id="runDiagnostics" class="primary">Aja täydellinen API-testi</button>
+    <button id="clearDiagLog">Tyhjennä loki</button>
+    <span class="status" id="diagSummary">Valmis</span>
+  </div>
+  <div id="diagLog" class="diag-log"><div>Diagnostics valmis käynnistettäväksi.</div></div>
+</section><section class="panel" style="margin-bottom:14px">
   <div class="ph"><h2>✅ PWA INSTALL CHECK</h2><small>manifest · service worker · standalone</small></div>
   <div class="grid">
     <div class="card"><div class="label">MANIFEST</div><div class="value" id="manifestState">CHECK</div></div>
@@ -144,7 +172,7 @@
     <div class="card"><div class="label">COINMOTION</div><div class="value green">KAUPANKÄYNTI</div><div class="tiny">Avaa Kaupankäynti tai Kurssit → valitse alla näkyvä Coinmotion-nimi</div></div>
     <div class="card"><div class="label">CRYPTO.COM</div><div class="value green">TRADE</div><div class="tiny">Avaa App/Web → Trade → Buy → hae tickerillä</div></div>
   </div>
-  <div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
+  <div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
 </section><section class="panel" style="margin-bottom:14px">
   <div class="ph"><h2>🛰️ GLOBAL INTELLIGENCE STACK</h2><small>Signal fusion · cross-asset · geopolitics · sovereign debt · events</small></div>
   <div class="grid">
@@ -205,6 +233,116 @@ const $=id=>document.getElementById(id);
 const pct=x=>Number.isFinite(x)?(x>=0?'+':'')+x.toFixed(2)+'%':'—';
 const money=x=>x>=1e9?'$'+(x/1e9).toFixed(1)+'B':x>=1e6?'$'+(x/1e6).toFixed(1)+'M':x>=1e3?'$'+(x/1e3).toFixed(0)+'K':'$'+(x||0).toFixed(0);
 
+
+const DIAG={};
+function diagLog(msg){
+  const el=$('diagLog'); if(!el)return;
+  const row=document.createElement('div');
+  row.textContent=new Date().toLocaleTimeString('fi-FI')+'  '+msg;
+  el.prepend(row);
+}
+function diagPaint(key,status,message,ms){
+  const s=$('diag-'+key+'-status'), m=$('diag-'+key+'-meta');
+  if(!s||!m)return;
+  const cls=status==='LIVE'?'diag-live':(status==='WAIT'||status==='SKIP'?'diag-warn':'diag-bad');
+  s.className='diag-status '+cls; s.textContent=status;
+  m.textContent=(message||'')+(ms!=null?' · '+ms+' ms':'');
+  DIAG[key]={status,message,ms,ts:Date.now()};
+  try{localStorage.setItem('kp_diag_last',JSON.stringify(DIAG))}catch(e){}
+}
+function classifyFetchError(err){
+  const name=String(err?.name||'');
+  const msg=String(err?.message||err||'');
+  if(name==='AbortError')return {status:'TIMEOUT',msg:'Pyyntö aikakatkaistiin.'};
+  if(msg.includes('Failed to fetch')||msg.includes('NetworkError'))return {status:'CORS/NET',msg:'Selain esti pyynnön, verkko katkesi tai palvelu ei salli CORS-hakua.'};
+  return {status:'ERROR',msg:msg.slice(0,180)||'Tuntematon virhe'};
+}
+async function diagnosticFetch(url,opts={},timeoutMs=12000){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),timeoutMs);
+  const t0=performance.now();
+  try{
+    const r=await fetch(url,{...opts,cache:'no-store',signal:controller.signal});
+    const ms=Math.round(performance.now()-t0);
+    let text='';
+    try{text=await r.text()}catch(e){}
+    let body=null;
+    try{body=text?JSON.parse(text):null}catch(e){body=text}
+    if(!r.ok){
+      return {ok:false,status:'HTTP '+r.status,http:r.status,ms,body,
+              message:r.status===401?'API-avain puuttuu tai on virheellinen.'
+                :r.status===403?'Ei käyttöoikeutta endpointiin / plan ei salli.'
+                :r.status===429?'Rate limit ylitetty. Odota ja yritä myöhemmin.'
+                :'HTTP-virhe '+r.status};
+    }
+    return {ok:true,status:'LIVE',http:r.status,ms,body,message:'Yhteys toimii.'};
+  }catch(err){
+    const c=classifyFetchError(err);
+    return {ok:false,status:c.status,http:null,ms:Math.round(performance.now()-t0),body:null,message:c.msg};
+  }finally{clearTimeout(timer)}
+}
+function maskedKeyState(v){return v?'avain asetettu':'avainta ei asetettu';}
+
+async function runFullDiagnostics(){
+  const btn=$('runDiagnostics'); if(btn)btn.disabled=true;
+  $('diagSummary').textContent='Testataan…';
+  let live=0,total=0;
+
+  // CoinGecko
+  total++;
+  let r=await diagnosticFetch('https://api.coingecko.com/api/v3/ping');
+  diagPaint('cg',r.ok?'LIVE':r.status,r.message,r.ms); diagLog('CoinGecko: '+(r.ok?'LIVE':r.status)+' — '+r.message); if(r.ok)live++;
+
+  // Binance
+  total++;
+  r=await diagnosticFetch('https://fapi.binance.com/fapi/v1/ping');
+  diagPaint('bn',r.ok?'LIVE':r.status,r.message,r.ms); diagLog('Binance Futures: '+(r.ok?'LIVE':r.status)+' — '+r.message); if(r.ok)live++;
+
+  // CoinGlass
+  total++;
+  if(!API_KEYS.coinglass){
+    diagPaint('cl','SKIP','CoinGlass: avainta ei asetettu.'); diagLog('CoinGlass: SKIP — avainta ei asetettu.');
+  }else{
+    r=await diagnosticFetch('https://open-api-v4.coinglass.com/api/futures/supported-coins',
+      {headers:{'accept':'application/json','CG-API-KEY':API_KEYS.coinglass}});
+    let msg=r.message;
+    if(r.ok && r.body && String(r.body.code)!=='0'){r.ok=false;r.status='API ERROR';msg='CoinGlass API code '+r.body.code+': '+String(r.body.msg||'').slice(0,120)}
+    diagPaint('cl',r.ok?'LIVE':r.status,msg+' '+maskedKeyState(API_KEYS.coinglass),r.ms);
+    diagLog('CoinGlass: '+(r.ok?'LIVE':r.status)+' — '+msg); if(r.ok)live++;
+  }
+
+  // LunarCrush
+  total++;
+  if(!API_KEYS.lunarcrush){
+    diagPaint('lc','SKIP','LunarCrush: avainta ei asetettu.'); diagLog('LunarCrush: SKIP — avainta ei asetettu.');
+  }else{
+    r=await diagnosticFetch('https://lunarcrush.com/api4/public/coins/list/v1',
+      {headers:{'Authorization':'Bearer '+API_KEYS.lunarcrush,'accept':'application/json'}});
+    diagPaint('lc',r.ok?'LIVE':r.status,r.message+' '+maskedKeyState(API_KEYS.lunarcrush),r.ms);
+    diagLog('LunarCrush: '+(r.ok?'LIVE':r.status)+' — '+r.message); if(r.ok)live++;
+  }
+
+  // CryptoPanic
+  if(API_KEYS.cryptopanic){
+    total++;
+    r=await diagnosticFetch('https://cryptopanic.com/api/developer/v2/posts/?auth_token='+encodeURIComponent(API_KEYS.cryptopanic)+'&public=true');
+    diagPaint('cp',r.ok?'LIVE':r.status,r.message,r.ms); diagLog('CryptoPanic: '+(r.ok?'LIVE':r.status)+' — '+r.message); if(r.ok)live++;
+  }else{
+    diagPaint('cp','SKIP','Avainta ei asetettu (vapaaehtoinen).');
+  }
+
+  // FRED
+  if(API_KEYS.fred){
+    total++;
+    r=await diagnosticFetch('https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key='+encodeURIComponent(API_KEYS.fred)+'&file_type=json&sort_order=desc&limit=1');
+    diagPaint('fr',r.ok?'LIVE':r.status,r.message,r.ms); diagLog('FRED: '+(r.ok?'LIVE':r.status)+' — '+r.message); if(r.ok)live++;
+  }else{
+    diagPaint('fr','SKIP','Avainta ei asetettu (vapaaehtoinen).');
+  }
+
+  $('diagSummary').textContent=live+'/'+total+' pakollista/aktiivista yhteyttä LIVE';
+  if(btn)btn.disabled=false;
+}
 async function getJSON(url, timeoutMs=10000){
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),timeoutMs);
@@ -393,6 +531,9 @@ function saveKeys(){
   localStorage.setItem("kp_coinglass",$("coinglassKey").value.trim());
   localStorage.setItem("kp_lunarcrush",$("lunarcrushKey").value.trim());
   updateKeyStatus();
+if($('runDiagnostics'))$('runDiagnostics').onclick=runFullDiagnostics;
+if($('clearDiagLog'))$('clearDiagLog').onclick=()=>{$('diagLog').innerHTML='<div>Loki tyhjennetty.</div>';};
+setTimeout(()=>{try{runFullDiagnostics()}catch(e){}},1800);
 }
 function updateKeyStatus(){
   const set=(id,on)=>{const e=$(id);if(!e)return;e.textContent=on?"ON · configured":"OFF · add key";e.className="api-status "+(on?"api-on":"api-off")};
@@ -403,15 +544,12 @@ function updateKeyStatus(){
   if($("lunarcrushKey"))$("lunarcrushKey").value=API_KEYS.lunarcrush;
 }
 async function testFeeds(){
-  $("feedStatus").textContent="Testataan…";
-  let ok=0,total=2+(API_KEYS.cryptopanic?1:0)+(API_KEYS.fred?1:0)+(API_KEYS.lunarcrush?1:0)+(API_KEYS.coinglass?1:0);
-  try{await getJSON("https://api.coingecko.com/api/v3/ping");ok++}catch(e){}
-  try{await getJSON("https://fapi.binance.com/fapi/v1/ping");ok++}catch(e){}
-  if(API_KEYS.cryptopanic){if(await fetchCryptoPanic())ok++}
-  if(API_KEYS.fred){if(await fetchFred("DGS10"))ok++}
-  if(API_KEYS.lunarcrush){if(await fetchLunarCrushCoins())ok++}
-  if(API_KEYS.coinglass){if(await cgFetch("/api/futures/supported-coins"))ok++}
-  $("feedStatus").textContent=`${ok}/${total} yhteyttä toimii`;
+  $('feedStatus').textContent='Ajetaan diagnostiikka…';
+  await runFullDiagnostics();
+  const vals=Object.values(DIAG);
+  const live=vals.filter(x=>x.status==='LIVE').length;
+  const bad=vals.filter(x=>!['LIVE','SKIP','WAIT'].includes(x.status)).length;
+  $('feedStatus').textContent=bad?`${live} LIVE · ${bad} virhettä`:`${live} yhteyttä toimii`;
 }
 async function scan(){
   $('status').textContent='Haetaan markkinadataa…';
@@ -468,7 +606,7 @@ async function scan(){
       state.last=Date.now(); localStorage.setItem('kp_last_success',String(state.last)); render(); updateAppHealth('LIVE');
     $('status').textContent='Päivitetty';
   }catch(e){
-    $('status').textContent='API-virhe: '+e.message; updateAppHealth('ERROR');
+    $('status').textContent='API-virhe: '+e.message; updateAppHealth('ERROR'); markStaleUI(e.message);
     if(!state.data.length) $('rows').innerHTML='<tr><td colspan="9" class="empty">Dataa ei saatu. Paina Skannaa nyt uudelleen.</td></tr>';
   }
 }
@@ -751,6 +889,12 @@ loadCalibration();
 $('scan').onclick=scan; scan();
 setInterval(scan,5*60*1000);
 
+
+function markStaleUI(reason){
+  const h=$('feedHealth'); if(h){h.textContent='STALE';h.className='value yellow';}
+  const b=$('strongAlertBanner');
+  if(b){b.style.display='block';b.textContent='⚠ DATA STALE — BUY/SELL-signaaleja ei pidä käyttää ennen onnistunutta live-päivitystä. '+(reason||'');}
+}
 function updateAppHealth(state){
   const online=navigator.onLine;
   const net=$('netState'); if(net) net.textContent=online?'ONLINE':'OFFLINE';
