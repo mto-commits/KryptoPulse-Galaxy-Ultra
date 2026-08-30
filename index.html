@@ -93,6 +93,8 @@
 .proscan-table td,.proscan-table th{font-size:10px}.delta-up{color:var(--green)}.delta-down{color:var(--red)}.delta-flat{color:var(--muted)}
 @media(max-width:950px){.proscan-grid{grid-template-columns:1fr}.proscan-table{min-width:930px}}
 
+
+.trade-plan{margin:12px 14px;border:1px solid var(--line);border-radius:14px;overflow:auto}.trade-plan table{width:100%;border-collapse:collapse;font-size:12px;min-width:980px}.trade-plan th,.trade-plan td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.trade-plan th{color:var(--muted);font-size:10px;text-transform:uppercase}.action-buy{color:var(--green);font-weight:900}.action-wait{color:var(--yellow);font-weight:900}.action-exit{color:var(--red);font-weight:900}.notify-box{padding:12px 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.maxrise{font-weight:900}.confidence-note{font-size:10px;color:var(--muted)}
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -108,7 +110,7 @@
 </head>
 <body>
 <div class="app"><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🚀 PRO ENGINE v4.5</h2><small>3/3 actionable · early breakout · anti-chase · confidence · entry / stop / TP</small></div>
+  <div class="ph"><h2>🚀 PRO ENGINE v4.6</h2><small>3/3 actionable · early breakout · anti-chase · confidence · entry / stop / TP</small></div>
   <div class="pro-grid">
     <div class="pro-card"><div class="label">TOP SETUP</div><div class="n" id="proTop">—</div><div class="sub">paras riskikorjattu setup</div></div>
     <div class="pro-card"><div class="label">CONFIDENCE</div><div class="n" id="proConfidence">—</div><div class="sub">signaalien yhtäpitävyys</div></div>
@@ -119,21 +121,26 @@
     <div class="setup-row setup-head"><div>Kohde</div><div>PRO Score</div><div>Entry</div><div>Stop</div><div>TP1 / TP2</div></div>
     <div id="proSetups"><div class="empty">Odotetaan live-dataa…</div></div>
   </div>
+</section><section class="panel" style="margin-bottom:14px" id="tradePlanPanel">
+  <div class="ph"><h2>🧭 HYPER TRADE PLAN v4.6</h2><small>mitä · milloin · tavoite · max-nousu · viimeinen exit · pitoarvio</small></div>
+  <div class="notify-box"><button id="enableNotifications" class="primary">🔔 Ota BUY/SELL-ilmoitukset käyttöön</button><span id="notifyStatus" class="status">Ilmoitukset: tarkistetaan…</span></div>
+  <div class="trade-plan"><table><thead><tr><th>#</th><th>Kohde</th><th>Toiminto nyt</th><th>Entry</th><th>Stop</th><th>TP1 / TP2 / TP3</th><th>Arvioitu max-nousu*</th><th>Pitoaika</th><th>Myy viimeistään / exit-trigger</th><th>Conf / Data</th></tr></thead><tbody id="tradePlanBody"><tr><td colspan="10" class="empty">Odotetaan live-dataa…</td></tr></tbody></table></div>
+  <div class="footer">* Max-nousu on volatiliteetti- ja momentum-pohjainen skenaarioarvio, ei ennuste tai takuu. Exit-triggerit ovat mallin riskirajoja. Selain/PWA-ilmoitukset toimivat vain laitteen ja selaimen sallimissa rajoissa; tämä versio ei voi lähettää push-ilmoituksia sovelluksen ollessa täysin suljettuna ilman erillistä push-palvelinta.</div>
 </section><section class="panel" style="margin-bottom:14px" id="proScannerPanel">
-  <div class="ph"><h2>🎯 PRO SCANNER v4.5 — PREDICTIVE</h2><small>WORLD DISCOVERY · EARLY SNIPER · BREAKOUT · MOMENTUM · lifecycle / chase guard</small></div>
+  <div class="ph"><h2>🎯 PRO SCANNER v4.6 — PREDICTIVE</h2><small>WORLD DISCOVERY · EARLY SNIPER · BREAKOUT · MOMENTUM · lifecycle / chase guard</small></div>
   <div class="proscan-grid">
     <div class="proscan-col"><div class="proscan-title green">🎯 EARLY SNIPER — ennen liikettä</div><div id="earlySniperList"><div class="empty">Odotetaan dataa…</div></div></div>
     <div class="proscan-col"><div class="proscan-title blue">⚡ BREAKOUT — käynnistyvä liike</div><div id="breakoutProList"><div class="empty">Odotetaan dataa…</div></div></div>
     <div class="proscan-col"><div class="proscan-title yellow">🔥 MOMENTUM — jo liikkeessä</div><div id="momentumProList"><div class="empty">Odotetaan dataa…</div></div></div>
   </div>
-  <div class="ph" style="border-top:1px solid var(--line)"><h2>🏆 TOP 10 PRO CANDIDATES</h2><small>global discovery · 3/3 venue flag · lifecycle · coverage-cap · confidence</small></div>
+  <div class="ph" style="border-top:1px solid var(--line)"><h2>🏆 TOP 10 PRO CANDIDATES</h2><small>global discovery · 3/3 venue flag · lifecycle · strict confidence gate · raw vs adjusted · confidence</small></div>
   <div class="tablewrap" style="max-height:520px"><table class="proscan-table">
-    <thead><tr><th>#</th><th>Krypto</th><th>Vaihe</th><th>3/3</th><th>PRO</th><th>Early</th><th>Breakout</th><th>Momentum</th><th>Conf.</th><th>Data</th><th>Late</th><th>False BO</th><th>Δ</th><th>Ikä</th></tr></thead>
+    <thead><tr><th>#</th><th>Krypto</th><th>Vaihe</th><th>3/3</th><th>PRO adj/raw</th><th>Early</th><th>Breakout</th><th>Momentum</th><th>Conf.</th><th>Data</th><th>Late</th><th>False BO</th><th>Δ</th><th>Ikä</th></tr></thead>
     <tbody id="proTop10"><tr><td colspan="14" class="empty">Odotetaan live-dataa…</td></tr></tbody>
   </table></div>
-  <div class="footer" style="padding:0 14px 14px"><b>v4.5 LOGIC:</b> WORLD DISCOVERY skannaa CoinGecko-coresta jopa 250 korkean volyymin markkinaa. EARLY SNIPER käyttää kovaa anti-chase-porttia: 4h/24h jo venynyt liike siirtyy LATE/EXHAUSTED-vaiheeseen eikä saa hallita Early-listaa. BREAKOUT ja MOMENTUM saavat edelleen näyttää jo käynnissä olevan liikkeen. PRO Engine ja BUY/SELL ovat erikseen 3/3-vahvistettuja Kvarn X + Coinmotion + Crypto.com -kohteita. Lifecycle: PRE-BREAKOUT → READY → FIRING → LATE → EXHAUSTED. Puutteellinen Data Coverage rajoittaa maksimipistemäärää.</div>
+  <div class="footer" style="padding:0 14px 14px"><b>v4.6 LOGIC:</b> WORLD DISCOVERY skannaa CoinGecko-coresta jopa 250 korkean volyymin markkinaa. EARLY SNIPER käyttää kovaa anti-chase-porttia: 4h/24h jo venynyt liike siirtyy LATE/EXHAUSTED-vaiheeseen eikä saa hallita Early-listaa. BREAKOUT ja MOMENTUM saavat edelleen näyttää jo käynnissä olevan liikkeen. PRO Engine ja BUY/SELL ovat erikseen 3/3-vahvistettuja Kvarn X + Coinmotion + Crypto.com -kohteita. Lifecycle: PRE-BREAKOUT → READY → FIRING → LATE → EXHAUSTED. Confidence Gate: 50 % data → max 69, 75 % → max 84, 100 % → max 100. Puutteellinen data ei voi näyttää pseudo-varmaa 90+ signaalia.</div>
 
-  <div class="ph"><h2>🧰 API DIAGNOSTICS v4.5</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v4.6</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
@@ -233,7 +240,7 @@
     <div class="card"><div class="label">COINMOTION</div><div class="value green">KAUPANKÄYNTI</div><div class="tiny">Avaa Kaupankäynti tai Kurssit → valitse alla näkyvä Coinmotion-nimi</div></div>
     <div class="card"><div class="label">CRYPTO.COM</div><div class="value green">TRADE</div><div class="tiny">Avaa App/Web → Trade → Buy → hae tickerillä</div></div>
   </div>
-  <div class="footer"><b>v4.5 PREDICTIVE POLICY:</b> WORLD EARLY-, BREAKOUT- ja MOMENTUM-rankingit skannaavat laajaa discovery-universumia; 3/3 PRO- ja BUY-rankingit käyttävät vain vahvistettuja kaupankäyntikohteita; Predictive PRO yhdistää ne ilman että jo tapahtunut nousu hallitsee Early-listaa. Data Coverage laskee Confidencea, stablecoinit poistetaan aggressiivisista BUY/SELL-listoista ja vahva BUY vaatii sekä korkean Unified Scoren että riittävän Confidence/coverage-tason. Entry/Stop/TP1/TP2/TP3 ja invalidation näytetään yhtenäisestä riskimallista.</div><div class="footer"><b>v4.2 CORE FIX:</b> PRO Engine ja TOP 5 renderöidään nyt suoraan CoinGecko-coresta ennen yhtäkään optional API -hakua. Binance rikastaa rankingia valmistuttuaan ja aiheuttaa uuden renderöinnin. CoinGlass/LunarCrush voivat vain lisätä dataa; CORS/HTTP 402 ei voi enää jättää PRO/TOP5-näkymää odottamaan. Korjattu myös puuttunut acceleration-kenttä.</div><div class="footer"><b>PRO v4.1 FIX POLICY:</b> TOP 5 BUY/SELL käyttää aina core-live-dataa (CoinGecko + saatavilla oleva Binance Futures). CoinGlass/LunarCrush ovat lisävahvistuksia, eivät dependencyjä. Backtest mittaa 1h/4h/24h forward-returnia, koska 30–100 % osumat 24h sisällä ovat harvinaisia ja vääristävät kalibrointia. Jos viimeinen onnistunut live-haku on yli 10 min vanha, signaalit lukitaan STALE-tilaan.</div><div class="footer"><b>PRO ENGINE POLICY:</b> PRO Score painottaa aikaisen breakout-liikkeen laatua, trendin yhtenäisyyttä, live-volyymiä, likviditeettiä ja saatavilla olevaa derivatives/social-vahvistusta. Anti-Pump pienentää pisteitä jo voimakkaasti venyneestä liikkeestä. Entry/Stop/TP ovat dynaamisia riskitasoja, eivät varmoja hintatavoitteita. Paras signaali on korkea PRO Score + korkea Confidence + matala Pump Risk + hyvä Data Coverage.</div><div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">WORLD PRO Scanner näyttää discovery-kohteita laajasta universumista. PRO Engine sekä TOP 5 BUY/SELL rajataan konservatiiviseen 3/3-yhteislistaan; DISCOVERY-merkintä tarkoittaa, ettei Kvarn X + Coinmotion + Crypto.com -saatavuutta ole tässä versiossa vahvistettu.</div>
+  <div class="footer"><b>v4.6 PREDICTIVE POLICY:</b> WORLD EARLY-, BREAKOUT- ja MOMENTUM-rankingit skannaavat laajaa discovery-universumia; 3/3 PRO- ja BUY-rankingit käyttävät vain vahvistettuja kaupankäyntikohteita; Predictive PRO yhdistää ne ilman että jo tapahtunut nousu hallitsee Early-listaa. Data Coverage laskee Confidencea, stablecoinit poistetaan aggressiivisista BUY/SELL-listoista ja vahva BUY vaatii sekä korkean Unified Scoren että riittävän Confidence/coverage-tason. Entry/Stop/TP1/TP2/TP3 ja invalidation näytetään yhtenäisestä riskimallista.</div><div class="footer"><b>v4.2 CORE FIX:</b> PRO Engine ja TOP 5 renderöidään nyt suoraan CoinGecko-coresta ennen yhtäkään optional API -hakua. Binance rikastaa rankingia valmistuttuaan ja aiheuttaa uuden renderöinnin. CoinGlass/LunarCrush voivat vain lisätä dataa; CORS/HTTP 402 ei voi enää jättää PRO/TOP5-näkymää odottamaan. Korjattu myös puuttunut acceleration-kenttä.</div><div class="footer"><b>PRO v4.1 FIX POLICY:</b> TOP 5 BUY/SELL käyttää aina core-live-dataa (CoinGecko + saatavilla oleva Binance Futures). CoinGlass/LunarCrush ovat lisävahvistuksia, eivät dependencyjä. Backtest mittaa 1h/4h/24h forward-returnia, koska 30–100 % osumat 24h sisällä ovat harvinaisia ja vääristävät kalibrointia. Jos viimeinen onnistunut live-haku on yli 10 min vanha, signaalit lukitaan STALE-tilaan.</div><div class="footer"><b>PRO ENGINE POLICY:</b> PRO Score painottaa aikaisen breakout-liikkeen laatua, trendin yhtenäisyyttä, live-volyymiä, likviditeettiä ja saatavilla olevaa derivatives/social-vahvistusta. Anti-Pump pienentää pisteitä jo voimakkaasti venyneestä liikkeestä. Entry/Stop/TP ovat dynaamisia riskitasoja, eivät varmoja hintatavoitteita. Paras signaali on korkea PRO Score + korkea Confidence + matala Pump Risk + hyvä Data Coverage.</div><div class="footer"><b>LIVE CORE POLICY:</b> CoinGecko + Binance Futures muodostavat ydinsignaalin. CoinGlass ja LunarCrush ovat lisävahvistuksia: jos ne eivät toimi selaimessa tai API-planissa, skanneri jatkaa ilman niitä eikä anna puuttuvasta datasta automaattista miinusta. Jokaisessa BUY/SELL-kortissa näkyvä Data Coverage kertoo, kuinka monta live-lähdettä on oikeasti mukana.</div><div class="footer"><b>DIAGNOSTICS OHJE:</b> CORS/NET tarkoittaa, että selain ei saanut pyynnön vastausta tai palvelu ei salli suoraa selainhakua. HTTP 401 viittaa yleensä avaimeen, 403 käyttöoikeuteen/API-planin rajaan ja 429 rate limitiin. Kun FEED HEALTH on ERROR tai STALE, TOP 5 BUY/SELL -signaaleja ei pidä käyttää tuoreina signaaleina.</div><div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">WORLD PRO Scanner näyttää discovery-kohteita laajasta universumista. PRO Engine sekä TOP 5 BUY/SELL rajataan konservatiiviseen 3/3-yhteislistaan; DISCOVERY-merkintä tarkoittaa, ettei Kvarn X + Coinmotion + Crypto.com -saatavuutta ole tässä versiossa vahvistettu.</div>
 </section><section class="panel" style="margin-bottom:14px">
   <div class="ph"><h2>🛰️ GLOBAL INTELLIGENCE STACK</h2><small>Signal fusion · cross-asset · geopolitics · sovereign debt · events</small></div>
   <div class="grid">
@@ -928,7 +935,7 @@ function proRiskLevels3(x){
 function lateEntryPenalty(x){
   const h1=safeNum(x.h1),h4=safeNum(x.h4),h24=safeNum(x.h24);
   let p=0;
-  // v4.5 anti-chase: EARLY-listan pitää suosia liikettä ENNEN venymistä.
+  // v4.6 anti-chase: EARLY-listan pitää suosia liikettä ENNEN venymistä.
   if(h4>4)p+=(h4-4)*1.55;
   if(h4>8)p+=(h4-8)*2.20;
   if(h4>12)p+=(h4-12)*2.50;
@@ -967,7 +974,7 @@ function falseBreakoutRisk(x){
 function coverageCap(score,x){
   const cov=liveCoverage(x).pct;
   // Never show pseudo-certainty when one or more designed feeds are missing.
-  const cap=cov>=100?100:cov>=75?94:cov>=50?86:72;
+  const cap=cov>=100?100:cov>=75?84:cov>=50?69:55;
   return Math.round(Math.min(clamp(score),cap));
 }
 function accelerationQuality(x){
@@ -1088,7 +1095,7 @@ function renderPredictiveScanner(all){
   const top=usable.map(x=>({...x,pred:predictiveProScore(x),earlyV:earlySniperScore(x),boV:breakoutProScore(x),momV:momentumProScore(x)})).sort((a,b)=>b.pred-a.pred).slice(0,10);
   $('proTop10').innerHTML=top.length?top.map((x,i)=>{
     const d=scoreDelta(x,predictiveProScore),age=signalAge(x,'pro',x.pred,65),cov=liveCoverage(x).pct,stage=lifecycleStage(x);
-    return `<tr><td>${i+1}</td><td><b>${x.symbol.toUpperCase()}</b><div class="tiny">${x.name}</div></td><td><span class="${stage.cls}">${stage.label}</span></td><td>${venueBadge(x)}</td><td><b>${x.pred}</b></td><td>${x.earlyV}</td><td>${x.boV}</td><td>${x.momV}</td><td>${unifiedConfidence(x)}</td><td><span class="coverage-pill ${coverageClass(cov)}">${cov}%</span></td><td>${lateEntryPenalty(x)}</td><td>${falseBreakoutRisk(x)}</td><td>${deltaHtml(d)}</td><td>${age}</td></tr>`;
+    return `<tr><td>${i+1}</td><td><b>${x.symbol.toUpperCase()}</b><div class="tiny">${x.name}</div></td><td><span class="${stage.cls}">${stage.label}</span></td><td>${venueBadge(x)}</td><td><b>${x.pred}</b>/<span class="tiny">${rawPredictiveScore(x)}</span></td><td>${x.earlyV}</td><td>${x.boV}</td><td>${x.momV}</td><td>${unifiedConfidence(x)}</td><td><span class="coverage-pill ${coverageClass(cov)}">${cov}%</span></td><td>${lateEntryPenalty(x)}</td><td>${falseBreakoutRisk(x)}</td><td>${deltaHtml(d)}</td><td>${age}</td></tr>`;
   }).join(''):'<tr><td colspan="14" class="empty">Ei käyttökelpoista live-dataa.</td></tr>';
 }
 
@@ -1133,6 +1140,38 @@ function heatLabel(p){
   return ['COOL','heat-cool'];
 }
 function confClass(c){return c>=75?'conf-high':c>=55?'conf-mid':'conf-low';}
+
+function rawPredictiveScore(x){
+  const cov=liveCoverage(x).pct;
+  const saved=coverageCap;
+  // approximate raw composite from underlying qualities without the display cap
+  let e=.22*earlyBreakoutScore(x)+.25*accelerationQuality(x)+.13*safeNum(x.breakout,50)+.12*safeNum(x.volume,50)+.09*safeNum(x.liquidity,50)+.10*derivativeQuality(x)+.04*socialQuality(x)+.05*unifiedConfidence(x);
+  e-=lateEntryPenalty(x)*1.08+falseBreakoutRisk(x)*.24;
+  let b=.35*safeNum(x.breakout,50)+.17*accelerationQuality(x)+.14*safeNum(x.volume,50)+.10*safeNum(x.liquidity,50)+.12*derivativeQuality(x)+.07*trendQuality(x)+.05*unifiedConfidence(x)-falseBreakoutRisk(x)*.45-lateEntryPenalty(x)*.35;
+  let m=.24*clamp(50+safeNum(x.h1)*7)+.25*clamp(50+safeNum(x.h4)*3)+.18*clamp(50+safeNum(x.h24)*1.4)+.12*trendQuality(x)+.08*safeNum(x.volume,50)+.06*safeNum(x.liquidity,50)+.07*derivativeQuality(x)-pumpRisk(x)*.10;
+  let v=.42*e+.34*b+.14*m+.10*unifiedConfidence(x)-lateEntryPenalty(x)*.30-falseBreakoutRisk(x)*.10;
+  return Math.round(clamp(v));
+}
+function fmtPrice(v){if(!Number.isFinite(v))return '—';if(v>=1000)return v.toFixed(0);if(v>=10)return v.toFixed(2);if(v>=1)return v.toFixed(3);if(v>=.01)return v.toFixed(4);return v.toPrecision(4)}
+function maxRiseScenario(x){
+  const p=safeNum(x.current_price); if(!p)return {pct:0,price:'—'};
+  const vol=Math.abs(safeNum(x.h24)), br=safeNum(x.breakout,50), acc=accelerationQuality(x), mom=momentumProScore(x);
+  let pct=clamp(6+vol*.55+Math.max(0,br-55)*.22+Math.max(0,acc-50)*.12+Math.max(0,mom-50)*.08,6,45);
+  pct*= (lifecycleStage(x).key==='PRE'?1.08:lifecycleStage(x).key==='READY'?1.12:lifecycleStage(x).key==='FIRING'?1.0:.72);
+  return {pct:Math.round(pct),price:fmtPrice(p*(1+pct/100))};
+}
+function holdWindow(x){const st=lifecycleStage(x).key,score=buySignalScore(x);if(st==='PRE')return score>=70?'4–24 h':'1–12 h';if(st==='READY')return '2–18 h';if(st==='FIRING')return '1–12 h';if(st==='LATE')return '0–4 h';return 'EXIT / älä jahtaa';}
+function tradeAction(x){const s=buySignalScore(x),cov=liveCoverage(x).pct,conf=unifiedConfidence(x),st=lifecycleStage(x).key;if(st==='EXHAUSTED'||sellSignalScore(x)>=78)return ['EXIT / EI OSTOA','action-exit'];if(s>=78&&cov>=75&&conf>=70&&['PRE','READY','FIRING'].includes(st))return ['OSTOALUE','action-buy'];if(s>=68&&cov>=75&&conf>=65&&['PRE','READY'].includes(st))return ['VALMISTAUDU','action-buy'];return ['ODOTA','action-wait'];}
+function exitDeadline(x){const st=lifecycleStage(x).key;if(st==='EXHAUSTED')return 'NYT / seuraava likvidi hetki';if(st==='LATE')return '≤ 4 h tai Stop';if(st==='FIRING')return '≤ 12 h tai TP/Stop';return '≤ 24 h tai PRO <55 / 4h trendi rikkoutuu';}
+function renderTradePlan(all){
+ const usable=(all||[]).filter(x=>coreLiveReady(x)&&!isStable(x)).map(x=>({...x,ts:buySignalScore(x)})).sort((a,b)=>b.ts-a.ts).slice(0,12);
+ const el=$('tradePlanBody'); if(!el)return;
+ el.innerHTML=usable.map((x,i)=>{const r=proRiskLevels3(x),a=tradeAction(x),mx=maxRiseScenario(x),cov=liveCoverage(x).pct;return `<tr><td>${i+1}</td><td><b>${x.symbol.toUpperCase()}</b><div class="tiny">${x.name} · ${lifecycleStage(x).label} · ${venueLabel(x)}</div></td><td><span class="${a[1]}">${a[0]}</span><div class="tiny">Score ${x.ts}/100</div></td><td>${r.entry}</td><td class="red">${r.stop}</td><td><span class="green">${r.tp1} / ${r.tp2} / ${r.tp3}</span></td><td class="maxrise">+${mx.pct}% ≈ ${mx.price}</td><td>${holdWindow(x)}</td><td>${exitDeadline(x)}</td><td>${unifiedConfidence(x)}/100 · ${cov}%</td></tr>`}).join('')||'<tr><td colspan="10" class="empty">Ei kandidaatteja.</td></tr>';
+}
+function notifyState(){const e=$('notifyStatus');if(!e)return;if(!('Notification'in window)){e.textContent='Ilmoitukset: ei tuettu';return}e.textContent='Ilmoitukset: '+Notification.permission;}
+async function enableNotifications(){if(!('Notification'in window))return;try{await Notification.requestPermission();notifyState()}catch(e){notifyState()}}
+function maybeTradeNotifications(all){if(!('Notification'in window)||Notification.permission!=='granted'||dataIsStale())return;let prev={};try{prev=JSON.parse(localStorage.getItem('kp_notify_v46')||'{}')}catch(e){};const now=Date.now();const usable=(all||[]).filter(x=>coreLiveReady(x)&&!isStable(x)&&isTradableAllPlatforms(x));for(const x of usable){const buy=buySignalScore(x),sell=sellSignalScore(x),key=x.symbol.toUpperCase();let kind=null,msg='';if(buy>=78&&unifiedConfidence(x)>=70&&liveCoverage(x).pct>=75&&lateEntryPenalty(x)<20){kind='BUY';const r=proRiskLevels3(x);msg=`${key} BUY ${buy}/100 · Entry ${r.entry} · Stop ${r.stop} · TP1 ${r.tp1}`;}else if(sell>=78||lifecycleStage(x).key==='EXHAUSTED'){kind='EXIT';msg=`${key} EXIT ${sell}/100 · ${invalidationText(x)}`;}if(kind){const sig=kind+':'+Math.floor((kind==='BUY'?buy:sell)/5);if(!prev[key]||prev[key].sig!==sig||now-prev[key].t>6*3600e3){try{new Notification('KryptoPulse '+kind+': '+key,{body:msg,tag:'kp-'+key+'-'+kind})}catch(e){}prev[key]={sig,t:now};}}}localStorage.setItem('kp_notify_v46',JSON.stringify(prev));}
+
 function renderProEngine(all){
   const usable=(all||[]).filter(x=>!isStable(x)&&isTradableAllPlatforms(x));
   if(!usable.length){
@@ -1277,6 +1316,8 @@ function renderTradeSignals(all){
   }else banner.style.display='none';
 }
 function render(){
+  renderTradePlan(state.data);
+  maybeTradeNotifications(state.data);
   const q=$('search').value.toLowerCase(), min=+$('minscore').value, mode=$('mode').value, sort=$('sort').value;
   let a=state.data.filter(x=>(x.name+' '+x.symbol).toLowerCase().includes(q)&&x.score>=min);
   if(mode==='sniper')a=a.filter(x=>x.setup==='SNIPER');
@@ -1425,6 +1466,7 @@ loadCalibration();
 
 ['search','minscore','sort','mode'].forEach(id=>$(id).addEventListener('input',render));
 $('scan').onclick=scan; scan();
+if($('enableNotifications'))$('enableNotifications').addEventListener('click',enableNotifications);notifyState();
 setInterval(scan,5*60*1000);
 
 
