@@ -72,7 +72,7 @@
 </head>
 <body>
 <div class="app"><section class="panel" style="margin-bottom:14px">
-  <div class="ph"><h2>🧰 API DIAGNOSTICS v3</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
+  <div class="ph"><h2>🧰 API DIAGNOSTICS v3.1</h2><small>LIVE · HTTP · CORS · timeout · rate limit</small></div>
   <div class="diag-grid">
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CoinGecko</span><span id="diag-cg-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cg-meta" class="diag-meta">Ei testattu.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">Binance Futures</span><span id="diag-bn-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-bn-meta" class="diag-meta">Ei testattu.</div></div>
@@ -531,9 +531,6 @@ function saveKeys(){
   localStorage.setItem("kp_coinglass",$("coinglassKey").value.trim());
   localStorage.setItem("kp_lunarcrush",$("lunarcrushKey").value.trim());
   updateKeyStatus();
-if($('runDiagnostics'))$('runDiagnostics').onclick=runFullDiagnostics;
-if($('clearDiagLog'))$('clearDiagLog').onclick=()=>{$('diagLog').innerHTML='<div>Loki tyhjennetty.</div>';};
-setTimeout(()=>{try{runFullDiagnostics()}catch(e){}},1800);
 }
 function updateKeyStatus(){
   const set=(id,on)=>{const e=$(id);if(!e)return;e.textContent=on?"ON · configured":"OFF · add key";e.className="api-status "+(on?"api-on":"api-off")};
@@ -940,6 +937,30 @@ if('serviceWorker' in navigator){
 if($("saveApiKeys"))$("saveApiKeys").onclick=saveKeys;
 if($("testFeeds"))$("testFeeds").onclick=testFeeds;
 updateKeyStatus();
+
+function initDiagnosticsUI(){
+  const runBtn=$('runDiagnostics');
+  const clearBtn=$('clearDiagLog');
+  if(runBtn){
+    runBtn.onclick=async()=>{
+      try{ await runFullDiagnostics(); }
+      catch(e){
+        diagLog('DIAGNOSTICS ERROR — '+String(e?.message||e));
+        $('diagSummary').textContent='Diagnostiikan käynnistysvirhe';
+      }
+    };
+  }
+  if(clearBtn)clearBtn.onclick=()=>{$('diagLog').innerHTML='<div>Loki tyhjennetty.</div>';};
+  setTimeout(async()=>{
+    try{await runFullDiagnostics();}
+    catch(e){diagLog('AUTO TEST ERROR — '+String(e?.message||e));}
+  },1500);
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initDiagnosticsUI,{once:true});
+}else{
+  initDiagnosticsUI();
+}
 
 </script>
 </body>
