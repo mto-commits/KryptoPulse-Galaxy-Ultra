@@ -1,32 +1,12 @@
 {
-  "id": "./",
-  "name": "KryptoPulse Galaxy Ultra",
+  "name": "KryptoPulse Galaxy Ultra v5.4 PRO HYPER",
   "short_name": "Galaxy Ultra",
-  "description": "KryptoPulse Galaxy Ultra v5.3 HYPER Microcap Rocket Hunter PRO + calibrated score + 3/3 execution guard",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#070a0f",
   "theme_color": "#070a0f",
-  "orientation": "portrait",
   "icons": [
-    {
-      "src": "./icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    {"src":"./icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"./icon-512.png","sizes":"512x512","type":"image/png"}
   ]
 }
