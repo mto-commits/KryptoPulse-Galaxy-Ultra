@@ -1,5 +1,5 @@
 
-const CACHE='kp-galaxy-ultra-v5-1-microcap-rocket-hunter';
+const CACHE='kp-galaxy-ultra-v5-2-microcap-rocket-hunter-pro';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(()=>self.skipWaiting()));
