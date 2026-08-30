@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KryptoPulse GALAXY ULTRA — Sniper/Rocket Scanner</title>
+<style>
+:root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
+.rocketcard{padding:15px;border-right:1px solid var(--line);min-height:175px;background:linear-gradient(145deg,#17120c,#0c1015)}
+.rocketcard:last-child{border-right:0}.rocketrank{font-size:11px;color:var(--yellow);font-weight:800;letter-spacing:.08em}.rocketname{font-size:20px;font-weight:900;margin-top:5px}.rocketscore{font-size:30px;font-weight:900;color:var(--green)}.rocketmetrics{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin:8px 0}.rocketreason{font-size:11px;line-height:1.45;color:#c2ccd7}.riskflag{color:var(--red);font-weight:800}@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.top{align-items:flex-start;flex-direction:column}.app{padding:10px}}
+.galaxy-note{font-size:11px;color:var(--muted)}@media(max-width:900px){.bucketgrid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+
+.platform-box{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.platform-item{border:1px solid var(--line);border-radius:8px;padding:8px;background:#091018;font-size:10px}
+.platform-item b{display:block;color:var(--text);font-size:11px;margin-bottom:3px}
+.platform-item .ok{color:var(--green);font-weight:800}.platform-item .path{color:var(--muted);line-height:1.35}
+.platform-link{color:var(--blue);text-decoration:none}.platform-link:hover{text-decoration:underline}
+@media(max-width:900px){.platform-box{grid-template-columns:1fr}}
+
+.bt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px}
+.bt-card{background:#091018;border:1px solid var(--line);border-radius:10px;padding:12px}
+.bt-card .n{font-size:23px;font-weight:900}.bt-table{width:100%;border-collapse:collapse;font-size:11px}
+.bt-table th,.bt-table td{padding:8px;border-bottom:1px solid #18212b;text-align:right}.bt-table th:first-child,.bt-table td:first-child{text-align:left}
+.bt-actions{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--line)}
+.bt-note{font-size:10px;color:var(--muted);line-height:1.45;padding:0 14px 14px}
+@media(max-width:900px){.bt-grid{grid-template-columns:repeat(2,1fr)}}
+
+.trade-signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.signal-panel{background:rgba(13,18,26,.95);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.signal-head{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.signal-list{display:grid}
+.trade-card{padding:12px 14px;border-bottom:1px solid #18212b}
+.trade-card:last-child{border-bottom:0}
+.trade-row{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.trade-name{font-size:16px;font-weight:900}
+.trade-score{font-size:22px;font-weight:900}
+.trade-meta{font-size:10px;color:var(--muted);margin-top:5px;line-height:1.45}
+.strength-strong{color:var(--green)}.strength-watch{color:var(--yellow)}.strength-danger{color:var(--red)}
+.alert-pill{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;border:1px solid var(--line)}
+@media(max-width:900px){.trade-signal-grid{grid-template-columns:1fr}}
+
+.api-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px}
+.api-box{border:1px solid var(--line);border-radius:10px;background:#091018;padding:10px}
+.api-box input{width:100%;margin-top:7px;background:#060b10;border:1px solid var(--line);color:var(--text);padding:8px;border-radius:7px}
+.api-status{font-size:10px;margin-top:6px}.api-on{color:var(--green)}.api-off{color:var(--yellow)}
+@media(max-width:1000px){.api-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.api-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app"><div id="strongAlertBanner" style="display:none;position:sticky;top:0;z-index:999;background:#281018;border:1px solid #5b2030;padding:10px 14px;border-radius:10px;margin-bottom:10px;font-weight:800"></div>
+  <section class="panel" style="margin-bottom:14px">
+      <div class="ph"><h2>📱 APP CONNECTION STATUS</h2><small>PWA · cache · live feeds</small></div>
+      <div class="grid">
+        <div class="card"><div class="label">APP MODE</div><div class="value green">PWA</div><div class="tiny">asennettavissa puhelimeen</div></div>
+        <div class="card"><div class="label">NETWORK</div><div class="value" id="netState">—</div><div class="tiny">online / offline</div></div>
+        <div class="card"><div class="label">LAST SUCCESS</div><div class="value" id="lastSuccess" style="font-size:16px">—</div><div class="tiny">viimeisin onnistunut datahaku</div></div>
+        <div class="card"><div class="label">FEED HEALTH</div><div class="value" id="feedHealth">—</div><div class="tiny">live / stale / error</div></div>
+      </div>
+    </section><div class="top">
+    <div><div class="brand">Krypto<span>Pulse GALAXY</span></div><div class="sub">1–24 h Sniper / Rocket Scanner · multi-timeframe momentum, volatility, breakout, liquidity & derivatives-ready</div></div>
+    <div class="actions"><span id="status" class="status">Valmis</span><button class="primary" id="scan">Skannaa nyt</button></div>
+  </div>
+
+  <div class="grid">
+    <div class="card"><div class="label">#1 Sniper</div><div id="top1" class="value green">—</div></div>
+    <div class="card"><div class="label">Sniper score</div><div id="score1" class="value">—</div></div>
+    <div class="card"><div class="label">Rocket watch</div><div id="rockets" class="value yellow">—</div></div>
+    <div class="card"><div class="label">Breakout candidates</div><div id="breakouts" class="value blue">—</div></div>
+    <div class="card"><div class="label">Markkinan bias</div><div id="bias" class="value">—</div></div>
+    <div class="card"><div class="label">Data-aika</div><div id="updated" class="value" style="font-size:16px">—</div></div>
+  </div>
+
+  <div class="controls">
+    <input id="search" placeholder="Hae coinia…">
+    <select id="minscore"><option value="0">Kaikki scoret</option><option value="55">55+</option><option value="65">65+</option><option value="75">75+</option><option value="85">85+</option></select>
+    <select id="sort"><option value="score">Score</option><option value="h1">1 h momentum</option><option value="h24">24 h</option><option value="vol">Volyymi</option><option value="liq">Likviditeetti</option></select>
+    <select id="mode"><option value="all">Kaikki</option><option value="sniper">Sniper</option><option value="rocket">Rocket</option><option value="breakout">Breakout</option></select>
+  </div>
+
+  <section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>🔌 LIVE CONNECTIONS</h2><small>Data feeds · keys stay in this browser only</small></div>
+  <div class="api-grid">
+    <div class="api-box"><b>CoinGecko</b><div class="api-status api-on" id="cgStatus">LIVE · public</div><div class="tiny">prices · volume · market cap · global</div></div>
+    <div class="api-box"><b>Binance Futures data</b><div class="api-status api-on" id="bnStatus">LIVE · public</div><div class="tiny">funding · open interest · order book</div></div>
+    <div class="api-box"><b>CryptoPanic</b><input id="cryptopanicKey" type="password" placeholder="API token (optional)"><div class="api-status api-off" id="cpStatus">OFF · add token</div></div>
+    <div class="api-box"><b>FRED</b><input id="fredKey" type="password" placeholder="API key (optional)"><div class="api-status api-off" id="fredStatus">OFF · add key</div></div>
+    <div class="api-box"><b>CoinGlass</b><input id="coinglassKey" type="password" placeholder="API key (optional)"><div class="api-status api-off" id="clStatus">OFF · add key</div></div><div class="api-box"><b>LunarCrush</b><input id="lunarcrushKey" type="password" placeholder="API key (optional)"><div class="api-status api-off" id="lcStatus">OFF · add key</div><div class="tiny">sentiment · social volume · dominance · interactions · Galaxy Score · AltRank</div></div>
+    <div class="api-box"><b>Privacy</b><div class="tiny">Keys are stored only in localStorage on this device. Do not use exchange trading/withdrawal keys here.</div></div>
+  </div>
+  <div class="bt-actions"><button id="saveApiKeys" class="primary">Tallenna yhteydet</button><button id="testFeeds">Testaa live-data</button><span class="status" id="feedStatus">Valmis</span></div>
+</section><div class="trade-signal-grid">
+  <section class="signal-panel">
+    <div class="signal-head"><h2 style="margin:0;font-size:15px">🟢 TOP 5 BUY SIGNALS</h2><small class="status">vahvimmat noususetupit</small></div>
+    <div id="topBuy" class="signal-list"><div class="empty">Odotetaan dataa…</div></div>
+  </section>
+  <section class="signal-panel">
+    <div class="signal-head"><h2 style="margin:0;font-size:15px">🔴 TOP 5 SELL / EXIT SIGNALS</h2><small class="status">heikkenevät / riskiset setupit</small></div>
+    <div id="topSell" class="signal-list"><div class="empty">Odotetaan dataa…</div></div>
+  </section>
+</div><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>🧪 BACKTEST LAB</h2><small>Historical validation · walk-forward calibration · no hindsight</small></div>
+  <div class="bt-grid">
+    <div class="bt-card"><div class="label">SIGNALS TESTED</div><div class="n" id="btSignals">0</div></div>
+    <div class="bt-card"><div class="label">30–50 % HIT RATE</div><div class="n" id="btBal">—</div></div>
+    <div class="bt-card"><div class="label">50–100 % HIT RATE</div><div class="n" id="btHigh">—</div></div>
+    <div class="bt-card"><div class="label">100 %+ HIT RATE</div><div class="n" id="btRocket">—</div></div>
+  </div>
+  <div class="tablewrap">
+    <table class="bt-table">
+      <thead><tr><th>Krypto</th><th>Signaalit</th><th>30%+</th><th>50%+</th><th>100%+</th><th>Max DD</th><th>Precision</th></tr></thead>
+      <tbody id="btRows"><tr><td colspan="7" class="empty">Backtest ei ole vielä ajettu.</td></tr></tbody>
+    </table>
+  </div>
+  <div class="bt-actions">
+    <button id="runBacktest" class="primary">Aja 90 pv backtest</button>
+    <button id="clearCalibration">Tyhjennä kalibrointi</button>
+    <span class="status" id="btStatus">Valmis</span>
+  </div>
+  <div class="bt-note">Backtest käyttää vain menneisyydessä saatavilla ollutta hintadataa. Se ei käytä tulevaa dataa signaalin muodostamiseen. Nykyinen versio testaa markkina-/momentumkerrosta; API READY -kerrokset (OI, funding, social, macro jne.) voidaan lisätä samaan testikehykseen vasta kun niille on historiallinen datasarja.</div>
+</section><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>📍 PLATFORM FINDER</h2><small>Mistä ostat · millä nimellä haet</small></div>
+  <div class="grid">
+    <div class="card"><div class="label">KVARN X</div><div class="value green">KRYPTOT</div><div class="tiny">Avaa Kvarn X → Kryptot / Haku → hae nimellä tai tickerillä</div></div>
+    <div class="card"><div class="label">COINMOTION</div><div class="value green">KAUPANKÄYNTI</div><div class="tiny">Avaa Kaupankäynti tai Kurssit → valitse alla näkyvä Coinmotion-nimi</div></div>
+    <div class="card"><div class="label">CRYPTO.COM</div><div class="value green">TRADE</div><div class="tiny">Avaa App/Web → Trade → Buy → hae tickerillä</div></div>
+  </div>
+  <div class="footer"><b>BUY/SELL SIGNAL POLICY:</b> TOP 5 BUY tarkoittaa mallin vahvinta noususetuppia, ei varmaa ostokehotusta. TOP 5 SELL/EXIT tarkoittaa heikkenevää setupia tai kohonnutta downside-riskiä, ei automaattista myyntimääräystä. Vahvat signaalit vaativat usean tekijän vahvistuksen; ylikuumentunut 24 h liike, heikko likviditeetti ja ristiriitaiset trendit laskevat BUY-scorea tai nostavat SELL/EXIT-scorea.</div><div class="footer">Scanneri rajataan konservatiiviseen 3/3-yhteislistaan. Jos alustan saatavuutta ei ole voitu vahvistaa nykyisestä virallisesta listasta, kohdetta ei nosteta TOP-listalle.</div>
+</section><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>🛰️ GLOBAL INTELLIGENCE STACK</h2><small>Signal fusion · cross-asset · geopolitics · sovereign debt · events</small></div>
+  <div class="grid">
+    <div class="card"><div class="label">PRICE / VOLUME</div><div class="value green">LIVE</div><div class="tiny">1h / 4h / 24h · breakout · activity</div></div>
+    <div class="card"><div class="label">DERIVATIVES</div><div class="value yellow">API READY</div><div class="tiny">OI · funding · liquidations · squeeze</div></div>
+    <div class="card"><div class="label">SOCIAL / NEWS</div><div class="value yellow">API READY</div><div class="tiny">X · Reddit · Telegram · news velocity</div></div>
+    <div class="card"><div class="label">SOVEREIGN DEBT</div><div class="value yellow">API READY</div><div class="tiny">2Y/10Y/30Y · real yields · curve · spreads</div></div>
+    <div class="card"><div class="label">GEOPOLITICS</div><div class="value yellow">API READY</div><div class="tiny">wars · sanctions · regulation · leaders</div></div>
+    <div class="card"><div class="label">CROSS-ASSET</div><div class="value yellow">API READY</div><div class="tiny">gold · oil · gas · copper · VIX · USD</div></div>
+  </div>
+</section><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>🌌 GALAXY ULTRA FINAL CONTROL ROOM</h2><small>3-platform universe · market regime · macro · social · derivatives · risk</small></div>
+  <div class="grid">
+    <div class="card"><div class="label">UNIVERSE</div><div class="value green">3/3</div><div class="tiny">Kvarn X · Coinmotion · Crypto.com</div></div>
+    <div class="card"><div class="label">REGIME</div><div class="value" id="regimeState">—</div><div class="tiny">risk-on / mixed / risk-off</div></div>
+    <div class="card"><div class="label">MACRO</div><div class="value" id="macroState">—</div><div class="tiny">rates · USD · debt · commodities</div></div>
+    <div class="card"><div class="label">SOCIAL</div><div class="value" id="socialState">—</div><div class="tiny">hype · sentiment · manipulation</div></div>
+    <div class="card"><div class="label">RISK</div><div class="value" id="riskState">—</div><div class="tiny">crash / crowding / liquidity</div></div>
+    <div class="card"><div class="label">MODEL</div><div class="value blue">GALAXY</div><div class="tiny">walk-forward calibration shell</div></div>
+  </div>
+</section><section class="panel" style="margin-bottom:14px">
+  <div class="ph"><h2>🧠 HYPER-ALIEN INTELLIGENCE</h2><small>Social hype · catalysts · events · manipulation risk · adaptive calibration</small></div>
+  <div class="grid">
+    <div class="card"><div class="label">SOCIAL HYPE</div><div class="value" id="socialScore">—</div><div class="tiny">velocity / sentiment / bot-risk layer</div></div>
+    <div class="card"><div class="label">CATALYST</div><div class="value" id="catalystScore">—</div><div class="tiny">regulation / leaders / listings / unlocks / events</div></div>
+    <div class="card"><div class="label">MANIPULATION RISK</div><div class="value" id="manipScore">—</div><div class="tiny">coordinated hype / brigading proxies</div></div>
+    <div class="card"><div class="label">ADAPTIVE MODEL</div><div class="value" id="modelState">LEARNING</div><div class="tiny">walk-forward calibration shell</div></div>
+  </div>
+</section><section class="panel" style="margin-bottom:14px">
+      <div class="ph"><h2>🚀 HIGH-RISK ROCKET 3</h2><small>3 aggressiivisinta early-breakout -setupia</small></div>
+      <div id="highrisk" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0"></div>
+    </section>
+
+  <div class="main">
+    <section class="panel">
+      <div class="ph"><h2>⚡ PRO Scanner</h2><small>Automaattinen ranking · heuristinen ennuste</small></div>
+      <div class="tablewrap">
+        <table><thead><tr><th>#</th><th>Krypto</th><th>Score</th><th>1 h</th><th>24 h</th><th>Vol 24 h</th><th>Vol/MC</th><th>Likviditeetti</th><th>Setup</th></tr></thead>
+        <tbody id="rows"></tbody></table>
+      </div>
+    </section>
+    <aside class="panel">
+      <div class="ph"><h2>🎯 Sniper-signaalit</h2><small>miksi kohde on listalla</small></div>
+      <div id="signals" class="rightbody"></div>
+    </aside>
+  </div>
+
+  <div class="footer"><b>EMPIRICAL CALIBRATION:</b> Kun 90 päivän backtest on ajettu, 30–50 %, 50–100 % ja 100 %+ scoreja säädetään mitatun historiallisen osumatason perusteella. Tämä ei tee niistä varmoja ennusteita, mutta se estää täysin mielivaltaisen todennäköisyysasteikon.<br><br><b>GALAXY METHODOLOGY:</b> Malli käyttää usean signaalikerroksen yhdistelmää. Market-data on tässä tiedostossa käytettävissä CoinGecko-pohjaisesti ja Binance Futures toimii vain analyysidatan lähteenä funding/OI/order-book -kerrokselle; CoinGlass V4 voidaan kytkeä CG-API-KEY -avaimella aggregoituun Open Interest-, OI-muutos-, liquidation-, OI-weighted funding- ja large orderbook -dataan; LunarCrush voidaan kytkeä Bearer API -avaimella social sentiment-, social volume-, dominance-, interactions-, Galaxy Score- ja AltRank-dataan; kaupankäyntialustat pysyvät Kvarn X + Coinmotion + Crypto.com; derivatives-, social-, sovereign-debt-, geopolitics- ja cross-asset -kerrokset ovat merkitty API READY -tilaan, kunnes niille kytketään oikeat datalähteet. Hype, huhut ja koordinoitu shilling eivät automaattisesti nosta scorea, vaan voivat nostaa manipulation- ja downside-riskiä. 30–50 %, 50–100 % ja 100 %+ ovat skenaarioalueita, eivät tuottolupauksia.</div><div class="footer">
+    <b>PRO ENGINE v3 — SNIPER ENGINE:</b> score yhdistää 1 h / 4 h / 24 h momentumia, volyymi/MC-suhdetta, 7 d rangea, breakout-painetta, likviditeettiä, markkinan breadthia ja riskisignaaleja. 
+    High-Risk Rocket 3 käyttää erillistä aggressiivista rankingia. Johdannaiskerros on suunniteltu funding/OI/liquidation/order-book-datalle; CoinGlass API V4 tarjoaa nämä datakategoriat. citeturn0search0turn0search2 CoinGlass tarjoaa mm. OI-muutokset 5m–24h, fundingin ja likvidaatiot, joten nämä voidaan kytkeä API-avaimella seuraavaan versioon. citeturn0search2turn0search9
+    Score on heuristinen ennustemittari, ei varma ennuste eikä sijoitusneuvo.
+  </div>
+</div>
+
+<script>
+const state={data:[],last:0};
+const $=id=>document.getElementById(id);
+const pct=x=>Number.isFinite(x)?(x>=0?'+':'')+x.toFixed(2)+'%':'—';
+const money=x=>x>=1e9?'$'+(x/1e9).toFixed(1)+'B':x>=1e6?'$'+(x/1e6).toFixed(1)+'M':x>=1e3?'$'+(x/1e3).toFixed(0)+'K':'$'+(x||0).toFixed(0);
+
+async function getJSON(url, timeoutMs=10000){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),timeoutMs);
+  try{
+    const r=await fetch(url,{cache:'no-store',signal:controller.signal});
+    if(!r.ok) throw new Error(r.status+' '+r.statusText);
+    return await r.json();
+  } finally { clearTimeout(timer); }
+}
+const PLATFORM_MAP={
+  BTC:{name:"Bitcoin",kvarn:"Bitcoin (BTC)",coinmotion:"Bitcoin (BTC)",crypto:"BTC"},
+  ETH:{name:"Ethereum",kvarn:"Ethereum (ETH)",coinmotion:"Ethereum (ETH)",crypto:"ETH"},
+  LTC:{name:"Litecoin",kvarn:"Litecoin (LTC)",coinmotion:"Litecoin (LTC)",crypto:"LTC"},
+  XRP:{name:"XRP",kvarn:"XRP (XRP)",coinmotion:"Ripple (XRP)",crypto:"XRP"},
+  XLM:{name:"Stellar",kvarn:"Stellar (XLM)",coinmotion:"Stellar Lumens (XLM)",crypto:"XLM"},
+  AAVE:{name:"Aave",kvarn:"Aave (AAVE)",coinmotion:"Aave (AAVE)",crypto:"AAVE"},
+  LINK:{name:"Chainlink",kvarn:"ChainLink (LINK)",coinmotion:"Chainlink (LINK)",crypto:"LINK"},
+  UNI:{name:"Uniswap",kvarn:"Uniswap (UNI)",coinmotion:"Uniswap (UNI)",crypto:"UNI"},
+  USDC:{name:"USD Coin",kvarn:"USD Coin (USDC)",coinmotion:"USD Coin (USDC)",crypto:"USDC"},
+  USDT:{name:"Tether",kvarn:"Tether (USDT)",coinmotion:"USDT (Tether)",crypto:"USDT"},
+  ADA:{name:"Cardano",kvarn:"Cardano (ADA)",coinmotion:"Cardano (ADA)",crypto:"ADA"},
+  SOL:{name:"Solana",kvarn:"Solana (SOL)",coinmotion:"Solana (SOL)",crypto:"SOL"},
+  AVAX:{name:"Avalanche",kvarn:"Avalanche (AVAX)",coinmotion:"Avalanche (AVAX)",crypto:"AVAX"},
+  DOT:{name:"Polkadot",kvarn:"Polkadot (DOT)",coinmotion:"Polkadot (DOT)",crypto:"DOT"}
+};
+const COMMON_SYMBOLS=new Set(Object.keys(PLATFORM_MAP));
+
+function platformFinder(x){
+  const s=x.symbol.toUpperCase(), p=PLATFORM_MAP[s];
+  if(!p)return "";
+  return `<div class="platform-box">
+    <div class="platform-item"><b>Kvarn X <span class="ok">✓</span></b><div>${p.kvarn}</div><div class="path">Kryptot → Haku → ${s}</div><a class="platform-link" href="https://www.kvarnx.com/fi/token-valikoima" target="_blank" rel="noopener">Avaa token-valikoima ↗</a></div>
+    <div class="platform-item"><b>Coinmotion <span class="ok">✓</span></b><div>${p.coinmotion}</div><div class="path">Kaupankäynti / Kurssit → ${s}</div><a class="platform-link" href="https://coinmotion.com/fi/markkinat/" target="_blank" rel="noopener">Avaa markkinat ↗</a></div>
+    <div class="platform-item"><b>Crypto.com <span class="ok">✓</span></b><div>${p.name} (${p.crypto})</div><div class="path">Trade → Buy → hae ${p.crypto}</div><a class="platform-link" href="https://help.crypto.com/en/articles/5978272-which-crypto-can-i-buy-in-the-crypto-com-app-web" target="_blank" rel="noopener">Avaa tukilista ↗</a></div>
+  </div>`;
+}
+
+const API_KEYS={
+  get cryptopanic(){return localStorage.getItem("kp_cryptopanic")||""},
+  get fred(){return localStorage.getItem("kp_fred")||""},
+  get coinglass(){return localStorage.getItem("kp_coinglass")||""},
+  get lunarcrush(){return localStorage.getItem("kp_lunarcrush")||""}
+};
+function spotSymbolForBinance(symbol){return symbol.toUpperCase()+"USDT";}
+async function fetchBinanceMetrics(symbol){
+  const pair=spotSymbolForBinance(symbol);
+  try{
+    const [premium,oi,book]=await Promise.all([
+      getJSON(`https://fapi.binance.com/fapi/v1/premiumIndex?symbol=${pair}`),
+      getJSON(`https://fapi.binance.com/fapi/v1/openInterest?symbol=${pair}`),
+      getJSON(`https://fapi.binance.com/fapi/v1/depth?symbol=${pair}&limit=20`)
+    ]);
+    const bids=(book.bids||[]).reduce((s,[p,q])=>s+Number(p)*Number(q),0);
+    const asks=(book.asks||[]).reduce((s,[p,q])=>s+Number(p)*Number(q),0);
+    const imbalance=(bids+asks)?((bids-asks)/(bids+asks))*100:0;
+    return {
+      funding:Number(premium.lastFundingRate||0)*100,
+      openInterest:Number(oi.openInterest||0),
+      orderImbalance:imbalance,
+      derivatives:clamp(50 + Math.max(-15,Math.min(15,imbalance*.5)) - Math.max(0,Math.abs(Number(premium.lastFundingRate||0)*100)*250))
+    };
+  }catch(e){return null}
+}
+
+async function mapLimit(items, limit, fn){
+  const out=[]; let i=0;
+  async function worker(){
+    while(i<items.length){
+      const idx=i++; 
+      try{ out[idx]=await fn(items[idx],idx); }catch(e){ out[idx]=null; }
+    }
+  }
+  await Promise.all(Array.from({length:Math.min(limit,items.length)},worker));
+  return out;
+}
+async function enrichLiveDerivatives(coins){
+  const top=coins.slice(0,12);
+  await mapLimit(top,4,async x=>{
+    const d=await fetchBinanceMetrics(x.symbol);
+    if(d)Object.assign(x,d);
+  });
+}
+async function cgFetch(path, params={}){
+  if(!API_KEYS.coinglass)return null;
+  const qs=new URLSearchParams(params).toString();
+  const url="https://open-api-v4.coinglass.com"+path+(qs?"?"+qs:"");
+  try{
+    const r=await fetch(url,{headers:{"accept":"application/json","CG-API-KEY":API_KEYS.coinglass}});
+    if(!r.ok)throw new Error("CoinGlass HTTP "+r.status);
+    const j=await r.json();
+    return j&&String(j.code)==="0"?j.data:null;
+  }catch(e){return null}
+}
+async function fetchCoinGlassMetrics(symbol){
+  if(!API_KEYS.coinglass)return null;
+  const [oi,liq,funding,large] = await Promise.all([
+    cgFetch("/api/futures/open-interest/exchange-list",{symbol}),
+    cgFetch("/api/futures/liquidation/exchange-list",{symbol,range:"1h"}),
+    cgFetch("/api/futures/funding-rate/oi-weight-history",{symbol,interval:"1h",limit:"2"}),
+    cgFetch("/api/futures/orderbook/large-limit-order",{exchange:"Binance",symbol:symbol+"USDT"})
+  ]);
+  const allOI=Array.isArray(oi)?oi.find(v=>String(v.exchange).toLowerCase()==="all"):null;
+  const allLiq=Array.isArray(liq)?liq.find(v=>String(v.exchange).toLowerCase()==="all"):null;
+  const fundingLast=Array.isArray(funding)&&funding.length?Number(funding[funding.length-1].close||0):0;
+  let buyUsd=0,sellUsd=0;
+  if(Array.isArray(large)){
+    for(const o of large){
+      const v=Number(o.current_usd_value||o.start_usd_value||0);
+      if(Number(o.order_side)===2)buyUsd+=v;
+      else if(Number(o.order_side)===1)sellUsd+=v;
+    }
+  }
+  const largeImb=(buyUsd+sellUsd)?((buyUsd-sellUsd)/(buyUsd+sellUsd))*100:0;
+  const oi1h=Number(allOI?.open_interest_change_percent_1h||0);
+  const oi4h=Number(allOI?.open_interest_change_percent_4h||0);
+  const oi24h=Number(allOI?.open_interest_change_percent_24h||0);
+  const longLiq=Number(allLiq?.long_liquidation_usd||0);
+  const shortLiq=Number(allLiq?.short_liquidation_usd||0);
+  const liqBias=(longLiq+shortLiq)?((shortLiq-longLiq)/(longLiq+shortLiq))*100:0;
+  let score=50;
+  score += Math.max(-12,Math.min(12,oi1h*3));
+  score += Math.max(-8,Math.min(8,oi4h*1.2));
+  score += Math.max(-10,Math.min(10,largeImb*.25));
+  score += Math.max(-8,Math.min(8,liqBias*.08));
+  score -= Math.max(0,Math.min(12,Math.abs(fundingLast)*400));
+  score=clamp(score);
+  return {oi1h,oi4h,oi24h,fundingCG:fundingLast,liqBias,largeImb,coinGlassScore:score};
+}
+async function enrichCoinGlass(coins){
+  if(!API_KEYS.coinglass)return false;
+  const top=coins.slice(0,8);
+  await mapLimit(top,2,async x=>{
+    const m=await fetchCoinGlassMetrics(x.symbol.toUpperCase());
+    if(m)Object.assign(x,m);
+  });
+  return true;
+}
+async function fetchLunarCrushCoins(){
+  if(!API_KEYS.lunarcrush)return null;
+  try{
+    const r=await fetch("https://lunarcrush.com/api4/public/coins/list/v1",{
+      headers:{"Authorization":"Bearer "+API_KEYS.lunarcrush}
+    });
+    if(!r.ok)throw new Error("LunarCrush HTTP "+r.status);
+    return await r.json();
+  }catch(e){return null}
+}
+async function enrichLunarCrush(coins){
+  const j=await fetchLunarCrushCoins();
+  if(!j||!Array.isArray(j.data))return false;
+  const bySymbol=new Map(j.data.map(v=>[String(v.symbol||"").toUpperCase(),v]));
+  for(const x of coins){
+    const s=bySymbol.get(x.symbol.toUpperCase());
+    if(!s)continue;
+    x.lunar={
+      galaxyScore:Number(s.galaxy_score??0),
+      altRank:Number(s.alt_rank??0),
+      sentiment:Number(s.sentiment??50),
+      socialVolume:Number(s.social_volume_24h??0),
+      socialDominance:Number(s.social_dominance??0),
+      interactions:Number(s.interactions_24h??0)
+    };
+    // Social score rewards broad positive engagement but avoids treating volume alone as bullish.
+    const sentiment=Number.isFinite(x.lunar.sentiment)?x.lunar.sentiment:50;
+    const galaxy=Number.isFinite(x.lunar.galaxyScore)?x.lunar.galaxyScore:50;
+    x.socialLive=clamp(.55*sentiment+.45*galaxy);
+  }
+  return true;
+}
+async function fetchCryptoPanic(){
+  if(!API_KEYS.cryptopanic)return null;
+  try{
+    return await getJSON(`https://cryptopanic.com/api/developer/v2/posts/?auth_token=${encodeURIComponent(API_KEYS.cryptopanic)}&public=true`);
+  }catch(e){return null}
+}
+async function fetchFred(series){
+  if(!API_KEYS.fred)return null;
+  try{
+    const u=`https://api.stlouisfed.org/fred/series/observations?series_id=${series}&api_key=${encodeURIComponent(API_KEYS.fred)}&file_type=json&sort_order=desc&limit=2`;
+    return await getJSON(u);
+  }catch(e){return null}
+}
+function saveKeys(){
+  localStorage.setItem("kp_cryptopanic",$("cryptopanicKey").value.trim());
+  localStorage.setItem("kp_fred",$("fredKey").value.trim());
+  localStorage.setItem("kp_coinglass",$("coinglassKey").value.trim());
+  localStorage.setItem("kp_lunarcrush",$("lunarcrushKey").value.trim());
+  updateKeyStatus();
+}
+function updateKeyStatus(){
+  const set=(id,on)=>{const e=$(id);if(!e)return;e.textContent=on?"ON · configured":"OFF · add key";e.className="api-status "+(on?"api-on":"api-off")};
+  set("cpStatus",!!API_KEYS.cryptopanic); set("fredStatus",!!API_KEYS.fred); set("clStatus",!!API_KEYS.coinglass); set("lcStatus",!!API_KEYS.lunarcrush);
+  if($("cryptopanicKey"))$("cryptopanicKey").value=API_KEYS.cryptopanic;
+  if($("fredKey"))$("fredKey").value=API_KEYS.fred;
+  if($("coinglassKey"))$("coinglassKey").value=API_KEYS.coinglass;
+  if($("lunarcrushKey"))$("lunarcrushKey").value=API_KEYS.lunarcrush;
+}
+async function testFeeds(){
+  $("feedStatus").textContent="Testataan…";
+  let ok=0,total=2+(API_KEYS.cryptopanic?1:0)+(API_KEYS.fred?1:0)+(API_KEYS.lunarcrush?1:0)+(API_KEYS.coinglass?1:0);
+  try{await getJSON("https://api.coingecko.com/api/v3/ping");ok++}catch(e){}
+  try{await getJSON("https://fapi.binance.com/fapi/v1/ping");ok++}catch(e){}
+  if(API_KEYS.cryptopanic){if(await fetchCryptoPanic())ok++}
+  if(API_KEYS.fred){if(await fetchFred("DGS10"))ok++}
+  if(API_KEYS.lunarcrush){if(await fetchLunarCrushCoins())ok++}
+  if(API_KEYS.coinglass){if(await cgFetch("/api/futures/supported-coins"))ok++}
+  $("feedStatus").textContent=`${ok}/${total} yhteyttä toimii`;
+}
+async function scan(){
+  $('status').textContent='Haetaan markkinadataa…';
+  try{
+    // CoinGecko supplies broad universe + 7d context.
+    const cg=await getJSON('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h,24h,7d');
+    state.data=cg.map((c,i)=>{
+      const h1=Number(c.price_change_percentage_1h_in_currency||0);
+      const h24=Number(c.price_change_percentage_24h_in_currency||0);
+      const d7=Number(c.price_change_percentage_7d_in_currency||0);
+      const vol=Number(c.total_volume||0), mc=Number(c.market_cap||0);
+      const ratio=mc?vol/mc:0;
+      const spark=c.sparkline_in_7d?.price||[];
+      const last=spark.at(-1)||c.current_price;
+      const hi=Math.max(...spark), lo=Math.min(...spark);
+      const rangePos=(hi>lo)?(last-lo)/(hi-lo):.5;
+
+      // 4h proxy from 7d sparkline: compare current price with ~4h ago.
+      const n=spark.length;
+      const p4=n>24?spark[n-25]:last;
+      const h4=p4?((last/p4)-1)*100:0;
+
+      // Acceleration: short-term move relative to 24h move.
+      const accel=h1-(h24/24);
+      const momentum=Math.max(0,Math.min(100,50+h1*7+h4*2.5+h24*1.0+accel*5));
+
+      // Volume/MC is a useful activity proxy; reward unusually active small/mid caps.
+      const volume=Math.max(0,Math.min(100,20+Math.min(65,ratio*140)));
+
+      // Breakout pressure: high in range + positive short-term acceleration.
+      const breakout=Math.max(0,Math.min(100,rangePos*78+Math.max(0,h1)*5+Math.max(0,h4)*2+Math.max(0,accel)*4));
+
+      const liquidity=Math.max(0,Math.min(100,20+Math.log10(Math.max(vol,1))*8));
+      const quality=Math.max(0,Math.min(100,55+Math.min(35,Math.log10(Math.max(mc,1))-6)));
+
+      // "Early" bonus: rising 1h/4h without an already exhausted 24h move.
+      const earlyBonus=Math.max(0,Math.min(12,Math.max(0,h1)*1.2+Math.max(0,h4)*0.7-Math.max(0,h24-18)*0.4));
+
+      let score=.27*momentum+.24*volume+.23*breakout+.11*liquidity+.07*quality+.08*earlyBonus;
+      if(h1< -2) score-=12;
+      if(h4< -5) score-=8;
+      if(h24< -15) score-=10;
+      score=Math.max(0,Math.min(100,score));
+
+      let setup=score>=82&&h1>0&&h4>0&&ratio>.15?'ROCKET':
+                score>=72&&breakout>=72&&h1>-1?'SNIPER':
+                score>=62&&breakout>=65?'BREAKOUT WATCH':'NEUTRAL';
+
+      return {...c,h1,h4,h24,d7,vol,mc,ratio,rangePos,momentum,volume,breakout,liquidity,quality,earlyBonus,score,setup};
+    }).filter(x=>COMMON_SYMBOLS.has(x.symbol.toUpperCase()));
+    await enrichLiveDerivatives(state.data);
+      if(API_KEYS.lunarcrush) await enrichLunarCrush(state.data);
+      if(API_KEYS.coinglass) await enrichCoinGlass(state.data);
+      state.last=Date.now(); localStorage.setItem('kp_last_success',String(state.last)); render(); updateAppHealth('LIVE');
+    $('status').textContent='Päivitetty';
+  }catch(e){
+    $('status').textContent='API-virhe: '+e.message; updateAppHealth('ERROR');
+    if(!state.data.length) $('rows').innerHTML='<tr><td colspan="9" class="empty">Dataa ei saatu. Paina Skannaa nyt uudelleen.</td></tr>';
+  }
+}
+function renderHighRisk(all){
+  // High-risk bucket deliberately differs from normal ranking:
+  // it favors acceleration + breakout pressure + activity, while penalizing
+  // already-exhausted 24h moves and very weak liquidity.
+  const candidates=all.filter(x=>x.h1>0 && x.h4>0 && x.breakout>=60 && x.ratio>0.08);
+  candidates.sort((a,b)=>{
+    const ra=(a.score + Math.min(12,Math.max(0,a.accel*5)) + Math.min(10,a.breakout*.10) - Math.min(12,Math.max(0,a.h24-20)*.35) - Math.min(8,Math.max(0,45-a.liquidity)*.18));
+    const rb=(b.score + Math.min(12,Math.max(0,b.accel*5)) + Math.min(10,b.breakout*.10) - Math.min(12,Math.max(0,b.h24-20)*.35) - Math.min(8,Math.max(0,45-b.liquidity)*.18));
+    return rb-ra;
+  });
+  const top=candidates.slice(0,3);
+  $('highrisk').innerHTML=top.map((x,i)=>{
+    const risk=x.liquidity<45 || x.h24>15 || x.ratio>0.5;
+    const reason=[
+      x.h1>1.5?'1h kiihtyy':'1h momentum',
+      x.h4>3?'4h trend mukana':'4h positiivinen',
+      x.breakout>75?'lähellä breakoutia':'breakout-paine',
+      x.ratio>0.3?'poikkeuksellinen activity':'activity kasvussa'
+    ].slice(0,3).join(' · ');
+    return `<div class="rocketcard">
+      <div class="rocketrank">HIGH-RISK #${i+1}</div>
+      <div class="rocketname">${x.symbol.toUpperCase()} <span class="badge rocket">ROCKET</span></div>
+      <div class="rocketscore">${x.score.toFixed(0)} <span style="font-size:12px;color:var(--muted)">/100</span></div>
+      <div class="rocketmetrics"><span>1h ${pct(x.h1)}</span><span>4h ${pct(x.h4)}</span><span>24h ${pct(x.h24)}</span><span>Vol/MC ${(x.ratio*100).toFixed(1)}%</span></div>
+      <div class="rocketreason">${reason}</div>
+      <div class="${risk?'riskflag':''}" style="font-size:10px;margin-top:8px">${risk?'⚠ ERITTÄIN KORKEA RISKI':'⚠ KORKEA RISKI'}</div>
+    </div>`;
+  }).join('') || '<div class="empty" style="grid-column:1/-1">Ei riittävän vahvoja high-risk setuppeja tällä hetkellä.</div>';
+}
+function adaptiveScore(x){
+  let hist=[];
+  try{hist=JSON.parse(localStorage.getItem('kp_history_'+x.id)||'[]')}catch(e){}
+  const recent=hist.slice(-30);
+  const hit=recent.length?recent.filter(v=>v>0).length/recent.length:.5;
+  return Math.round(Math.max(0,Math.min(100,x.score*(0.85+0.30*hit))));
+}
+function intelligenceFlags(all){
+  const avg=all.length?all.reduce((s,x)=>s+x.score,0)/all.length:0;
+  const social=Math.round(Math.max(0,Math.min(100,avg)));
+  const catalyst=Math.round(Math.max(0,Math.min(100,50+(all.filter(x=>x.h1>0&&x.h24>0).length/Math.max(1,all.length))*50)));
+  const manip=Math.round(Math.max(0,Math.min(100,100-(all.filter(x=>x.liquidity>=45).length/Math.max(1,all.length))*70)));
+  const set=(id,v)=>{const e=$(id);if(e)e.textContent=v;};
+  set('socialScore',social+'/100');
+  set('catalystScore',catalyst+'/100');
+  set('manipScore',manip+'/100');
+}
+function clamp(v,a=0,b=100){return Math.max(a,Math.min(b,v));}
+function galaxyFusionScore(x,ext={}){
+  const market=x.score||0;
+  const derivatives=ext.derivatives??50;
+  const social=ext.social??50;
+  const catalyst=ext.catalyst??50;
+  const macro=ext.macro??50;
+  const debt=ext.debt??50;
+  const geopolitics=ext.geopolitics??50;
+  const crossAsset=ext.crossAsset??50;
+  const manipulation=ext.manipulation??0;
+  return clamp(
+    .34*market + .13*derivatives + .10*social + .09*catalyst +
+    .08*macro + .07*debt + .06*geopolitics + .05*crossAsset +
+    .08*(100-manipulation)
+  );
+}
+function downsideRisk(x,ext={}){
+  let r=20;
+  if(x.h1<0) r+=12;
+  if(x.h4<0) r+=10;
+  if(x.h24<0) r+=10;
+  if(x.liquidity<45) r+=12;
+  if(x.h24>25) r+=10;
+  if(ext.macro!=null && ext.macro<40) r+=10;
+  if(ext.manipulation!=null) r+=Math.min(15,ext.manipulation*.15);
+  return Math.round(clamp(r));
+}
+function regimeFromUniverse(all){
+  if(!all.length)return "—";
+  const pos=all.filter(x=>x.h24>0).length/all.length;
+  const avg=all.reduce((s,x)=>s+x.h24,0)/all.length;
+  if(pos>.62 && avg>1.5)return "RISK-ON";
+  if(pos<.38 && avg<-1.5)return "RISK-OFF";
+  return "MIXED";
+}
+function updateGalaxyStates(all){
+  const reg=regimeFromUniverse(all);
+  const avg=all.length?all.reduce((s,x)=>s+x.score,0)/all.length:0;
+  const social=Math.round(clamp(avg));
+  const risk=Math.round(clamp(100-(all.filter(x=>x.liquidity>=45).length/Math.max(1,all.length))*65 + (reg==="RISK-OFF"?15:0)));
+  const macro=reg==="RISK-ON"?"TAILWIND":reg==="RISK-OFF"?"HEADWIND":"NEUTRAL";
+  const set=(id,v)=>{const e=$(id);if(e)e.textContent=v;};
+  set("regimeState",reg);
+  set("macroState",macro);
+  set("socialState",social+"/100");
+  set("riskState",risk+"/100");
+}
+
+function buySignalScore(x){
+  const base=galaxyFusionScore(x,{derivatives:x.coinGlassScore??x.derivatives??50,social:x.socialLive??50});
+  let s=base;
+  if(x.h1>0)s+=6;
+  if(x.h4>0)s+=6;
+  if(x.h24>0)s+=5;
+  if(x.breakout>70)s+=7;
+  if(x.ratio>.12)s+=5;
+  if(x.liquidity>55)s+=4;
+  if(x.h24>25)s-=8; // overheated
+  if(x.oi1h!=null && x.oi1h>1 && x.h1>0)s+=5;
+  if(x.oi4h!=null && x.oi4h>2 && x.h4>0)s+=4;
+  if(x.liqBias!=null && x.liqBias>20 && x.h1>0)s+=4;
+  if(x.largeImb!=null && x.largeImb>15)s+=4;
+  if(x.fundingCG!=null && Math.abs(x.fundingCG)>.03)s-=4;
+  return Math.round(clamp(s));
+}
+function sellSignalScore(x){
+  let s=downsideRisk(x);
+  if(x.funding!=null && Math.abs(x.funding)>.08)s+=5;
+  if(x.orderImbalance!=null && x.orderImbalance<-15)s+=6;
+  if(x.h1<0)s+=8;
+  if(x.h4<0)s+=8;
+  if(x.h24<0)s+=7;
+  if(x.breakout<35)s+=5;
+  if(x.liquidity<45)s+=6;
+  if(x.h24>35 && x.h1<0)s+=10; // exhaustion reversal
+  if(x.oi1h!=null && x.oi1h>1 && x.h1<0)s+=5;
+  if(x.liqBias!=null && x.liqBias<-20)s+=4;
+  if(x.largeImb!=null && x.largeImb<-15)s+=4;
+  if(x.fundingCG!=null && x.fundingCG>.03)s+=4;
+  return Math.round(clamp(s));
+}
+function strengthLabel(v,side){
+  if(side==='buy'){
+    if(v>=82)return ['VAHVA BUY','strength-strong'];
+    if(v>=70)return ['BUY WATCH','strength-watch'];
+    return ['NEUTRAALI',''];
+  }else{
+    if(v>=78)return ['VAHVA SELL/EXIT','strength-danger'];
+    if(v>=65)return ['SELL WATCH','strength-watch'];
+    return ['NEUTRAALI',''];
+  }
+}
+function renderTradeSignals(all){
+  const buy=[...all].map(x=>({...x,tradeScore:buySignalScore(x)}))
+    .filter(x=>x.tradeScore>=65)
+    .sort((a,b)=>b.tradeScore-a.tradeScore).slice(0,5);
+  const sell=[...all].map(x=>({...x,tradeScore:sellSignalScore(x)}))
+    .filter(x=>x.tradeScore>=60)
+    .sort((a,b)=>b.tradeScore-a.tradeScore).slice(0,5);
+
+  const buyCard=(x,i)=>{
+    const [lab,cls]=strengthLabel(x.tradeScore,'buy');
+    return `<div class="trade-card">
+      <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
+      <div class="trade-meta">1h ${pct(x.h1)} · 4h ${pct(x.h4)} · 24h ${pct(x.h24)} · breakout ${x.breakout.toFixed(0)} · liq ${x.liquidity.toFixed(0)} · Vol/MC ${(x.ratio*100).toFixed(1)}%${x.funding!=null?` · funding ${x.funding.toFixed(3)}% · book ${x.orderImbalance.toFixed(0)}%`:''}${x.lunar?` · social ${x.socialLive.toFixed(0)}/100 · LC Galaxy ${x.lunar.galaxyScore.toFixed(0)} · AltRank ${x.lunar.altRank}`:''}${x.coinGlassScore!=null?` · CG ${x.coinGlassScore.toFixed(0)}/100 · OI1h ${x.oi1h.toFixed(2)}% · OI4h ${x.oi4h.toFixed(2)}% · liq ${x.liqBias.toFixed(0)} · large ${x.largeImb.toFixed(0)}`:''}</div>
+      ${platformFinder(x)}
+    </div>`;
+  };
+  const sellCard=(x,i)=>{
+    const [lab,cls]=strengthLabel(x.tradeScore,'sell');
+    return `<div class="trade-card">
+      <div class="trade-row"><div><div class="trade-name">#${i+1} ${x.symbol.toUpperCase()}</div><span class="alert-pill ${cls}">${lab}</span></div><div class="trade-score ${cls}">${x.tradeScore}/100</div></div>
+      <div class="trade-meta">1h ${pct(x.h1)} · 4h ${pct(x.h4)} · 24h ${pct(x.h24)} · downside-risk ${downsideRisk(x)}/100 · breakout ${x.breakout.toFixed(0)}</div>
+      ${platformFinder(x)}
+    </div>`;
+  };
+
+  $('topBuy').innerHTML=buy.length?buy.map(buyCard).join(''):'<div class="empty">Ei vahvaa BUY-signaalia tällä hetkellä.</div>';
+  $('topSell').innerHTML=sell.length?sell.map(sellCard).join(''):'<div class="empty">Ei vahvaa SELL/EXIT-signaalia tällä hetkellä.</div>';
+  const strongBuys=buy.filter(x=>x.tradeScore>=82), strongSells=sell.filter(x=>x.tradeScore>=78);
+  const banner=$('strongAlertBanner');
+  if(strongBuys.length||strongSells.length){
+    banner.style.display='block';
+    banner.textContent=(strongBuys.length?'🟢 VAHVA BUY: '+strongBuys.map(x=>x.symbol.toUpperCase()).join(', ')+'  ':'')+(strongSells.length?'🔴 VAHVA SELL/EXIT: '+strongSells.map(x=>x.symbol.toUpperCase()).join(', '):'');
+  }else banner.style.display='none';
+}
+function render(){
+  const q=$('search').value.toLowerCase(), min=+$('minscore').value, mode=$('mode').value, sort=$('sort').value;
+  let a=state.data.filter(x=>(x.name+' '+x.symbol).toLowerCase().includes(q)&&x.score>=min);
+  if(mode==='sniper')a=a.filter(x=>x.setup==='SNIPER');
+  if(mode==='rocket')a=a.filter(x=>x.setup==='ROCKET');
+  if(mode==='breakout')a=a.filter(x=>x.setup==='BREAKOUT WATCH');
+  a.sort((x,y)=>sort==='h1'?y.h1-x.h1:sort==='h24'?y.h24-x.h24:sort==='vol'?y.vol-x.vol:sort==='liq'?y.liquidity-x.liquidity:y.score-x.score);
+  const all=[...state.data].sort((x,y)=>y.score-x.score);
+  const t=all[0], rockets=all.filter(x=>x.setup==='ROCKET').length, breaks=all.filter(x=>x.setup==='BREAKOUT WATCH'||x.setup==='SNIPER').length;
+  $('top1').textContent=t?t.symbol.toUpperCase():'—'; $('score1').textContent=t?t.score.toFixed(0):'—'; $('rockets').textContent=rockets; $('breakouts').textContent=breaks;
+  const pos=state.data.filter(x=>x.h24>0).length/(state.data.length||1); $('bias').textContent=pos>.62?'BULLISH':pos<.38?'BEARISH':'MIXED';
+  $('updated').textContent=state.last?new Date(state.last).toLocaleTimeString('fi-FI'):'—';
+  $('rows').innerHTML=a.slice(0,100).map((x,i)=>`<tr>
+    <td>${i+1}</td><td><span class="coin">${x.symbol.toUpperCase()}</span><div class="tiny">${x.name}</div><div class="tiny">Kvarn: ${PLATFORM_MAP[x.symbol.toUpperCase()]?.kvarn||"—"}<br>Coinmotion: ${PLATFORM_MAP[x.symbol.toUpperCase()]?.coinmotion||"—"}<br>Crypto.com: ${PLATFORM_MAP[x.symbol.toUpperCase()]?.crypto||"—"}</div></td>
+    <td><span class="score">${x.score.toFixed(0)}</span><div class="bar"><i style="width:${x.score}%"></i></div></td>
+    <td class="${x.h1>=0?'green':'red'}">${pct(x.h1)}</td><td class="${x.h24>=0?'green':'red'}">${pct(x.h24)}</td>
+    <td>${money(x.vol)}</td><td>${(x.ratio*100).toFixed(1)}%</td><td>${x.liquidity.toFixed(0)}/100</td>
+    <td><span class="badge ${x.setup==='ROCKET'?'rocket':x.setup==='SNIPER'?'sniper':x.setup.includes('WATCH')?'watch':''}">${x.setup}</span></td>
+  </tr>`).join('')||'<tr><td colspan="9" class="empty">Ei osumia nykyisillä suodattimilla.</td></tr>';
+  renderHighRisk(all);
+  $('signals').innerHTML=all.slice(0,12).map((x,i)=>`<div class="signal"><div><b>${i+1}. ${x.symbol.toUpperCase()} · ${x.setup}</b><small>Score ${x.score.toFixed(0)} · 1h ${pct(x.h1)} · 24h ${pct(x.h24)} · vol/MC ${(x.ratio*100).toFixed(1)}%</small><div class="meter"><i style="width:${x.score}%"></i></div></div><b class="${x.h1>=0?'green':'red'}">${pct(x.h1)}</b></div>`).join('');
+}
+
+function pctChange(a,b){return a?((b/a)-1)*100:0}
+function windowMax(arr,start,end){
+  let m=-Infinity; for(let i=start;i<Math.min(end,arr.length);i++) if(arr[i]>m)m=arr[i]; return m;
+}
+function windowMin(arr,start,end){
+  let m=Infinity; for(let i=start;i<Math.min(end,arr.length);i++) if(arr[i]<m)m=arr[i]; return m;
+}
+function historicalSignal(prices,i){
+  if(i<30)return null;
+  const p=prices[i], p1=prices[i-1], p4=prices[i-4], p24=prices[i-24], p7=prices[Math.max(0,i-24*7)]||prices[0];
+  const h1=pctChange(p1,p), h4=pctChange(p4,p), h24=pctChange(p24,p), d7=pctChange(p7,p);
+  const lo=Math.min(...prices.slice(Math.max(0,i-24*7),i+1));
+  const hi=Math.max(...prices.slice(Math.max(0,i-24*7),i+1));
+  const rangePos=hi>lo?(p-lo)/(hi-lo):.5;
+  const accel=h1-(h24/24);
+  const momentum=clamp(50+h1*7+h4*2.5+h24+accel*5);
+  const breakout=clamp(rangePos*78+Math.max(0,h1)*5+Math.max(0,h4)*2+Math.max(0,accel)*4);
+  const earlyBonus=clamp(Math.max(0,h1)*1.2+Math.max(0,h4)*.7-Math.max(0,h24-18)*.4,0,12);
+  const score=clamp(.42*momentum+.42*breakout+.16*(earlyBonus/12*100));
+  return {score,h1,h4,h24,d7,breakout};
+}
+async function fetchHistory(id,days=90){
+  const u=`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=hourly`;
+  const j=await getJSON(u);
+  return (j.prices||[]).map(x=>x[1]);
+}
+function evaluateSeries(symbol,prices){
+  const horizon=24; // 24h horizon for rocket scanner
+  let signals=0,h30=0,h50=0,h100=0,dd=0,precisionHits=0,precisionTotal=0;
+  for(let i=30;i<prices.length-horizon;i++){
+    const s=historicalSignal(prices,i); if(!s||s.score<62)continue;
+    signals++;
+    const entry=prices[i];
+    const mx=windowMax(prices,i+1,i+1+horizon);
+    const mn=windowMin(prices,i+1,i+1+horizon);
+    const up=pctChange(entry,mx), down=pctChange(entry,mn);
+    dd=Math.min(dd,down);
+    if(up>=30)h30++;
+    if(up>=50)h50++;
+    if(up>=100)h100++;
+    if(s.score>=72){precisionTotal++; if(up>=10)precisionHits++;}
+  }
+  return {symbol,signals,h30,h50,h100,dd,precision:precisionTotal?precisionHits/precisionTotal*100:0};
+}
+function saveCalibration(results){
+  const agg={ts:Date.now(),results};
+  localStorage.setItem("kp_galaxy_backtest",JSON.stringify(agg));
+}
+function renderBacktest(results){
+  const total=results.reduce((s,r)=>s+r.signals,0);
+  const sum=k=>results.reduce((s,r)=>s+r[k],0);
+  const rate=k=>total?Math.round(sum(k)/total*100):0;
+  $('btSignals').textContent=total;
+  $('btBal').textContent=rate('h30')+'%';
+  $('btHigh').textContent=rate('h50')+'%';
+  $('btRocket').textContent=rate('h100')+'%';
+  $('btRows').innerHTML=results.map(r=>`<tr><td>${r.symbol}</td><td>${r.signals}</td><td>${r.signals?Math.round(r.h30/r.signals*100):0}%</td><td>${r.signals?Math.round(r.h50/r.signals*100):0}%</td><td>${r.signals?Math.round(r.h100/r.signals*100):0}%</td><td>${r.dd.toFixed(1)}%</td><td>${r.precision.toFixed(0)}%</td></tr>`).join('');
+}
+async function runBacktest(){
+  $('btStatus').textContent='Haetaan historiaa…';
+  const coins=state.data.slice(0,8); // keep public API load reasonable
+  const results=[];
+  for(const c of coins){
+    try{
+      $('btStatus').textContent=`Testataan ${c.symbol.toUpperCase()}…`;
+      const prices=await fetchHistory(c.id,90);
+      if(prices.length>60)results.push(evaluateSeries(c.symbol.toUpperCase(),prices));
+    }catch(e){}
+  }
+  saveCalibration(results); renderBacktest(results);
+  $('btStatus').textContent=results.length?'Valmis · kalibrointi tallennettu':'Historiaa ei saatu';
+}
+function loadCalibration(){
+  try{const j=JSON.parse(localStorage.getItem("kp_galaxy_backtest")||"null"); if(j&&j.results)renderBacktest(j.results)}catch(e){}
+}
+$('runBacktest').onclick=runBacktest;
+$('clearCalibration').onclick=()=>{localStorage.removeItem("kp_galaxy_backtest");$('btRows').innerHTML='<tr><td colspan="7" class="empty">Kalibrointi tyhjennetty.</td></tr>';$('btSignals').textContent='0';$('btBal').textContent=$('btHigh').textContent=$('btRocket').textContent='—';};
+loadCalibration();
+
+['search','minscore','sort','mode'].forEach(id=>$(id).addEventListener('input',render));
+$('scan').onclick=scan; scan();
+setInterval(scan,5*60*1000);
+
+function updateAppHealth(state){
+  const online=navigator.onLine;
+  const net=$('netState'); if(net) net.textContent=online?'ONLINE':'OFFLINE';
+  const health=$('feedHealth'); if(health) health.textContent=state||(online?'READY':'OFFLINE');
+  const last=localStorage.getItem('kp_last_success');
+  const ls=$('lastSuccess'); if(ls) ls.textContent=last?new Date(Number(last)).toLocaleString('fi-FI'):'—';
+}
+window.addEventListener('online',()=>updateAppHealth('READY'));
+window.addEventListener('offline',()=>updateAppHealth('OFFLINE'));
+updateAppHealth('READY');
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+
+
+if($("saveApiKeys"))$("saveApiKeys").onclick=saveKeys;
+if($("testFeeds"))$("testFeeds").onclick=testFeeds;
+updateKeyStatus();
+
+</script>
+</body>
+</html>
