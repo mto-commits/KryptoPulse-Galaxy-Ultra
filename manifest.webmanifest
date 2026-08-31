@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.6 CANONICAL SIGNAL TRUTH",
+  "name": "KryptoPulse GALAXY ONE v8.6.1 UI TRUTH FIX",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=860-canonical-signal-truth",
+  "start_url": "./index.html?v=861-ui-truth",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
