@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.2 POSITION TRUTH ENGINE",
+  "name": "KryptoPulse GALAXY ONE v8.3 RENDER CONSISTENCY ENGINE",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=820-position-truth",
+  "start_url": "./index.html?v=830-render-consistency",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
