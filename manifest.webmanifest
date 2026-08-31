@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.5 SIGNAL INTELLIGENCE ENGINE",
+  "name": "KryptoPulse GALAXY ONE v8.6 CANONICAL SIGNAL TRUTH",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=850-signal-intelligence",
+  "start_url": "./index.html?v=860-canonical-signal-truth",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
