@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.6.1 UI TRUTH FIX",
+  "name": "KryptoPulse GALAXY ONE v8.6.2 SINGLE SCANNER OWNER",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=861-ui-truth",
+  "start_url": "./index.html?v=862-single-scanner-owner",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
