@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.4 SAFE RENDER ENGINE",
+  "name": "KryptoPulse GALAXY ONE v8.5 SIGNAL INTELLIGENCE ENGINE",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=840-safe-render",
+  "start_url": "./index.html?v=850-signal-intelligence",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",

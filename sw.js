@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v8-4-safe-render-20260831';
+const CACHE='kryptopulse-galaxy-v8-5-signal-intelligence-20260831';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
