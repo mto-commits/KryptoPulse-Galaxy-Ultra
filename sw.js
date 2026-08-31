@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v9-0-1-fast-scan-20260831';
+const CACHE='kryptopulse-galaxy-v9-1-0-performance-20260831';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
