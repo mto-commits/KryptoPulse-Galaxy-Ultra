@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.6.2 SINGLE SCANNER OWNER",
+  "name": "KryptoPulse GALAXY ONE v8.7 SIGNAL QUALITY ENGINE",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=862-single-scanner-owner",
+  "start_url": "./index.html?v=870-signal-quality",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",

@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v8-6-2-single-scanner-owner-20260831';
+const CACHE='kryptopulse-galaxy-v8-7-signal-quality-20260831';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
