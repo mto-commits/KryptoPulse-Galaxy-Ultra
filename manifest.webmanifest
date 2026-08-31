@@ -1,12 +1,12 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.7 SIGNAL QUALITY ENGINE",
-  "short_name": "Galaxy One",
-  "start_url": "./index.html?v=870-signal-quality",
+  "name": "KryptoPulse GALAXY ONE v9.0 HYPER PREDICTIVE AI",
+  "short_name": "Galaxy One AI",
+  "start_url": "./index.html?v=900-hyper-predictive-ai",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
   "theme_color": "#070a0f",
-  "description": "KryptoPulse GALAXY ONE v8.1 — Canonical Data Bus",
+  "description": "Multi-horizon predictive crypto decision-support scanner with canonical score, pre-ignition radar, risk gates and local calibration memory.",
   "icons": [
     {
       "src": "./icon-192.png",

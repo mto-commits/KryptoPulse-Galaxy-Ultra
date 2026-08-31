@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta name="kp-version" content="8.7">
+<meta name="kp-version" content="9.0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KryptoPulse GALAXY ONE v8.7 — SIGNAL QUALITY ENGINE</title>
+<title>KryptoPulse GALAXY ONE v9.0 — HYPER PREDICTIVE AI</title>
 <style>
 :root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
@@ -168,12 +168,46 @@
 <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
 
+
+<style>
+/* ===== v9.0 HYPER PREDICTIVE AI ===== */
+.v9-wrap{margin:14px 0;display:grid;gap:12px}
+.v9-panel{background:rgba(9,16,24,.97);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.v9-head{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);align-items:flex-start}
+.v9-head h2{margin:0;font-size:18px}.v9-head small{color:var(--muted);text-align:right}
+.v9-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:12px}
+.v9-card{border:1px solid var(--line);border-radius:13px;padding:12px;background:#08111a;min-width:0}
+.v9-kicker{font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.v9-symbol{font-size:22px;font-weight:900;margin-top:5px}
+.v9-prob{font-size:28px;font-weight:900;margin-top:2px}
+.v9-meta{font-size:11px;color:var(--muted);line-height:1.45;margin-top:4px}
+.v9-state{font-size:11px;font-weight:800;margin-top:7px}
+.v9-list{display:grid}
+.v9-row{display:grid;grid-template-columns:34px minmax(0,1.3fr) 68px minmax(0,1fr);gap:8px;padding:11px 14px;border-bottom:1px solid rgba(130,150,170,.12);align-items:center}
+.v9-row:last-child{border-bottom:0}
+.v9-row b{font-size:14px}.v9-row small{display:block;color:var(--muted);margin-top:2px}
+.v9-score{font-weight:900;font-size:18px}
+.v9-bar{height:6px;background:#14222e;border-radius:9px;overflow:hidden;margin-top:5px}
+.v9-bar>i{display:block;height:100%;background:linear-gradient(90deg,#ffd15a,#2ee6aa);border-radius:9px}
+.v9-consensus{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px}
+.v9-pill{border:1px solid var(--line);border-radius:13px;padding:12px;background:#08111a}
+.v9-pill strong{display:block;font-size:22px;margin-top:4px}
+.v9-reason{padding:0 14px 14px;color:var(--muted);font-size:11px;line-height:1.5}
+.v9-good{color:#16e6a7}.v9-warn{color:#ffc85a}.v9-bad{color:#ff647a}
+@media(max-width:760px){
+  .v9-grid{grid-template-columns:repeat(2,1fr)}
+  .v9-consensus{grid-template-columns:1fr}
+  .v9-row{grid-template-columns:28px minmax(0,1fr) 58px}
+  .v9-row .v9-last{grid-column:2/4}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v8.7</span></div><div class="one-sub">SIGNAL QUALITY ENGINE · false-positive killer · early breakout · anti-chase</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.0</span></div><div class="one-sub">HYPER PREDICTIVE AI · 15m/1h/4h/24h probability · pre-ignition · consensus</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-market"><div><small>MARKKINA</small><br><b id="oneMarket">ODOTTAA</b></div><div style="text-align:right"><small>TOIMINTA</small><br><b id="oneDecision">EI VIELÄ</b></div></div>
   <div class="one-grid">
     <div class="one-card best" id="oneBest"><div class="one-kicker">🔥 #1 NOW · 3/3</div><div class="one-row"><div class="one-symbol" id="oneBestSym">—</div><div class="one-state" id="oneBestState">WAIT</div></div><div class="one-ignite" id="oneBestIgn">— <span>IGNITION</span></div><div class="one-why" id="oneBestWhy">Odotetaan live-dataa…</div><div class="one-block" id="oneBestBlock"></div><div class="one-delta" id="oneBestDelta"></div></div>
@@ -429,7 +463,37 @@
       <div id="highrisk" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0"></div>
     </section>
 
-  <div class="main">
+  
+<section class="v9-panel" id="hyperPredictiveV9">
+  <div class="v9-head">
+    <h2>🔮 HYPER PREDICTIVE AI v9</h2>
+    <small>future-state engine · probability ≠ certainty<br>one canonical decision bus</small>
+  </div>
+
+  <div class="v9-grid" id="futureHorizonGrid">
+    <div class="v9-card"><div class="v9-kicker">15 MIN</div><div class="v9-symbol">—</div><div class="v9-prob">—</div><div class="v9-meta">Odotetaan dataa…</div></div>
+    <div class="v9-card"><div class="v9-kicker">1 H</div><div class="v9-symbol">—</div><div class="v9-prob">—</div><div class="v9-meta">Odotetaan dataa…</div></div>
+    <div class="v9-card"><div class="v9-kicker">4 H</div><div class="v9-symbol">—</div><div class="v9-prob">—</div><div class="v9-meta">Odotetaan dataa…</div></div>
+    <div class="v9-card"><div class="v9-kicker">24 H</div><div class="v9-symbol">—</div><div class="v9-prob">—</div><div class="v9-meta">Odotetaan dataa…</div></div>
+  </div>
+
+  <div class="v9-consensus">
+    <div class="v9-pill"><div class="v9-kicker">MARKET REGIME AI</div><strong id="v9Regime">—</strong><div class="v9-meta" id="v9RegimeMeta">—</div></div>
+    <div class="v9-pill"><div class="v9-kicker">CONSENSUS / NO-TRADE AI</div><strong id="v9Consensus">—</strong><div class="v9-meta" id="v9ConsensusMeta">—</div></div>
+    <div class="v9-pill"><div class="v9-kicker">LOCAL CALIBRATION MEMORY</div><strong id="v9Calibration">—</strong><div class="v9-meta" id="v9CalibrationMeta">Laitekohtainen oppimismuisti</div></div>
+  </div>
+</section>
+
+<section class="v9-panel" id="preIgnitionV9">
+  <div class="v9-head">
+    <h2>🌌 PRE-IGNITION RADAR</h2>
+    <small>etsii rakennetta ennen suurta 1 h liikettä · anti-chase first</small>
+  </div>
+  <div class="v9-list" id="preIgnitionRows"><div class="empty">Odotetaan dataa…</div></div>
+  <div class="v9-reason">Ranking suosii maltillista nykyliikettä, kiihtyvää 5m/15m-rakennetta, volyymin osallistumista, breakout-painetta, likviditeettiä ja hyvää DQ:ta. Jo pitkälle karanneet liikkeet saavat LATE/EXHAUSTION-rangaistuksen.</div>
+</section>
+
+<div class="main">
     <section class="panel canonical-pro-scanner" id="proScannerPanel83" data-role="pro-scanner-canonical">
       <div class="ph"><h2>⚡ PRO Scanner</h2><small>Automaattinen ranking · heuristinen ennuste</small></div>
       <div class="tablewrap">
@@ -4416,6 +4480,532 @@ document.addEventListener('DOMContentLoaded',()=>{
     applyCanonical87(state.data||[]);
     annotateIntel87();
   }catch(e){}
+});
+</script>
+
+
+<script>
+/* ======================================================================
+   GALAXY ONE v9.0 — HYPER PREDICTIVE AI
+   ----------------------------------------------------------------------
+   This is a deterministic probabilistic decision-support engine, not a
+   trained neural model and not a guarantee of future returns.
+
+   Architecture:
+   1) canonical v8.6 data truth + DQ
+   2) v8.7 false-positive / anti-chase quality
+   3) v9 multi-horizon probabilities
+   4) regime context
+   5) state machine
+   6) consensus/no-trade gate
+   7) local empirical calibration memory
+   8) one canonical score + one UI truth across all rankings
+   ====================================================================== */
+
+const V9_MEMORY_KEY='kp_v9_prediction_memory';
+const V9_MEMORY_MAX=600;
+
+function v9n(v,d=0){v=Number(v);return Number.isFinite(v)?v:d}
+function v9c(v,a=0,b=100){return Math.max(a,Math.min(b,v9n(v)))}
+function v9sigmoid(x){return 1/(1+Math.exp(-x))}
+function v9prob(z){return Math.round(v9c(v9sigmoid(z)*100,1,99))}
+function v9safeArr(a){return Array.isArray(a)?a:[]}
+
+function v9Regime(all){
+  const u=v9safeArr(all).filter(x=>cryptoAsset86(x) && !isStable(x));
+  if(!u.length)return {state:'NO DATA',breadth:0,impulse:0,risk:70};
+  const breadth=u.filter(x=>v9n(x.h24)>0).length/u.length;
+  const shortBreadth=u.filter(x=>v9n(x.h1)>0).length/u.length;
+  const btc=u.find(x=>String(x.symbol||'').toUpperCase()==='BTC');
+  const eth=u.find(x=>String(x.symbol||'').toUpperCase()==='ETH');
+  const lead=((v9n(btc?.h4)+v9n(eth?.h4))/2);
+  const impulse=(shortBreadth-.5)*80 + lead*4;
+  let state='MIXED';
+  if(breadth>.60 && shortBreadth>.58 && lead>0)state='RISK-ON';
+  else if(breadth<.40 && shortBreadth<.42 && lead<0)state='RISK-OFF';
+  else if(shortBreadth>.62 && breadth<.55)state='ROTATION';
+  else if(Math.abs(lead)<1 && Math.abs(shortBreadth-.5)<.08)state='COMPRESSION';
+  const risk=v9c(50-(breadth-.5)*45-(shortBreadth-.5)*35-Math.max(-3,Math.min(3,lead))*6);
+  return {state,breadth,shortBreadth,lead,impulse,risk};
+}
+
+function v9Forecast(x,all){
+  const q=signalQuality87(x);
+  const a=q.base;
+  const z=a.inputs||sig85Inputs(x);
+  const r=v9Regime(all);
+
+  const h1=v9n(z.h1), h4=v9n(z.h4), h24=v9n(z.h24);
+  const m5=v9n(z.m5), m15=v9n(z.m15);
+  const dq=a.dq*100;
+  const liq=v9n(a.liquidity);
+  const acc=v9n(q.acceleration);
+  const eb=v9n(q.earlyBreakout);
+  const vol=v9n(q.volumeExpansion);
+  const late=v9n(q.lateRisk);
+  const rev=v9n(q.reversal);
+  const manip=v9n(q.pumpRisk);
+
+  // Context normalization. Positive is bullish, negative bearish.
+  const regimeBoost =
+    r.state==='RISK-ON'?0.24:
+    r.state==='ROTATION'?0.10:
+    r.state==='RISK-OFF'?-0.30:
+    r.state==='COMPRESSION'?-0.03:0;
+
+  const dataTrust=(dq-60)/40;
+  const liquidityTrust=(liq-50)/50;
+  const antiRisk=(100-late)/100;
+  const antiRev=(100-rev)/100;
+
+  // Horizon-specific latent edges.
+  // Short horizon emphasizes acceleration/reversal.
+  const z15 =
+      (acc-50)/17*0.95 +
+      (eb-50)/20*0.50 +
+      m5/5*0.60 +
+      m15/10*0.30 +
+      (vol-50)/25*0.28 +
+      regimeBoost +
+      dataTrust*0.22 +
+      liquidityTrust*0.15 -
+      late/100*0.85 -
+      rev/100*1.05 -
+      manip/100*0.55;
+
+  // 1h balances acceleration with early breakout.
+  const z1 =
+      (acc-50)/20*0.58 +
+      (eb-50)/19*0.76 +
+      h1/10*0.30 +
+      h4/20*0.16 +
+      (vol-50)/25*0.30 +
+      regimeBoost*1.10 +
+      dataTrust*0.30 +
+      liquidityTrust*0.18 -
+      late/100*0.90 -
+      rev/100*0.65 -
+      manip/100*0.50;
+
+  // 4h weights trend continuity and market regime.
+  const z4 =
+      (eb-50)/22*0.52 +
+      h1/12*0.22 +
+      h4/14*0.62 +
+      h24/45*0.20 +
+      (vol-50)/27*0.25 +
+      regimeBoost*1.40 +
+      dataTrust*0.35 +
+      liquidityTrust*0.22 -
+      late/100*0.70 -
+      rev/100*0.48 -
+      manip/100*0.42;
+
+  // 24h is deliberately conservative; long horizon with current browser data
+  // should never look overconfident.
+  const z24 =
+      h4/16*0.42 +
+      h24/55*0.38 +
+      (eb-50)/25*0.28 +
+      (vol-50)/30*0.22 +
+      regimeBoost*1.55 +
+      dataTrust*0.42 +
+      liquidityTrust*0.22 -
+      late/100*0.82 -
+      rev/100*0.35 -
+      manip/100*0.45;
+
+  let p15=v9prob(z15), p1=v9prob(z1), p4=v9prob(z4), p24=v9prob(z24);
+
+  // Confidence shrinkage toward 50 when DQ is weak.
+  const trust=v9c((dq*.60 + liq*.18 + a.confidence*.22)/100,.30,.97);
+  const shrink=p=>Math.round(50+(p-50)*trust);
+  p15=shrink(p15);p1=shrink(p1);p4=shrink(p4);p24=shrink(p24);
+
+  // Scenario probabilities are conditional heuristics, not claims of calibrated odds.
+  const pBreak=Math.round(v9c(p1*.50+p4*.25+eb*.25 - late*.10));
+  const p5=Math.round(v9c(p1*.46+p4*.30+vol*.12+acc*.12-late*.13));
+  const p10=Math.round(v9c(p1*.28+p4*.38+p24*.18+eb*.16-late*.18));
+  const p20=Math.round(v9c(p4*.34+p24*.38+eb*.18+vol*.10-late*.26-manip*.10));
+  const pDump=Math.round(v9c(
+    100-(p15*.22+p1*.26+p4*.28+p24*.24) + rev*.28 + late*.22 + manip*.18
+  ));
+
+  const horizonMean=Math.round((p15+p1+p4+p24)/4);
+  const dispersion=Math.round(Math.max(p15,p1,p4,p24)-Math.min(p15,p1,p4,p24));
+  const consensus=Math.round(v9c(
+    horizonMean*.60 +
+    q.quality*.22 +
+    dq*.10 +
+    a.confidence*.08 -
+    dispersion*.30 -
+    late*.12 -
+    rev*.10
+  ));
+
+  return {
+    p15,p1,p4,p24,pBreak,p5,p10,p20,pDump,
+    consensus,dispersion,trust:Math.round(trust*100),
+    regime:r,q,a
+  };
+}
+
+function v9StateMachine(x,all){
+  const f=v9Forecast(x,all);
+  const q=f.q, a=f.a;
+  let state='DORMANT';
+
+  if(!cryptoAsset86(x))state='EXCLUDED';
+  else if(!a.fresh)state='DATA WAIT';
+  else if(q.lateRisk>=72 || q.pumpRisk>=72)state='EXHAUSTED';
+  else if(q.reversal>=60 || f.pDump>=68)state='REVERSAL';
+  else if(f.consensus>=78 && f.pBreak>=72 && q.earlyBreakout>=70 && v9n(a.inputs?.h1)<18)state='ARMED';
+  else if(f.consensus>=70 && f.p1>=65 && q.acceleration>=60)state='PRE-IGNITION';
+  else if(f.consensus>=62 && q.acceleration>=55)state='WAKING';
+  else if(v9n(a.inputs?.h1)>0 || v9n(a.inputs?.h4)>0)state='WATCH';
+
+  let fire=false, ready=false;
+  if(a.mapped3 && a.fresh && a.dq>=.70 && a.confidence>=70 &&
+     f.consensus>=80 && f.pBreak>=74 && f.pDump<=40 &&
+     q.lateRisk<55 && q.reversal<45 && state==='ARMED'){
+    fire=true;
+  }else if(a.mapped3 && a.fresh && a.dq>=.65 &&
+           f.consensus>=72 && f.pBreak>=66 && f.pDump<=48 &&
+           q.lateRisk<62){
+    ready=true;
+  }
+
+  let reason='';
+  if(!a.fresh)reason='STALE DATA';
+  else if(state==='EXHAUSTED')reason=`LATE ${Math.round(q.lateRisk)} / PUMP ${Math.round(q.pumpRisk)}`;
+  else if(state==='REVERSAL')reason=`REV ${Math.round(q.reversal)} / DUMP ${f.pDump}%`;
+  else if(!a.mapped3)reason='WORLD DISCOVERY · EI 3/3 APP-MAPISSA';
+  else if(a.dq<.70)reason=`DQ ${Math.round(a.dq*100)}%`;
+  else if(fire)reason='MULTI-HORIZON CONSENSUS FIRE';
+  else if(ready)reason='CONSENSUS READY';
+  else reason=`CNS ${f.consensus} · BRK ${f.pBreak}% · DUMP ${f.pDump}%`;
+
+  return {...f,state,fire,ready,reason};
+}
+
+function v9CanonicalScore(x,all){
+  const p=v9StateMachine(x,all);
+  let s =
+    p.consensus*.55 +
+    p.q.quality*.20 +
+    p.pBreak*.12 +
+    p.p1*.08 +
+    p.p4*.05;
+  if(p.state==='ARMED')s+=5;
+  if(p.state==='PRE-IGNITION')s+=3;
+  if(p.state==='EXHAUSTED')s-=16;
+  if(p.state==='REVERSAL')s-=18;
+  if(p.pDump>=65)s-=10;
+  return Math.round(v9c(s));
+}
+
+function v9PreIgnitionScore(x,all){
+  const p=v9StateMachine(x,all);
+  const h1=v9n(p.a.inputs?.h1), h24=v9n(p.a.inputs?.h24);
+  let s =
+    p.q.acceleration*.24 +
+    p.q.earlyBreakout*.23 +
+    p.q.volumeExpansion*.14 +
+    p.a.liquidity*.10 +
+    (p.a.dq*100)*.10 +
+    p.p1*.10 +
+    p.p4*.09;
+
+  // Strong preference for "not moved yet".
+  if(h1>=0 && h1<=6)s+=8;
+  else if(h1>6 && h1<=12)s+=4;
+  else if(h1>16)s-=Math.min(20,(h1-16)*1.4);
+
+  if(h24>70)s-=12;
+  if(p.q.lateRisk>55)s-=15;
+  if(p.q.reversal>45)s-=12;
+  if(p.q.pumpRisk>55)s-=10;
+  return Math.round(v9c(s));
+}
+
+/* ---------------- LOCAL EMPIRICAL MEMORY ----------------
+   Stores small prediction snapshots in localStorage, evaluates them when
+   enough time has passed, and shows a rough Brier-style quality indicator.
+   It never changes historical prices and never sends data anywhere.
+----------------------------------------------------------------------- */
+function v9LoadMemory(){
+  try{return JSON.parse(localStorage.getItem(V9_MEMORY_KEY)||'[]')||[]}catch(e){return[]}
+}
+function v9SaveMemory(m){
+  try{localStorage.setItem(V9_MEMORY_KEY,JSON.stringify(m.slice(-V9_MEMORY_MAX)))}catch(e){}
+}
+function v9RecordPredictions(all){
+  const now=Date.now(), mem=v9LoadMemory();
+  const lastBy=new Map();
+  for(const r of mem)lastBy.set(r.s,r);
+  const ranked=v9safeArr(all).filter(cryptoAsset86)
+    .map(x=>({x,p:v9StateMachine(x,all)}))
+    .sort((a,b)=>b.p.consensus-a.p.consensus).slice(0,20);
+
+  for(const {x,p} of ranked){
+    const sym=String(x.symbol||'').toUpperCase();
+    const last=lastBy.get(sym);
+    if(last && now-last.t<25*60*1000)continue;
+    mem.push({
+      s:sym,t:now,px:v9n(onePrice(x)),
+      p1:p.p1,p4:p.p4,p24:p.p24,
+      c:p.consensus,state:p.state,
+      e1:null,e4:null,e24:null
+    });
+  }
+  v9SaveMemory(mem);
+}
+function v9EvaluateMemory(all){
+  const now=Date.now(), by=new Map(v9safeArr(all).map(x=>[String(x.symbol||'').toUpperCase(),x]));
+  const mem=v9LoadMemory();
+  let changed=false;
+  for(const r of mem){
+    const x=by.get(r.s), px=v9n(onePrice(x));
+    if(!x||!px||!r.px)continue;
+    const ret=(px/r.px-1)*100;
+    if(r.e1==null && now-r.t>=55*60*1000){r.e1=ret>0?1:0;changed=true}
+    if(r.e4==null && now-r.t>=3.8*60*60*1000){r.e4=ret>0?1:0;changed=true}
+    if(r.e24==null && now-r.t>=23.5*60*60*1000){r.e24=ret>0?1:0;changed=true}
+  }
+  if(changed)v9SaveMemory(mem);
+
+  const vals=[];
+  for(const r of mem){
+    if(r.e1!=null)vals.push({p:r.p1/100,y:r.e1});
+    if(r.e4!=null)vals.push({p:r.p4/100,y:r.e4});
+    if(r.e24!=null)vals.push({p:r.p24/100,y:r.e24});
+  }
+  if(!vals.length)return {n:0,brier:null,quality:null};
+  const brier=vals.reduce((s,v)=>s+(v.p-v.y)**2,0)/vals.length;
+  return {n:vals.length,brier,quality:Math.round(v9c((1-brier)*100))};
+}
+
+/* ---------------- RENDERERS ---------------- */
+function v9BestForHorizon(all,key){
+  return v9safeArr(all).filter(cryptoAsset86)
+    .map(x=>({x,p:v9StateMachine(x,all),score:v9CanonicalScore(x,all)}))
+    .filter(z=>z.p.state!=='EXHAUSTED'&&z.p.state!=='REVERSAL'&&z.p.state!=='EXCLUDED')
+    .sort((a,b)=>(b.p[key]-a.p[key]) || (b.score-a.score))[0]||null;
+}
+
+function renderFutureGridV9(all){
+  const grid=document.getElementById('futureHorizonGrid'); if(!grid)return;
+  const specs=[['15 MIN','p15'],['1 H','p1'],['4 H','p4'],['24 H','p24']];
+  grid.innerHTML=specs.map(([label,key])=>{
+    const z=v9BestForHorizon(all,key);
+    if(!z)return `<div class="v9-card"><div class="v9-kicker">${label}</div><div class="v9-symbol">—</div><div class="v9-prob">—</div><div class="v9-meta">Ei riittävää dataa</div></div>`;
+    const p=z.p;
+    const cls=p[key]>=70?'v9-good':p[key]>=58?'v9-warn':'';
+    return `<div class="v9-card">
+      <div class="v9-kicker">${label} · TOP FUTURE</div>
+      <div class="v9-symbol">${String(z.x.symbol||'').toUpperCase()}</div>
+      <div class="v9-prob ${cls}">${p[key]}%</div>
+      <div class="v9-meta">CNS ${p.consensus} · BRK ${p.pBreak}% · DUMP ${p.pDump}%<br>Q ${p.q.quality} · DQ ${Math.round(p.a.dq*100)}% · trust ${p.trust}%</div>
+      <div class="v9-state">${p.state}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderPreIgnitionV9(all){
+  const el=document.getElementById('preIgnitionRows'); if(!el)return;
+  const rows=v9safeArr(all).filter(cryptoAsset86)
+    .map(x=>({x,p:v9StateMachine(x,all),pre:v9PreIgnitionScore(x,all)}))
+    .filter(z=>z.p.state!=='EXHAUSTED'&&z.p.state!=='REVERSAL'&&z.pre>=58)
+    .sort((a,b)=>b.pre-a.pre).slice(0,12);
+  el.innerHTML=rows.length?rows.map((z,i)=>{
+    const x=z.x,p=z.p,h1=v9n(p.a.inputs?.h1),h24=v9n(p.a.inputs?.h24);
+    return `<div class="v9-row">
+      <div>${i+1}</div>
+      <div><b>${String(x.symbol||'').toUpperCase()}</b><small>${x.name||''} · ${p.a.mapped3?'3/3 APP MAP':'WORLD DISCOVERY'} · ${p.state}</small></div>
+      <div><div class="v9-score">${z.pre}</div><div class="v9-bar"><i style="width:${z.pre}%"></i></div></div>
+      <div class="v9-last"><small>1h ${pct(h1)} · 24h ${pct(h24)} · ACC ${Math.round(p.q.acceleration)} · EB ${Math.round(p.q.earlyBreakout)} · P1 ${p.p1}% · P4 ${p.p4}%</small></div>
+    </div>`;
+  }).join(''):'<div class="empty">Ei laadukasta pre-ignition-kohdetta juuri nyt.</div>';
+}
+
+function renderConsensusV9(all){
+  const r=v9Regime(all);
+  const candidates=v9safeArr(all).filter(cryptoAsset86).map(x=>({x,p:v9StateMachine(x,all)})).sort((a,b)=>b.p.consensus-a.p.consensus);
+  const best=candidates[0];
+  const regime=document.getElementById('v9Regime'), rm=document.getElementById('v9RegimeMeta');
+  if(regime)regime.textContent=r.state;
+  if(rm)rm.textContent=`breadth ${Math.round(r.breadth*100)}% · 1h breadth ${Math.round(r.shortBreadth*100)}% · BTC/ETH 4h ${r.lead>=0?'+':''}${r.lead.toFixed(2)}%`;
+
+  let decision='NO TRADE', meta='Ei riittävää consensus-etua.';
+  const fires=candidates.filter(z=>z.p.fire);
+  const ready=candidates.filter(z=>z.p.ready);
+  if(fires.length){decision='FIRE '+String(fires[0].x.symbol||'').toUpperCase();meta=fires[0].p.reason}
+  else if(ready.length){decision='READY '+String(ready[0].x.symbol||'').toUpperCase();meta=ready[0].p.reason}
+  else if(best){decision='WATCH '+String(best.x.symbol||'').toUpperCase();meta=`CNS ${best.p.consensus} · ${best.p.state} · ${best.p.reason}`}
+  const c=document.getElementById('v9Consensus'), cm=document.getElementById('v9ConsensusMeta');
+  if(c)c.textContent=decision;if(cm)cm.textContent=meta;
+
+  const cal=v9EvaluateMemory(all);
+  const ce=document.getElementById('v9Calibration'), cem=document.getElementById('v9CalibrationMeta');
+  if(ce)ce.textContent=cal.n?`${cal.quality}/100`:'LEARNING';
+  if(cem)cem.textContent=cal.n?`${cal.n} evaluoitua horisonttiennustetta · Brier ${cal.brier.toFixed(3)}`:'Kerää omalla laitteella ennusteita ja vertaa myöhempiin hintoihin.';
+}
+
+/* Sniper list now obeys v9 truth. No EXHAUSTED asset can be labelled SNIPER. */
+function renderSniperV9(all){
+  const el=document.getElementById('signals'); if(!el)return;
+  const rows=v9safeArr(all).filter(cryptoAsset86)
+    .map(x=>({x,p:v9StateMachine(x,all),score:v9CanonicalScore(x,all)}))
+    .filter(z=>z.score>=58)
+    .sort((a,b)=>b.score-a.score).slice(0,14);
+  el.innerHTML=rows.length?rows.map((z,i)=>{
+    const x=z.x,p=z.p;
+    const label=p.state==='ARMED'?'ARMED':
+      p.state==='PRE-IGNITION'?'PRE-IGNITION':
+      p.state==='EXHAUSTED'?'EXHAUSTED / AVOID':
+      p.state==='REVERSAL'?'REVERSAL / AVOID':
+      p.state==='WAKING'?'WAKING':'WATCH';
+    return `<div class="signalitem">
+      <b>${i+1}. ${String(x.symbol||'').toUpperCase()} · ${label}</b>
+      <span>${p.p1>=50?'+':''}${p.p1-50}% edge</span>
+      <div class="muted">Score ${z.score} · 1h ${pct(v9n(p.a.inputs?.h1))} · 24h ${pct(v9n(p.a.inputs?.h24))} · CNS ${p.consensus} · BRK ${p.pBreak}% · DUMP ${p.pDump}%</div>
+      <div class="scorebar"><i style="width:${z.score}%"></i></div>
+    </div>`;
+  }).join(''):'<div class="empty">Ei laadukkaita signaaleja.</div>';
+}
+
+/* One canonical visible score everywhere. */
+function applyV9Canonical(all){
+  for(const x of v9safeArr(all)){
+    if(x._legacyScoreV9==null)x._legacyScoreV9=x.score;
+    if(nonCryptoAsset86(x)){x.score=-1;continue}
+    x._v9=v9StateMachine(x,all);
+    x.score=v9CanonicalScore(x,all);
+    x.setup=x._v9.state;
+  }
+}
+
+aiScore76=function(x,mode='EARLY'){ return v9CanonicalScore(x,state.data||[]); };
+earlySniperScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+breakoutProScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+momentumProScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+predictiveProScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+proScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+buySignalScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+unifiedScore=function(x){ return v9CanonicalScore(x,state.data||[]); };
+
+gate76=function(x,mode='EARLY'){
+  const p=v9StateMachine(x,state.data||[]);
+  const score=v9CanonicalScore(x,state.data||[]);
+  let st='WATCH';
+  if(p.state==='EXCLUDED')st='POIS';
+  else if(!p.a.fresh)st='STALE WAIT';
+  else if(p.state==='EXHAUSTED')st='ÄLÄ JAHTAA';
+  else if(p.state==='REVERSAL')st='REVERSAL';
+  else if(!p.a.mapped3)st='DISCOVERY ONLY';
+  else if(p.fire)st='FIRE';
+  else if(p.ready)st='READY';
+  else if(p.state==='ARMED')st='ARMED';
+  else if(p.state==='PRE-IGNITION')st='EARLY';
+  return {
+    score,dq:p.a.dq,conf:p.a.confidence,phase:p.state,state:st,
+    cross:{fresh:{ok:p.a.fresh},v:{all:p.a.mapped3,any:p.a.mapped3,count:p.a.venueCount},
+      discovery:score>=58,execution:p.fire,early:score,br:p.pBreak,integrity:p.consensus},
+    v9:p
+  };
+};
+
+oneBlock=function(x){
+  const p=v9StateMachine(x,state.data||[]);
+  const sc=v9CanonicalScore(x,state.data||[]);
+  if(p.fire)return `FIRE · ${sc}/100 · CNS ${p.consensus} · BRK ${p.pBreak}%`;
+  if(p.ready)return `VALMISTAUDU · CNS ${p.consensus} · ${p.state}`;
+  if(p.state==='EXHAUSTED')return `EI OSTOA · EXHAUSTED · LATE ${Math.round(p.q.lateRisk)}`;
+  if(p.state==='REVERSAL')return `EI OSTOA · REVERSAL · DUMP ${p.pDump}%`;
+  return `EI VIELÄ · ${p.reason}`;
+};
+
+oneSet=function(prefix,x,stateLabel,kind='EARLY'){
+  if(!x)return;
+  const p=v9StateMachine(x,state.data||[]);
+  const sc=v9CanonicalScore(x,state.data||[]);
+  const t=oneTrend(x), h1=oneH1(x);
+  const sym=document.getElementById(prefix+'Sym'), st=document.getElementById(prefix+'State'),
+        ign=document.getElementById(prefix+'Ign'), why=document.getElementById(prefix+'Why'),
+        de=document.getElementById(prefix+'Delta');
+  if(sym)sym.textContent=oneSymbol(x)||'—';
+  if(st)st.textContent=stateLabel;
+  if(ign)ign.innerHTML=sc+'% <span>IGNITION</span>';
+  if(why)why.textContent=oneWhy(x);
+  if(de){
+    de.textContent=`${t.txt} · 1h ${fmtPct(h1)} · ${p.state} · CNS ${p.consensus} · P1 ${p.p1}% · BRK ${p.pBreak}% · DUMP ${p.pDump}%`;
+    de.className='one-delta '+t.cls;
+  }
+};
+
+function annotateV9(){
+  for(const id of ['oneBestSym','oneRocketSym','oneMicroSym']){
+    const el=document.getElementById(id); if(!el)continue;
+    const sym=String(el.textContent||'').trim().toUpperCase();
+    if(!sym||sym==='—')continue;
+    const x=(state.data||[]).find(z=>String(z.symbol||'').toUpperCase()===sym);
+    if(!x||nonCryptoAsset86(x))continue;
+    const p=v9StateMachine(x,state.data||[]);
+    const card=el.closest('.one-card,.card,.panel')||el.parentElement?.parentElement;
+    if(!card)continue;
+    let line=card.querySelector('.intel87-line,.intel86-line,.intel90-line');
+    if(!line){line=document.createElement('div');card.appendChild(line)}
+    line.className='tiny intel90-line'; line.style.marginTop='5px';
+    line.textContent=`AI90 ${v9CanonicalScore(x,state.data||[])} · CNS ${p.consensus} · P15 ${p.p15}% · P1 ${p.p1}% · P4 ${p.p4}% · P24 ${p.p24}% · BRK ${p.pBreak}% · DUMP ${p.pDump}%`;
+  }
+}
+
+/* Consistency guard: scanner + cards + sniper read from the same v9 state. */
+function v9ConsistencyGuard(){
+  try{
+    enforceSingleScanner862();
+    semanticLabels86();
+    annotateV9();
+  }catch(e){}
+}
+
+const renderV90Base=render;
+render=function(){
+  applyV9Canonical(state.data||[]);
+  renderV90Base();
+  try{
+    // Reapply after legacy renderers may calculate old labels.
+    applyV9Canonical(state.data||[]);
+    renderGalaxyOne(state.data||[]);
+    renderSniperV9(state.data||[]);
+    renderFutureGridV9(state.data||[]);
+    renderPreIgnitionV9(state.data||[]);
+    renderConsensusV9(state.data||[]);
+    syncHyperDQ86(state.data||[]);
+    v9ConsistencyGuard();
+  }catch(e){}
+};
+
+/* Record only after successful live state is present. */
+function v9PostScanLearning(){
+  try{
+    if((state.data||[]).length){
+      v9EvaluateMemory(state.data);
+      v9RecordPredictions(state.data);
+      renderConsensusV9(state.data);
+    }
+  }catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  try{v9ConsistencyGuard()}catch(e){}
+  setTimeout(v9PostScanLearning,2500);
+  setInterval(()=>{
+    try{
+      v9ConsistencyGuard();
+      v9EvaluateMemory(state.data||[]);
+    }catch(e){}
+  },45000);
 });
 </script>
 
