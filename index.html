@@ -202,12 +202,21 @@
 }
 </style>
 
+
+<style>
+.one-server{margin:0 14px 12px;padding:11px;border:1px solid #24404b;border-radius:12px;background:#081118}.one-server-title{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:11px;letter-spacing:.04em}.one-server-title span{color:#ffbd4a;font-weight:800}.one-server-row{display:flex;gap:8px;margin-top:8px}.one-server-row input{flex:1;min-width:0;background:#050b10;border:1px solid #263a49;color:#e8f1f8;border-radius:9px;padding:10px}.one-server-row button{white-space:nowrap}.one-server-note{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.35}.one-server.live{border-color:#11745d}.one-server.live .one-server-title span{color:#23d9a4}.one-server.error{border-color:#7c3346}.one-server.error .one-server-title span{color:#ff6d86}@media(max-width:520px){.one-server-row{display:grid;grid-template-columns:1fr}.one-server-row button{width:100%}}
+</style>
 </head>
 <body>
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.2.0</span></div><div class="one-sub">SERVER DATA ENGINE · proxy-first · instant cache · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.2.1</span></div><div class="one-sub">CORE BRIDGE · server-first · auto-connect · instant cache · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-server" id="oneServerBox">
+    <div class="one-server-title"><b>🌐 DATA SERVER / CORE BRIDGE</b><span id="oneProxyStatus">EI ASETETTU</span></div>
+    <div class="one-server-row"><input id="oneProxyUrl" type="url" inputmode="url" placeholder="https://...workers.dev"><button id="oneProxyConnect" class="primary">YHDISTÄ</button></div>
+    <div class="one-server-note" id="oneProxyNote">Liitä Cloudflare Workerin workers.dev-osoite. /api/market lisätään automaattisesti.</div>
+  </div>
   <div class="one-market"><div><small>MARKKINA</small><br><b id="oneMarket">ODOTTAA</b></div><div style="text-align:right"><small>TOIMINTA</small><br><b id="oneDecision">EI VIELÄ</b></div></div>
   <div class="one-grid">
     <div class="one-card best" id="oneBest"><div class="one-kicker">🔥 #1 NOW · 3/3</div><div class="one-row"><div class="one-symbol" id="oneBestSym">—</div><div class="one-state" id="oneBestState">WAIT</div></div><div class="one-ignite" id="oneBestIgn">— <span>IGNITION</span></div><div class="one-why" id="oneBestWhy">Odotetaan live-dataa…</div><div class="one-block" id="oneBestBlock"></div><div class="one-delta" id="oneBestDelta"></div></div>
@@ -335,7 +344,7 @@
     <div class="diag-card"><div class="diag-head"><span class="diag-name">CryptoPanic</span><span id="diag-cp-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-cp-meta" class="diag-meta">Ei testattu / avain vapaaehtoinen.</div></div>
     <div class="diag-card"><div class="diag-head"><span class="diag-name">FRED</span><span id="diag-fr-status" class="diag-status diag-warn">WAIT</span></div><div id="diag-fr-meta" class="diag-meta">Ei testattu / avain vapaaehtoinen.</div></div>
   </div>
-  <div class="notice-strong"><b>SOURCE POLICY v6.2:</b> CoinGecko + Binance muodostavat core-datan. CoinGlass/LunarCrush ovat lisävahvistuksia. Optional API:n 429/virhe ei saa pysäyttää core-skannausta eikä yksin luoda negatiivista signaalia. FIRE vaatii kuitenkin riittävän datan ja signaalin laadun.</div>  <div class="notice-strong" style="margin-top:10px"><b>SERVER DATA ENGINE v9.2:</b> Aseta Cloudflare Worker -osoite kerran. Galaxy tallentaa sen vain tähän selaimeen. Esimerkki: https://kryptopulse-market.YOURNAME.workers.dev</div>
+  <div class="notice-strong"><b>SOURCE POLICY v9.2.1:</b> DATA SERVER muodostaa markkina-CORE:n; useampi upstream-lähde antaa 2/2-validoinnin. Binance on taustarikastus eikä saa blokata pääskannausta. CoinGlass/LunarCrush ovat lisävahvistuksia. Optional API:n 429/virhe ei saa pysäyttää core-skannausta eikä yksin luoda negatiivista signaalia. FIRE vaatii kuitenkin riittävän datan ja signaalin laadun.</div>  <div class="notice-strong" style="margin-top:10px"><b>CORE BRIDGE v9.2.1:</b> Aseta Cloudflare Worker -osoite kerran. Galaxy tallentaa sen vain tähän selaimeen. Esimerkki: https://kryptopulse-market.YOURNAME.workers.dev</div>
   <div class="diag-actions" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
     <input id="proxyUrl" type="url" inputmode="url" placeholder="https://...workers.dev" style="flex:1;min-width:220px;padding:11px;border-radius:9px;border:1px solid var(--line);background:#081018;color:var(--text)">
     <button id="saveProxyUrl" class="primary">Tallenna DATA SERVER</button>
@@ -1211,11 +1220,17 @@ function coinLoreToCg(c){
     kp_h4:Number(c.percent_change_1h||0)*2.2, kp_source:'COINLORE', last_updated:new Date().toISOString()
   };
 }
-const KP_PROXY_KEY='kp_market_proxy_v920';
+const KP_PROXY_KEY='kp_market_proxy_v921';
+function kpNormalizeProxy(v){
+  v=String(v||'').trim();
+  if(!v)return '';
+  if(!/^https?:\/\//i.test(v))v='https://'+v;
+  try{const u=new URL(v);return (u.origin+(u.pathname||'').replace(/\/api\/market\/?$/i,'').replace(/\/health\/?$/i,'')).replace(/\/$/,'')}catch(e){return v.replace(/\/api\/market\/?$/i,'').replace(/\/health\/?$/i,'').replace(/\/$/,'')}
+}
 function kpProxyUrl(){
   let q=''; try{q=new URL(location.href).searchParams.get('proxy')||''}catch(e){}
-  if(q){try{localStorage.setItem(KP_PROXY_KEY,q.replace(/\/$/,''))}catch(e){};return q.replace(/\/$/,'')}
-  try{return String(localStorage.getItem(KP_PROXY_KEY)||'').trim().replace(/\/$/,'')}catch(e){return ''}
+  if(q){q=kpNormalizeProxy(q);try{localStorage.setItem(KP_PROXY_KEY,q)}catch(e){};return q}
+  try{return kpNormalizeProxy(localStorage.getItem(KP_PROXY_KEY)||'')}catch(e){return ''}
 }
 async function v92ProxyCore(){
   const base=kpProxyUrl();
@@ -1231,6 +1246,7 @@ async function v92ProxyCore(){
     diagPaint('cg','LIVE',`SERVER ${body.sources?.join('+')||body.source||'LIVE'} · ${rows.length} assets`,ms);
     DIAG.market={status:'LIVE',message:'SERVER',ts:Date.now()};
     DIAG.validate={status:(body.sources?.length||1)>1?'LIVE':'WAIT',message:(body.sources||[]).join('+')||'server',ts:Date.now()};
+    const os=$('oneProxyStatus'), ob=$('oneServerBox'), on=$('oneProxyNote');if(os)os.textContent='LIVE · CORE '+((body.sources?.length||0)>1?'2/2':'1/2');if(ob){ob.classList.remove('error');ob.classList.add('live')}if(on)on.textContent=`${rows.length} assettia · ${(body.sources||[]).join('+')||'SERVER'}`;
     return {rows,mode:`SERVER LIVE · ${(body.sources||[]).join('+')||'CORE'}`,cgLive:true,ppLive:(body.sources?.length||0)>1};
   } finally {clearTimeout(timer)}
 }
@@ -1238,6 +1254,7 @@ async function v92Core(scanToken){
   // Server-first. Direct browser feeds remain only as an emergency fallback.
   try{return await v92ProxyCore()}
   catch(serverErr){
+    const os=$('oneProxyStatus'),ob=$('oneServerBox'),on=$('oneProxyNote');if(os)os.textContent=kpProxyUrl()?'SERVER ERROR':'EI ASETETTU';if(ob){ob.classList.remove('live');ob.classList.add('error')}if(on)on.textContent=String(serverErr?.message||serverErr);
     diagLog('DATA SERVER: '+String(serverErr?.message||serverErr));
     try{return await v91FastCore(scanToken)}
     catch(directErr){throw new Error(String(serverErr?.message||serverErr)+' · Direct fallback: '+String(directErr?.message||directErr))}
@@ -2621,9 +2638,37 @@ function initDiagnosticsUI(){
   const proxyInput=$('proxyUrl'),proxySave=$('saveProxyUrl'),proxyTest=$('testProxyUrl'),proxyState=$('proxyState');
   if(proxyInput)proxyInput.value=kpProxyUrl();
   if(proxyState)proxyState.textContent=kpProxyUrl()?'ASETETTU':'EI ASETETTU';
-  if(proxySave)proxySave.onclick=()=>{const v=String(proxyInput?.value||'').trim().replace(/\/$/,'');try{if(v)localStorage.setItem(KP_PROXY_KEY,v);else localStorage.removeItem(KP_PROXY_KEY)}catch(e){};if(proxyState)proxyState.textContent=v?'TALLENNETTU':'POISTETTU';diagLog('DATA SERVER '+(v?'tallennettu':'poistettu'));};
+  if(proxySave)proxySave.onclick=()=>{const v=kpNormalizeProxy(proxyInput?.value||'');try{if(v)localStorage.setItem(KP_PROXY_KEY,v);else localStorage.removeItem(KP_PROXY_KEY)}catch(e){};if(proxyState)proxyState.textContent=v?'TALLENNETTU':'POISTETTU';diagLog('DATA SERVER '+(v?'tallennettu':'poistettu'));};
   if(proxyTest)proxyTest.onclick=async()=>{if(proxyState)proxyState.textContent='TESTI…';try{const r=await v92ProxyCore();if(proxyState)proxyState.textContent='LIVE · '+r.rows.length+' assets';}catch(e){if(proxyState)proxyState.textContent='ERROR';diagLog('DATA SERVER TEST: '+String(e?.message||e));}};
-  setTimeout(()=>diagLog('v9.2.0 SERVER DATA ENGINE ready — proxy-first core.'),600);
+  setTimeout(()=>diagLog('v9.2.1 CORE BRIDGE ready — server-first core.'),600);
+  // v9.2.1 top-level CORE BRIDGE: visible on mobile without opening diagnostics.
+  const oneProxyInput=$('oneProxyUrl'),oneProxyConnect=$('oneProxyConnect'),oneProxyStatus=$('oneProxyStatus'),oneProxyNote=$('oneProxyNote'),oneServerBox=$('oneServerBox');
+  function oneProxyPaint(kind,text,note){
+    if(oneProxyStatus)oneProxyStatus.textContent=text;
+    if(oneProxyNote&&note)oneProxyNote.textContent=note;
+    if(oneServerBox){oneServerBox.classList.remove('live','error');if(kind)oneServerBox.classList.add(kind);}
+  }
+  function oneProxySync(){const v=kpProxyUrl();if(oneProxyInput)oneProxyInput.value=v;if(proxyInput)proxyInput.value=v;oneProxyPaint(v?'':'',v?'ASETETTU':'EI ASETETTU',v?'Paina YHDISTÄ varmistaaksesi live-markkinadatan.':'Liitä Cloudflare Workerin workers.dev-osoite. /api/market lisätään automaattisesti.');}
+  async function oneProxyConnectNow(){
+    const v=kpNormalizeProxy(oneProxyInput?.value||proxyInput?.value||'');
+    if(!v){oneProxyPaint('error','PUUTTUU','Liitä ensin workers.dev-osoite.');return;}
+    try{localStorage.setItem(KP_PROXY_KEY,v)}catch(e){}
+    if(oneProxyInput)oneProxyInput.value=v;if(proxyInput)proxyInput.value=v;
+    oneProxyPaint('', 'TESTI…','Haetaan /api/market…');
+    if(oneProxyConnect){oneProxyConnect.disabled=true;oneProxyConnect.style.opacity='.7';}
+    try{
+      const r=await v92ProxyCore();
+      oneProxyPaint('live','LIVE · CORE '+((DIAG.validate?.status==='LIVE')?'2/2':'1/2'),`${r.rows.length} assettia · ${r.mode}`);
+      if(proxyState)proxyState.textContent='LIVE · '+r.rows.length+' assets';
+      state._scanBusy=false;
+      setTimeout(()=>scan(),80);
+    }catch(e){oneProxyPaint('error','ERROR',String(e?.message||e));if(proxyState)proxyState.textContent='ERROR';}
+    finally{if(oneProxyConnect){oneProxyConnect.disabled=false;oneProxyConnect.style.opacity='1';}}
+  }
+  if(oneProxyConnect)oneProxyConnect.onclick=oneProxyConnectNow;
+  if(oneProxyInput)oneProxyInput.addEventListener('keydown',e=>{if(e.key==='Enter')oneProxyConnectNow();});
+  oneProxySync();
+
 }
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',initDiagnosticsUI,{once:true});
