@@ -156,6 +156,8 @@
 .ai741{margin-top:7px;padding-top:7px;border-top:1px solid #1b2a38;font-size:10px;line-height:1.45;color:#9fb0c2}
 .ai741 b{color:#dce8f5}.ai741-good{color:#58e5a0}.ai741-warn{color:#ffd166}.ai741-bad{color:#ff8b8b}
 
+
+.v95-ledger-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:12px 0 8px;color:#cbd7e6;font-size:12px}.v95-ledger-head span{color:#708096;font-weight:400}.v95-mini-btn{border:1px solid #2b4655;background:#0d1720;color:#9fc7d7;border-radius:10px;padding:8px 10px;font-size:10px;font-weight:800}.v95-board{display:grid;gap:8px}.v95-row{display:grid;grid-template-columns:minmax(62px,.65fr) minmax(130px,1.35fr) minmax(72px,.75fr) minmax(72px,.75fr);gap:8px;align-items:center;border:1px solid #173040;background:#09131b;border-radius:12px;padding:10px}.v95-sym{font-size:18px;font-weight:900;color:#edf7ff}.v95-action{font-size:10px;font-weight:900;letter-spacing:.6px}.v95-action.fire{color:#22e7a4}.v95-action.ready{color:#5cb4ff}.v95-action.early{color:#ffd16a}.v95-action.watch{color:#a6b3c2}.v95-m{font-size:10px;color:#7f91a5;line-height:1.45}.v95-score{text-align:right;font-weight:900;color:#dceaf5}.v95-score small{display:block;color:#708096;font-size:9px;font-weight:600}@media(max-width:600px){.v95-row{grid-template-columns:58px 1fr 62px}.v95-row .v95-hide-mobile{display:none}.v95-ledger-head{align-items:flex-start;flex-direction:column}.v95-mini-btn{width:100%}}
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -211,7 +213,7 @@
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.4.0</span></div><div class="one-sub">HYPER CRYSTAL FORECAST · trajectory + acceleration · reversal risk · calibrated confidence · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.5.0</span></div><div class="one-sub">HYPER CRYSTAL LEARNING · prediction ledger · time-aligned outcomes · calibration · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-server" id="oneServerBox">
     <div class="one-server-title"><b>🌐 DATA SERVER / CORE BRIDGE</b><span id="oneProxyStatus">EI ASETETTU</span></div>
     <div class="one-server-row"><input id="oneProxyUrl" type="url" inputmode="url" placeholder="https://...workers.dev"><button id="oneProxyConnect" class="primary">YHDISTÄ</button></div>
@@ -483,8 +485,8 @@
   
 <section class="v9-panel" id="hyperPredictiveV9">
   <div class="v9-head">
-    <h2>🔮 HYPER CRYSTAL FORECAST v9.4</h2>
-    <small>multi-horizon probability · trajectory acceleration · persistence · reversal risk · calibration · probability ≠ certainty</small>
+    <h2>🔮 HYPER CRYSTAL FORECAST v9.5</h2>
+    <small>multi-horizon probability · trajectory · prediction ledger · empirical calibration · probability ≠ certainty</small>
   </div>
 
   <div class="v9-grid" id="futureHorizonGrid">
@@ -509,6 +511,30 @@
     <div class="v9-pill"><div class="v9-kicker">REVERSAL PROBABILITY</div><strong id="v94Reversal">—</strong><div class="v9-meta" id="v94ReversalMeta">Trajectory + dump + momentum reversal.</div></div>
     <div class="v9-pill"><div class="v9-kicker">CALIBRATED CONFIDENCE</div><strong id="v94Confidence">LEARNING</strong><div class="v9-meta" id="v94ConfidenceMeta">Local prediction ledger tempers raw scores.</div></div>
   </div>
+</section>
+
+<section class="v9-panel" id="predictionLedgerV95">
+  <div class="v9-head">
+    <h2>🧪 PREDICTION LEDGER + CALIBRATION v9.5</h2>
+    <small>shadow-only learning · time-aligned outcomes · Brier score · hit rate · reliability · no execution</small>
+  </div>
+  <div class="v9-consensus">
+    <div class="v9-pill"><div class="v9-kicker">EVALUATED OUTCOMES</div><strong id="v95EvalN">0</strong><div class="v9-meta" id="v95EvalMeta">Kerätään 15m / 1h / 4h / 24h toteumia.</div></div>
+    <div class="v9-pill"><div class="v9-kicker">RELIABILITY</div><strong id="v95Reliability">LEARNING</strong><div class="v9-meta" id="v95ReliabilityMeta">Tarvitaan toteumia ennen luotettavuusarviota.</div></div>
+    <div class="v9-pill"><div class="v9-kicker">CALIBRATION GAP</div><strong id="v95CalGap">—</strong><div class="v9-meta" id="v95CalGapMeta">Ennustettu vs toteutunut nousuosuus.</div></div>
+  </div>
+  <div class="v9-consensus" style="margin-top:10px">
+    <div class="v9-pill"><div class="v9-kicker">15 MIN</div><strong id="v95H15">LEARNING</strong><div class="v9-meta" id="v95H15Meta">—</div></div>
+    <div class="v9-pill"><div class="v9-kicker">1 H</div><strong id="v95H1">LEARNING</strong><div class="v9-meta" id="v95H1Meta">—</div></div>
+    <div class="v9-pill"><div class="v9-kicker">4 H</div><strong id="v95H4">LEARNING</strong><div class="v9-meta" id="v95H4Meta">—</div></div>
+    <div class="v9-pill"><div class="v9-kicker">24 H</div><strong id="v95H24">LEARNING</strong><div class="v9-meta" id="v95H24Meta">—</div></div>
+  </div>
+  <div class="v95-ledger-head">
+    <div><b>CRYSTAL SHADOW BOARD</b><span id="v95BoardNote"> top 5 · adaptive calibration only after sufficient outcomes</span></div>
+    <button id="v95ResetLedger" type="button" class="v95-mini-btn">NOLLAA OPPIMISMUISTI</button>
+  </div>
+  <div id="v95ShadowBoard" class="v95-board"><div class="empty">Odotetaan seuraavaa skannausta…</div></div>
+  <div class="v9-reason">v9.5 tallentaa ennusteen hetkellä hinnan ja etsii myöhemmin aikaleimallisesti lähimmän toteutuneen hinnan. Kalibrointi on laitekohtainen ja vaikuttaa vain varovaisesti confidenceen; se ei tee kauppoja.</div>
 </section>
 
 <section class="v9-panel" id="preIgnitionV9">
@@ -5470,6 +5496,103 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(state._scanBusy)return;
     try{v9ConsistencyGuard();v9EvaluateMemory(state.data||[]);}catch(e){}
   },90000);
+});
+</script>
+
+
+<script>
+/* ================= v9.5 PREDICTION LEDGER + CALIBRATION =================
+   Shadow-only, localStorage-only learning layer.
+   - stores scan price tape with timestamps
+   - records top prediction snapshots
+   - evaluates 15m / 1h / 4h / 24h using nearest time-aligned future price
+   - computes per-horizon Brier score, hit rate and calibration gap
+   - gently calibrates displayed crystal confidence after enough outcomes
+   No order execution. No claim of guaranteed prediction.
+============================================================================ */
+const V95_TAPE_KEY='kp_v95_price_tape';
+const V95_LEDGER_KEY='kp_v95_prediction_ledger';
+const V95_MAX_TAPE=240;
+const V95_MAX_LEDGER=900;
+const V95_H=[
+  {k:'m15',ms:15*60e3,p:'p15',label:'15m',tol:8*60e3},
+  {k:'h1',ms:60*60e3,p:'p1',label:'1h',tol:18*60e3},
+  {k:'h4',ms:4*60*60e3,p:'p4',label:'4h',tol:55*60e3},
+  {k:'h24',ms:24*60*60e3,p:'p24',label:'24h',tol:3*60*60e3}
+];
+function v95Load(k){try{return JSON.parse(localStorage.getItem(k)||'[]')||[]}catch(e){return[]}}
+function v95Save(k,a,max){try{localStorage.setItem(k,JSON.stringify(a.slice(-max)))}catch(e){}}
+function v95PriceMap(all){const m={};for(const x of v9safeArr(all)){const s=String(x.symbol||'').toUpperCase(),px=v9n(onePrice(x));if(s&&px>0)m[s]=px}return m}
+function v95CaptureTape(all){
+  const now=Date.now(),t=v95Load(V95_TAPE_KEY);const last=t[t.length-1];
+  if(last&&now-last.t<40000)return;
+  const px=v95PriceMap(all);if(!Object.keys(px).length)return;
+  t.push({t:now,px});v95Save(V95_TAPE_KEY,t,V95_MAX_TAPE);
+}
+function v95NearestPrice(sym,target,tol){
+  const tape=v95Load(V95_TAPE_KEY);let best=null,bd=Infinity;
+  for(const snap of tape){const px=v9n(snap?.px?.[sym]);if(px<=0)continue;const d=Math.abs(v9n(snap.t)-target);if(d<bd){best={t:v9n(snap.t),px};bd=d}}
+  return best&&bd<=tol?{...best,delta:bd}:null;
+}
+function v95Record(all){
+  const now=Date.now(),L=v95Load(V95_LEDGER_KEY);const lastBy=new Map();
+  for(const r of L)lastBy.set(r.s,r);
+  const ranked=v9safeArr(all).filter(cryptoAsset86).map(x=>({x,z:v93Crystal(x,all)}))
+    .filter(o=>o.z.action!=='REJECT').sort((a,b)=>(b.z.ev-a.z.ev)||(b.z.confidence-a.z.confidence)).slice(0,24);
+  for(const {x,z} of ranked){
+    const s=String(x.symbol||'').toUpperCase(),px=v9n(onePrice(x)),prev=lastBy.get(s);if(!s||px<=0)continue;
+    if(prev&&now-prev.t<22*60e3)continue;
+    const p=z.p;L.push({id:s+'-'+now,s,t:now,px,action:z.action,cr:z.crystal,conf:z.confidence,ev:z.ev,c:p.consensus,br:p.pBreak,d:p.pDump,
+      probs:{m15:p.p15,h1:p.p1,h4:p.p4,h24:p.p24},out:{m15:null,h1:null,h4:null,h24:null}});
+  }
+  v95Save(V95_LEDGER_KEY,L,V95_MAX_LEDGER);
+}
+function v95Evaluate(){
+  const now=Date.now(),L=v95Load(V95_LEDGER_KEY);let changed=false;
+  for(const r of L){if(!r||!r.s||!r.px)continue;r.out=r.out||{};
+    for(const h of V95_H){if(r.out[h.k]!=null||now-r.t<h.ms-h.tol*.25)continue;const q=v95NearestPrice(r.s,r.t+h.ms,h.tol);if(!q)continue;
+      const ret=(q.px/r.px-1)*100;r.out[h.k]={ret:+ret.toFixed(3),up:ret>0?1:0,t:q.t,lagMin:+((q.t-(r.t+h.ms))/60000).toFixed(1)};changed=true;}
+  }
+  if(changed)v95Save(V95_LEDGER_KEY,L,V95_MAX_LEDGER);return L;
+}
+function v95Stats(L,key){
+  const vals=[];for(const r of L){const o=r?.out?.[key],p=v9n(r?.probs?.[key],NaN);if(o&&Number.isFinite(p))vals.push({p:v9c(p)/100,y:o.up,ret:v9n(o.ret)});}
+  const n=vals.length;if(!n)return {n:0,brier:null,hit:null,gap:null,ret:null,reliability:50};
+  const b=vals.reduce((a,v)=>a+(v.p-v.y)*(v.p-v.y),0)/n;const hit=vals.reduce((a,v)=>a+v.y,0)/n;const pred=vals.reduce((a,v)=>a+v.p,0)/n;const gap=(hit-pred)*100;const ret=vals.reduce((a,v)=>a+v.ret,0)/n;
+  const maturity=v9c(n/60,0,1);const rel=v9c((1-b)*100*(.55+.45*maturity)-Math.abs(gap)*.28);
+  return {n,brier:b,hit:hit*100,gap,ret,reliability:Math.round(rel)};
+}
+function v95AllStats(){const L=v95Evaluate();const by={};let n=0,bs=0,wn=0,g=0;
+  for(const h of V95_H){by[h.k]=v95Stats(L,h.k);const z=by[h.k];if(z.n){n+=z.n;bs+=z.brier*z.n;g+=z.gap*z.n;wn+=z.n}}
+  const brier=wn?bs/wn:null,gap=wn?g/wn:null,reliability=wn?Math.round(v9c((1-brier)*100-Math.abs(gap)*.22)):50;
+  return {L,by,n,brier,gap,reliability};
+}
+function v95CalibratedProb(raw,key){
+  const S=v95AllStats().by[key];if(!S||S.n<8)return Math.round(v9c(raw));const maturity=v9c((S.n-8)/72,0,.55);const empirical=v9c((S.hit||50));
+  return Math.round(v9c(raw*(1-maturity)+empirical*maturity));
+}
+function v95ConfidenceAdjust(raw){
+  const S=v95AllStats();if(S.n<12)return Math.round(v9c(raw));const maturity=v9c((S.n-12)/120,0,.38);return Math.round(v9c(raw*(1-maturity)+S.reliability*maturity));
+}
+function v95FmtH(z){if(!z||!z.n)return ['LEARNING','ei evaluoituja toteumia'];return [`${z.reliability}/100`,`n ${z.n} · hit ${z.hit.toFixed(0)}% · Brier ${z.brier.toFixed(3)} · gap ${z.gap>=0?'+':''}${z.gap.toFixed(1)}pp · avg ret ${z.ret>=0?'+':''}${z.ret.toFixed(2)}%`]}
+function renderLedgerV95(all){
+  const S=v95AllStats();const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  set('v95EvalN',String(S.n));set('v95EvalMeta',S.n?`Brier ${S.brier.toFixed(3)} · 4 horizonin time-aligned shadow outcomes`:'Kerätään 15m / 1h / 4h / 24h toteumia.');
+  set('v95Reliability',S.n>=12?`${S.reliability}/100`:'LEARNING');set('v95ReliabilityMeta',S.n>=12?`${S.n} evaluoitua outcomea · pienempi Brier on parempi`:'Tarvitaan vähintään 12 outcomea ennen reliability-arviota.');
+  set('v95CalGap',S.n?`${S.gap>=0?'+':''}${S.gap.toFixed(1)} pp`:'—');set('v95CalGapMeta',S.n?'positiivinen = malli aliarvioi nousuosuutta · negatiivinen = yliarvioi':'Ennustettu vs toteutunut nousuosuus.');
+  for(const [k,id,meta] of [['m15','v95H15','v95H15Meta'],['h1','v95H1','v95H1Meta'],['h4','v95H4','v95H4Meta'],['h24','v95H24','v95H24Meta']]){const [a,b]=v95FmtH(S.by[k]);set(id,a);set(meta,b)}
+  const board=document.getElementById('v95ShadowBoard');if(!board)return;
+  const rows=v9safeArr(all).filter(cryptoAsset86).map(x=>({x,z:v93Crystal(x,all)})).filter(o=>o.z.action!=='REJECT')
+    .map(o=>{const z=o.z,p=z.p;const cp1=v95CalibratedProb(p.p1,'h1'),cp4=v95CalibratedProb(p.p4,'h4');return {...o,v95conf:v95ConfidenceAdjust(z.confidence),cp1,cp4}})
+    .sort((a,b)=>(b.v95conf-a.v95conf)||(b.z.ev-a.z.ev)).slice(0,5);
+  board.innerHTML=rows.length?rows.map(o=>{const sym=String(o.x.symbol||'').toUpperCase(),a=o.z.action.toLowerCase();return `<div class="v95-row"><div><div class="v95-sym">${sym}</div><div class="v95-action ${a}">${o.z.action}</div></div><div class="v95-m">P1 ${o.cp1}% · P4 ${o.cp4}% · BRK ${o.z.p.pBreak}%<br>persist ${o.z.tr.persist} · REV ${o.z.tr.reversal}% · DUMP ${o.z.p.pDump}%</div><div class="v95-score">${o.v95conf}<small>CAL CONF</small></div><div class="v95-score v95-hide-mobile">${o.z.ev>=0?'+':''}${o.z.ev}<small>EV/RISK</small></div></div>`}).join(''):'<div class="empty">Ei hyväksyttäviä shadow-kandidaatteja.</div>';
+}
+function v95PostScan(){try{if((state.data||[]).length){v95CaptureTape(state.data);v95Record(state.data);v95Evaluate();renderLedgerV95(state.data)}}catch(e){console.warn('v9.5 ledger',e)}}
+const v95PrevPostScan=typeof v93PostScan==='function'?v93PostScan:null;
+if(v95PrevPostScan){v93PostScan=function(){try{v95PrevPostScan()}finally{v95PostScan()}}}
+document.addEventListener('DOMContentLoaded',()=>{
+  try{renderLedgerV95(state.data||[])}catch(e){}
+  document.getElementById('v95ResetLedger')?.addEventListener('click',()=>{if(confirm('Nollataanko v9.5 Prediction Ledger ja price tape tältä laitteelta?')){localStorage.removeItem(V95_LEDGER_KEY);localStorage.removeItem(V95_TAPE_KEY);renderLedgerV95(state.data||[])}});
 });
 </script>
 
