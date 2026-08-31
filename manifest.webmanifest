@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v9.1.0 FAST HYPER PREDICTIVE AI",
+  "name": "KryptoPulse GALAXY ONE v9.2.0 SERVER DATA ENGINE",
   "short_name": "Galaxy One AI",
-  "start_url": "./index.html?v=901-fast-scan",
+  "start_url": "./index.html?v=920-server-data",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
