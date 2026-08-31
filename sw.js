@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v9-2-3-auto90-watchdog-20260831';
+const CACHE='kryptopulse-galaxy-v9-3-0-hyper-crystal-20260831';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
