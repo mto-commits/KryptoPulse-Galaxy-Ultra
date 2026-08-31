@@ -1,12 +1,12 @@
 {
-  "name": "KryptoPulse GALAXY ONE v9.0 HYPER PREDICTIVE AI",
+  "name": "KryptoPulse GALAXY ONE v9.0.1 FAST HYPER PREDICTIVE AI",
   "short_name": "Galaxy One AI",
-  "start_url": "./index.html?v=900-hyper-predictive-ai",
+  "start_url": "./index.html?v=901-fast-scan",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
   "theme_color": "#070a0f",
-  "description": "Multi-horizon predictive crypto decision-support scanner with canonical score, pre-ignition radar, risk gates and local calibration memory.",
+  "description": "Performance-optimized multi-horizon predictive crypto decision-support scanner.",
   "icons": [
     {
       "src": "./icon-192.png",
