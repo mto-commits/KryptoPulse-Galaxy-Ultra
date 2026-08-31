@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v9.2.0 SERVER DATA ENGINE",
+  "name": "KryptoPulse GALAXY ONE v9.2.3 AUTO90 WATCHDOG",
   "short_name": "Galaxy One AI",
-  "start_url": "./index.html?v=920-server-data",
+  "start_url": "./index.html?v=923-auto90-watchdog",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",

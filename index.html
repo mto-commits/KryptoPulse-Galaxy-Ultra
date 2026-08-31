@@ -4,7 +4,7 @@
 <meta name="kp-version" content="9.0.1">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KryptoPulse GALAXY ONE v9.2.2 — AUTO 90s FIX</title>
+<title>KryptoPulse GALAXY ONE v9.2.3 — AUTO90 WATCHDOG</title>
 <style>
 :root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
@@ -211,7 +211,7 @@
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.2.2</span></div><div class="one-sub">CORE BRIDGE · server-first · auto-connect · instant cache · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.2.3</span></div><div class="one-sub">CORE BRIDGE · server-first · auto-connect · instant cache · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-server" id="oneServerBox">
     <div class="one-server-title"><b>🌐 DATA SERVER / CORE BRIDGE</b><span id="oneProxyStatus">EI ASETETTU</span></div>
     <div class="one-server-row"><input id="oneProxyUrl" type="url" inputmode="url" placeholder="https://...workers.dev"><button id="oneProxyConnect" class="primary">YHDISTÄ</button></div>
@@ -225,6 +225,7 @@
   </div>
   <div class="one-position"><div class="one-kicker">📌 POSITION</div><div class="big" id="onePos">Ei avointa positiota</div><div class="one-why" id="onePosMeta">Position Engine jatkaa taustalla.</div></div>
   <div class="one-actions"><button class="primary" id="oneScan">⚡ SKANNAA</button><button id="oneAuto">AUTO 90s</button></div>
+  <div id="oneAutoMeta" style="margin-top:8px;text-align:center;font-size:11px;color:var(--muted)">AUTO OFF · viime skannaus — · seuraava —</div>
   <button class="one-advanced" id="oneAdvanced">Näytä analyysimoottori</button>
   <div class="one-note">OSTA/FIRE vain strict 3/3 -vahvistuksella. Discovery ei ole toimeksianto.</div>
 </section>
@@ -2360,24 +2361,73 @@ function renderHighRisk(all){
 
 // ===== v6.3 ULTRA OUT-OF-GALAXY ACTION LAYER =====
 const UX_AUTO_KEY='kp_v63_autoscan';
-let uxAutoTimer=null;
-let uxAutoCountdownTimer=null;
+const UX_AUTO_NEXT_KEY='kp_v923_auto_next';
+const UX_AUTO_LAST_KEY='kp_v923_auto_last';
+let uxAutoTimer=null;          // UI heartbeat only
+let uxAutoWakeTimer=null;      // absolute-time watchdog
 let uxAutoNextAt=0;
+let uxAutoRunning=false;
 function uxAutoEnabled(){ try{return localStorage.getItem(UX_AUTO_KEY)==='1'}catch(e){return false} }
+function uxReadTs(key){try{return Number(localStorage.getItem(key)||0)||0}catch(e){return 0}}
+function uxWriteTs(key,v){try{localStorage.setItem(key,String(Math.max(0,Number(v)||0)))}catch(e){}}
+function uxFmtClock(ts){return ts?new Date(ts).toLocaleTimeString('fi-FI',{hour:'2-digit',minute:'2-digit',second:'2-digit'}):'—'}
+function uxSetNextAt(ts){uxAutoNextAt=Math.max(0,Number(ts)||0);uxWriteTs(UX_AUTO_NEXT_KEY,uxAutoNextAt)}
+function uxAutoState(){
+  if(!uxAutoEnabled())return 'OFF';
+  if(uxAutoRunning||state._scanBusy)return 'SCANNING';
+  if(document.hidden)return 'PAUSED';
+  return 'ACTIVE';
+}
 function uxPaintAuto(){
-  const on=uxAutoEnabled();
-  const remain=on&&uxAutoNextAt?Math.max(0,Math.ceil((uxAutoNextAt-Date.now())/1000)):90;
-  const label=on?`AUTO ON · ${remain}s`:'AUTO 90s';
+  const on=uxAutoEnabled(), now=Date.now();
+  if(on&&!uxAutoNextAt)uxAutoNextAt=uxReadTs(UX_AUTO_NEXT_KEY);
+  const remain=on&&uxAutoNextAt?Math.max(0,Math.ceil((uxAutoNextAt-now)/1000)):90;
+  const st=uxAutoState();
+  const label=!on?'AUTO 90s':st==='SCANNING'?'AUTO · SKANNAA':st==='PAUSED'?`AUTO · TAUKO ${remain}s`:`AUTO ON · ${remain}s`;
   const b=$('oneAuto');
   if(b){b.textContent=label;b.setAttribute('aria-pressed',on?'true':'false');b.style.borderColor=on?'#10e7a1':'';b.style.color=on?'#10e7a1':'';}
-  if($('uxAuto'))$('uxAuto').textContent=on?`⏱ Auto-scan ON · ${remain} s`:'⏱ Auto-scan OFF';
+  if($('uxAuto'))$('uxAuto').textContent=!on?'⏱ Auto-scan OFF':st==='SCANNING'?'⏱ Auto-scan · SKANNAA':`⏱ Auto-scan ${st} · ${remain} s`;
+  const last=Math.max(uxReadTs(UX_AUTO_LAST_KEY),state.last||0);
+  const meta=$('oneAutoMeta');
+  if(meta)meta.textContent=!on?`AUTO OFF · viime skannaus ${uxFmtClock(last)}`:`${st} · viime ${uxFmtClock(last)} · seuraava ${uxFmtClock(uxAutoNextAt)} · ${remain}s`;
 }
-function uxScheduleNext(){uxAutoNextAt=Date.now()+90000;uxPaintAuto()}
-function uxAutoTick(){
+function uxClearWake(){if(uxAutoWakeTimer){clearTimeout(uxAutoWakeTimer);uxAutoWakeTimer=null}}
+function uxScheduleWake(ms){
+  uxClearWake();
   if(!uxAutoEnabled())return;
-  if(Date.now()<uxAutoNextAt){uxPaintAuto();return;}
-  uxScheduleNext();
-  if(document.visibilityState==='visible'&&!document.hidden&&!state._scanBusy)scan();
+  uxAutoWakeTimer=setTimeout(()=>uxAutoTick(),Math.max(250,Math.min(Number(ms)||1000,5000)));
+}
+function uxScheduleNext(base=Date.now()){
+  uxSetNextAt(base+90000);
+  uxPaintAuto();
+  uxScheduleWake(1000);
+}
+async function uxRunAutoScan(){
+  if(!uxAutoEnabled()||uxAutoRunning)return;
+  if(state._scanBusy){uxPaintAuto();uxScheduleWake(1000);return;}
+  uxAutoRunning=true;uxPaintAuto();
+  try{
+    await scan();
+    const done=state.last||Date.now();
+    uxWriteTs(UX_AUTO_LAST_KEY,done);
+    uxScheduleNext(Date.now());
+  }catch(e){
+    // Do not freeze AUTO on transient errors: retry in 15 s.
+    uxSetNextAt(Date.now()+15000);
+  }finally{
+    uxAutoRunning=false;uxPaintAuto();uxScheduleWake(1000);
+  }
+}
+function uxAutoTick(){
+  if(!uxAutoEnabled()){uxPaintAuto();return;}
+  const now=Date.now();
+  if(!uxAutoNextAt)uxAutoNextAt=uxReadTs(UX_AUTO_NEXT_KEY);
+  if(!uxAutoNextAt){uxScheduleNext(now);return;}
+  uxPaintAuto();
+  if(document.hidden){uxScheduleWake(5000);return;}
+  if(uxAutoRunning||state._scanBusy){uxScheduleWake(1000);return;}
+  if(now>=uxAutoNextAt){uxRunAutoScan();return;}
+  uxScheduleWake(Math.min(1000,uxAutoNextAt-now));
 }
 function uxAgeMinutes(){return state.last?Math.max(0,(Date.now()-state.last)/60000):Infinity}
 function uxNoTradeReasons(all){
@@ -2410,13 +2460,17 @@ function renderUltraActionMatrix(all){
 function uxSetAuto(on){
   try{localStorage.setItem(UX_AUTO_KEY,on?'1':'0')}catch(e){}
   if(uxAutoTimer){clearInterval(uxAutoTimer);uxAutoTimer=null}
-  if(uxAutoCountdownTimer){clearInterval(uxAutoCountdownTimer);uxAutoCountdownTimer=null}
+  uxClearWake();
+  uxAutoRunning=false;
   if(on){
-    uxScheduleNext();
-    uxAutoTimer=setInterval(uxAutoTick,1000);
-    uxAutoCountdownTimer=uxAutoTimer;
+    const saved=uxReadTs(UX_AUTO_NEXT_KEY);
+    const now=Date.now();
+    // Preserve a future deadline across reloads; if it is stale, restart with a fresh 90 s window.
+    uxSetNextAt(saved>now?saved:now+90000);
+    uxAutoTimer=setInterval(uxPaintAuto,1000);
+    uxPaintAuto();uxScheduleWake(500);
   }else{
-    uxAutoNextAt=0;
+    uxSetNextAt(0);
     uxPaintAuto();
   }
 }
@@ -2424,6 +2478,10 @@ function uxInit(){
   if($('uxRescan'))$('uxRescan').addEventListener('click',()=>scan());
   if($('uxAuto'))$('uxAuto').addEventListener('click',()=>uxSetAuto(!uxAutoEnabled()));
   uxSetAuto(uxAutoEnabled());
+  const resync=()=>{if(uxAutoEnabled()){uxPaintAuto();uxAutoTick();}};
+  document.addEventListener('visibilitychange',resync);
+  window.addEventListener('focus',resync);
+  window.addEventListener('pageshow',resync);
 }
 
 function render(){
@@ -2593,7 +2651,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-buy-pos]')
 if($('addExistingPosition'))$('addExistingPosition').addEventListener('click',addExistingPosition);
 if($('enableNotifications'))$('enableNotifications').addEventListener('click',enableNotifications);notifyState();
 uxInit();
-// v9.2.2: removed unconditional 5 min scan; AUTO 90s is the single user-controlled scheduler.
+// v9.2.3: AUTO90 watchdog uses absolute deadlines + visibility/focus resync; no unconditional 5 min scheduler.
 
 
 function markStaleUI(reason){
@@ -3068,7 +3126,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   renderGalaxyOne(state.data);
   uxPaintAuto();
-  document.addEventListener('visibilitychange',()=>{ if(!document.hidden&&uxAutoEnabled()){ if(!uxAutoNextAt)uxScheduleNext(); uxAutoTick(); } });
 });
 
 </script>
