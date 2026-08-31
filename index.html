@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta name="kp-version" content="8.3">
+<meta name="kp-version" content="8.4">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KryptoPulse GALAXY ONE v8.3 — RENDER CONSISTENCY ENGINE</title>
+<title>KryptoPulse GALAXY ONE v8.4 — SAFE RENDER ENGINE</title>
 <style>
 :root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
@@ -173,7 +173,7 @@
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v8.3</span></div><div class="one-sub">RENDER CONSISTENCY ENGINE · one BUY · one EXIT · one PRO Scanner</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v8.4</span></div><div class="one-sub">SAFE RENDER ENGINE · non-destructive DOM · one BUY · one EXIT · one PRO Scanner</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-market"><div><small>MARKKINA</small><br><b id="oneMarket">ODOTTAA</b></div><div style="text-align:right"><small>TOIMINTA</small><br><b id="oneDecision">EI VIELÄ</b></div></div>
   <div class="one-grid">
     <div class="one-card best" id="oneBest"><div class="one-kicker">🔥 #1 NOW · 3/3</div><div class="one-row"><div class="one-symbol" id="oneBestSym">—</div><div class="one-state" id="oneBestState">WAIT</div></div><div class="one-ignite" id="oneBestIgn">— <span>IGNITION</span></div><div class="one-why" id="oneBestWhy">Odotetaan live-dataa…</div><div class="one-block" id="oneBestBlock"></div><div class="one-delta" id="oneBestDelta"></div></div>
@@ -3159,44 +3159,40 @@ function ui83Scanner(){
 }
 
 function normalizePanels83(){
-  // Remove duplicate topSell nodes that are not inside the canonical EXIT panel.
-  const exitPanel=document.getElementById('exitPanel83');
-  [...document.querySelectorAll('#topSell')].forEach(el=>{
-    if(exitPanel && !exitPanel.contains(el)){
-      const p=el.closest('.panel,.signal-panel');
-      if(p && p!==exitPanel) p.remove();
-      else el.remove();
-    }
-  });
+  /* v8.4 SAFE NORMALIZER
+     Never remove live DOM nodes during the async render pipeline.
+     v8.3's destructive MutationObserver could delete an element that
+     an older renderer still expected, causing:
+     Cannot set properties of null (setting 'innerHTML'). */
+  const buy=document.getElementById('buyPanel83');
+  const exit=document.getElementById('exitPanel83');
+  const scanner=document.getElementById('proScannerPanel83');
 
-  // Remove duplicate PRO Scanner panels. Keep ONLY the panel that owns tbody#rows.
+  if(buy) buy.style.display='';
+  if(exit) exit.style.display='';
+  if(scanner) scanner.style.display='';
+
+  // Only visually suppress accidental duplicate panels; never remove nodes.
   const scannerPanels=[...document.querySelectorAll('.panel')].filter(p=>
     /PRO Scanner/i.test(p.querySelector('.ph h2')?.textContent||'')
   );
-  let canonical=scannerPanels.find(p=>p.querySelector('#rows')) || ui83Scanner() || scannerPanels[0];
-  if(canonical && !canonical.id) canonical.id='proScannerPanel83';
-  scannerPanels.forEach(p=>{ if(p!==canonical) p.remove(); });
-
-  // Any non-EXIT panel containing the EXIT empty-state is invalid.
-  [...document.querySelectorAll('.panel,.signal-panel')].forEach(p=>{
-    if(p===exitPanel) return;
-    const t=(p.textContent||'');
-    if(/Ei avoimia positioita\s*[—-]\s*EXIT-seuranta ei ole tarpeen/i.test(t)){
-      // If this is accidentally a scanner clone, remove it.
-      if(/PRO Scanner/i.test(p.querySelector('.ph h2')?.textContent||'')) p.remove();
-    }
+  scannerPanels.forEach(p=>{
+    if(scanner && p!==scanner) p.style.display='none';
   });
 
-  // Keep exactly one BUY and EXIT signal panel.
-  const buys=[...document.querySelectorAll('.signal-panel')].filter(p=>
-    p.querySelector('#topBuy') || /BUY GATE|EI BUY-SIGNAALIA/i.test(p.querySelector('.signal-head h2')?.textContent||'')
+  const exitPanels=[...document.querySelectorAll('.signal-panel')].filter(p=>
+    /SELL\s*\/\s*EXIT RISK WATCH/i.test(p.querySelector('.signal-head h2')?.textContent||'')
   );
-  buys.slice(1).forEach(p=>p.remove());
+  exitPanels.forEach(p=>{
+    if(exit && p!==exit) p.style.display='none';
+  });
 
-  const exits=[...document.querySelectorAll('.signal-panel')].filter(p=>
-    p.querySelector('#topSell') || /SELL\s*\/\s*EXIT RISK WATCH/i.test(p.querySelector('.signal-head h2')?.textContent||'')
+  const buyPanels=[...document.querySelectorAll('.signal-panel')].filter(p=>
+    /BUY GATE|EI BUY-SIGNAALIA/i.test(p.querySelector('.signal-head h2')?.textContent||'')
   );
-  exits.slice(1).forEach(p=>p.remove());
+  buyPanels.forEach(p=>{
+    if(buy && p!==buy) p.style.display='none';
+  });
 }
 
 function renderExitTruth83(all){
@@ -3286,8 +3282,21 @@ document.addEventListener('DOMContentLoaded',()=>{
   try{
     normalizePanels83();
     renderExitTruth83(state.data||[]);
-    ui83Observer.observe(document.body,{childList:true,subtree:true});
+    /* v8.4: do NOT observe/mutate DOM during async core render.
+       Static ownership IDs already guarantee panel routing. */
   }catch(e){}
+});
+</script>
+
+
+<script>
+/* ===== v8.4 NULL-SAFE CORE DIAGNOSTICS ===== */
+window.addEventListener('error',function(e){
+  try{
+    if(/Cannot set properties of null|innerHTML/i.test(String(e.message||''))){
+      console.error('[GALAXY v8.4 DOM GUARD]',e.message,e.filename,e.lineno,e.colno);
+    }
+  }catch(_){}
 });
 </script>
 

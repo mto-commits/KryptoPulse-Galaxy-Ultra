@@ -1,7 +1,7 @@
 {
-  "name": "KryptoPulse GALAXY ONE v8.3 RENDER CONSISTENCY ENGINE",
+  "name": "KryptoPulse GALAXY ONE v8.4 SAFE RENDER ENGINE",
   "short_name": "Galaxy One",
-  "start_url": "./index.html?v=830-render-consistency",
+  "start_url": "./index.html?v=840-safe-render",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
