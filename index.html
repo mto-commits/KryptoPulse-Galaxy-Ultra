@@ -4,7 +4,7 @@
 <meta name="kp-version" content="9.0.1">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KryptoPulse GALAXY ONE v9.4.0 — HYPER CRYSTAL FORECAST ENGINE</title>
+<title>KryptoPulse GALAXY ONE v9.6.0 — MICRO ROCKET + PUSH</title>
 <style>
 :root{--bg:#070a0f;--panel:#0d121a;--panel2:#111823;--line:#202a36;--text:#edf3f8;--muted:#8492a6;--green:#00e5a8;--red:#ff5571;--yellow:#ffc857;--blue:#5ea7ff}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#10201d 0,#070a0f 38%);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,select{font:inherit}.app{max-width:1600px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:16px}.brand{font-weight:800;font-size:22px}.brand span{color:var(--green)}.sub{font-size:12px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;align-items:center}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer}button.primary{background:#0b3a30;border-color:#0c7d63;color:#9dffe7}.status{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.card{background:linear-gradient(145deg,#0e151e,#0a0f15);border:1px solid var(--line);border-radius:12px;padding:13px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-size:23px;font-weight:800;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.controls{display:flex;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);padding:11px;border-radius:12px;margin-bottom:14px}.controls input,.controls select{background:#080d13;border:1px solid var(--line);color:var(--text);padding:9px;border-radius:8px}.main{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}.panel{background:rgba(13,18,26,.92);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ph{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.ph h2{font-size:15px;margin:0}.ph small{color:var(--muted)}.tablewrap{overflow:auto;max-height:650px}table{width:100%;border-collapse:collapse;font-size:12px}th{position:sticky;top:0;background:#0e151e;color:var(--muted);text-align:left;font-weight:600;padding:9px;border-bottom:1px solid var(--line)}td{padding:9px;border-bottom:1px solid #18212b;white-space:nowrap}.coin{font-weight:700}.tiny{font-size:10px;color:var(--muted)}.score{font-size:16px;font-weight:800}.bar{height:5px;background:#18222d;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--green)}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#17202b;color:#aebdce}.badge.rocket{background:#163a30;color:#6ff1ca}.badge.sniper{background:#2f2a13;color:#ffd86d}.badge.watch{background:#172d48;color:#8fc4ff}.badge.risk{background:#3a1720;color:#ff91a4}.signal{display:grid;grid-template-columns:1fr auto;gap:6px;padding:11px 14px;border-bottom:1px solid #18212b}.signal:last-child{border:0}.signal b{font-size:13px}.signal small{color:var(--muted);display:block;margin-top:3px}.rightbody{max-height:650px;overflow:auto}.mini{padding:10px 14px;border-bottom:1px solid #18212b}.minihead{display:flex;justify-content:space-between}.meter{height:7px;background:#18222d;border-radius:8px;margin-top:7px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow),var(--green))}.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.5}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.main{grid-template-columns:1fr}#highrisk{grid-template-columns:1fr!important}}
@@ -208,12 +208,35 @@
 <style>
 .one-server{margin:0 14px 12px;padding:11px;border:1px solid #24404b;border-radius:12px;background:#081118}.one-server-title{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:11px;letter-spacing:.04em}.one-server-title span{color:#ffbd4a;font-weight:800}.one-server-row{display:flex;gap:8px;margin-top:8px}.one-server-row input{flex:1;min-width:0;background:#050b10;border:1px solid #263a49;color:#e8f1f8;border-radius:9px;padding:10px}.one-server-row button{white-space:nowrap}.one-server-note{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.35}.one-server.live{border-color:#11745d}.one-server.live .one-server-title span{color:#23d9a4}.one-server.error{border-color:#7c3346}.one-server.error .one-server-title span{color:#ff6d86}@media(max-width:520px){.one-server-row{display:grid;grid-template-columns:1fr}.one-server-row button{width:100%}}
 </style>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+<style id="v96-style">
+.v96-panel{margin:0 14px 12px;border:1px solid #20394a;border-radius:16px;background:#07131c;overflow:hidden}
+.v96-head{padding:12px 13px;border-bottom:1px solid #203342;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.v96-head b{font-size:13px}.v96-head small{color:#8294a8;font-size:9px;text-align:right}
+.v96-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:10px}
+.v96-col{border:1px solid #1c3040;border-radius:12px;overflow:hidden;background:#081019}
+.v96-col-title{padding:8px 10px;font-size:10px;font-weight:900;letter-spacing:.06em;color:#8fa2b7;border-bottom:1px solid #1c3040}
+.v96-row{padding:9px 10px;border-bottom:1px solid #162634;display:grid;grid-template-columns:1fr auto;gap:8px}
+.v96-row:last-child{border-bottom:0}.v96-sym{font-size:15px;font-weight:950}.v96-meta{font-size:9px;color:#8799aa;line-height:1.4;margin-top:2px}
+.v96-score{font-size:17px;font-weight:950;text-align:right}.v96-early{color:#10e7a1}.v96-run{color:#ffbd4a}.v96-hot{color:#ff6d86}
+.v96-venue{display:inline-block;border:1px solid #284459;border-radius:999px;padding:2px 5px;font-size:8px;margin-top:4px;color:#9eb1c4}
+.v96-alerts{padding:10px 12px}.v96-alert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.v96-alert-card{border:1px solid #1c3040;border-radius:11px;padding:9px;background:#081019}.v96-alert-card label{font-size:10px;font-weight:800}
+.v96-alert-card input[type=number],.v96-alert-card input[type=time],.v96-alert-card input[type=text]{width:100%;margin-top:5px;padding:7px;border-radius:7px;border:1px solid #263b4b;background:#050b10;color:#e8f1f8}
+.v96-switch{display:flex;justify-content:space-between;gap:8px;align-items:center}.v96-switch input{width:20px;height:20px}
+.v96-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.v96-actions button{flex:1;min-width:120px}
+.v96-status{font-size:9px;color:#8fa2b7;line-height:1.5;margin-top:8px}.v96-ok{color:#10e7a1}.v96-warn{color:#ffbd4a}.v96-bad{color:#ff6d86}
+.v96-fast{font-size:9px;color:#75d7ff;margin:0 14px 9px;text-align:center}
+@media(max-width:640px){.v96-grid,.v96-alert-grid{grid-template-columns:1fr}.v96-head{align-items:flex-start}}
+</style>
+
 </head>
 <body>
 <div class="app">
 
 <section class="panel one-shell" id="galaxyOne">
-  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.5.0</span></div><div class="one-sub">HYPER CRYSTAL LEARNING · prediction ledger · time-aligned outcomes · calibration · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
+  <div class="one-head"><div><div class="one-title">⚡ GALAXY ONE <span style="color:#10e7a1">v9.6.0</span></div><div class="one-sub">MICRO ROCKET · FAST BOOT · HYPER CRYSTAL · PUSH READY · 15m/1h/4h/24h</div></div><div class="one-live" id="oneLive">DATA —</div></div>
   <div class="one-server" id="oneServerBox">
     <div class="one-server-title"><b>🌐 DATA SERVER / CORE BRIDGE</b><span id="oneProxyStatus">EI ASETETTU</span></div>
     <div class="one-server-row"><input id="oneProxyUrl" type="url" inputmode="url" placeholder="https://...workers.dev"><button id="oneProxyConnect" class="primary">YHDISTÄ</button></div>
@@ -230,6 +253,46 @@
   <div id="oneAutoMeta" style="margin-top:8px;text-align:center;font-size:11px;color:var(--muted)">AUTO OFF · viime skannaus — · seuraava —</div>
   <button class="one-advanced" id="oneAdvanced">Näytä analyysimoottori</button>
   <div class="one-note">OSTA/FIRE vain strict 3/3 -vahvistuksella. Discovery ei ole toimeksianto.</div>
+</section>
+
+
+<div class="v96-fast" id="v96FastState">FAST BOOT · cache first · live enrichment lazy-load</div>
+<section class="v96-panel" id="v96MicroPanel">
+  <div class="v96-head"><b>🧬 MICRO ROCKET ENGINE v9.6</b><small>koko discovery-universumi · pienet kolikot aina näkyviin</small></div>
+  <div class="v96-grid">
+    <div class="v96-col"><div class="v96-col-title">🚀 EARLY — ennen Top Gainers -vaihetta</div><div id="v96EarlyRows"><div class="empty">Odotetaan core-dataa…</div></div></div>
+    <div class="v96-col"><div class="v96-col-title">🔥 RUNNING — nousu jo käynnissä</div><div id="v96RunningRows"><div class="empty">Odotetaan core-dataa…</div></div></div>
+  </div>
+</section>
+
+<section class="v96-panel" id="v96AlertCenter">
+  <div class="v96-head"><b>🔔 ALERT CENTER v9.6</b><small>valitse itse mistä hälytetään · push toimii myös appi suljettuna OneSignalilla</small></div>
+  <div class="v96-alerts">
+    <div class="v96-alert-grid">
+      <div class="v96-alert-card v96-switch"><label>3/3 OSTA / FIRE</label><input id="v96AlertExec" type="checkbox"></div>
+      <div class="v96-alert-card v96-switch"><label>POSITION EXIT / TP</label><input id="v96AlertPos" type="checkbox"></div>
+      <div class="v96-alert-card v96-switch"><label>MICRO EARLY</label><input id="v96AlertMicro" type="checkbox"></div>
+      <div class="v96-alert-card v96-switch"><label>WORLD / TOP MOVERS</label><input id="v96AlertMover" type="checkbox"></div>
+      <div class="v96-alert-card"><label>Min. Rocket score</label><input id="v96MinScore" type="number" min="50" max="95" step="1"></div>
+      <div class="v96-alert-card"><label>Min. 1h nousu %</label><input id="v96MinH1" type="number" min="0" max="30" step=".5"></div>
+      <div class="v96-alert-card"><label>Micro/small max market cap €M</label><input id="v96MaxCap" type="number" min="5" max="500" step="5"></div>
+      <div class="v96-alert-card"><label>Top mover min. 24h %</label><input id="v96Mover24" type="number" min="5" max="100" step="1"></div>
+      <div class="v96-alert-card"><label>Cooldown min</label><input id="v96Cooldown" type="number" min="5" max="360" step="5"></div>
+      <div class="v96-alert-card v96-switch"><label>Hiljainen aika käytössä</label><input id="v96QuietOn" type="checkbox"></div>
+      <div class="v96-alert-card"><label>Hiljainen alkaa</label><input id="v96QuietStart" type="time"></div>
+      <div class="v96-alert-card"><label>Hiljainen päättyy</label><input id="v96QuietEnd" type="time"></div>
+    </div>
+    <div class="v96-alert-card" style="margin-top:9px">
+      <label>OneSignal App ID — vain taustapushille, ei salainen avain</label>
+      <input id="v96OneSignalAppId" type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" autocomplete="off">
+    </div>
+    <div class="v96-actions">
+      <button id="v96SaveAlerts" class="primary">TALLENNA HÄLYTYKSET</button>
+      <button id="v96EnableLocal">SALLI LAITEILMOITUKSET</button>
+      <button id="v96EnablePush">AKTIVOI TAUSTAPUSH</button>
+    </div>
+    <div class="v96-status" id="v96AlertStatus">Paikalliset hälytykset toimivat appin ollessa aktiivinen. Täysi suljetun appin push vaatii OneSignal + Cloudflare Worker v9.6 -asetuksen.</div>
+  </div>
 </section>
 
 
@@ -5593,6 +5656,222 @@ if(v95PrevPostScan){v93PostScan=function(){try{v95PrevPostScan()}finally{v95Post
 document.addEventListener('DOMContentLoaded',()=>{
   try{renderLedgerV95(state.data||[])}catch(e){}
   document.getElementById('v95ResetLedger')?.addEventListener('click',()=>{if(confirm('Nollataanko v9.5 Prediction Ledger ja price tape tältä laitteelta?')){localStorage.removeItem(V95_LEDGER_KEY);localStorage.removeItem(V95_TAPE_KEY);renderLedgerV95(state.data||[])}});
+});
+</script>
+
+
+<script id="v96-script">
+/* ===== GALAXY ONE v9.6 MICRO ROCKET + FAST BOOT + ALERT CENTER ===== */
+const V96_PREF_KEY='kp_v96_alert_prefs';
+const V96_OS_APP_KEY='kp_v96_onesignal_app';
+const V96_NOTIFY_KEY='kp_v96_notify_memory';
+const V96_DEFAULTS={exec:true,pos:true,micro:true,mover:true,minScore:72,minH1:1.5,maxCapM:250,mover24:20,cooldown:45,quietOn:false,quietStart:'22:30',quietEnd:'07:00'};
+
+function v96LoadPrefs(){
+  try{return {...V96_DEFAULTS,...JSON.parse(localStorage.getItem(V96_PREF_KEY)||'{}')}}catch(e){return {...V96_DEFAULTS}}
+}
+function v96SavePrefs(p){try{localStorage.setItem(V96_PREF_KEY,JSON.stringify(p))}catch(e){}}
+function v96Num(v,d=0){v=Number(v);return Number.isFinite(v)?v:d}
+function v96Cap(x){return v96Num(x.mc||x.market_cap)}
+function v96Vol(x){return v96Num(x.vol||x.total_volume)}
+function v96Sym(x){return String(x?.symbol||'').toUpperCase()}
+function v96Venue(x){return typeof isTradableAllPlatforms==='function'&&isTradableAllPlatforms(x)?'3/3':'DISCOVERY'}
+function v96Prev(x){try{return state.prevData?.get(v96Sym(x))||null}catch(e){return null}}
+function v96DeltaVol(x){
+  const p=v96Prev(x),v=v96Vol(x),pv=v96Vol(p||{});
+  if(!p||pv<=0||v<=0)return 0;
+  return Math.max(-100,Math.min(400,(v/pv-1)*100));
+}
+function v96DeltaH1(x){const p=v96Prev(x);return p?v96Num(x.h1)-v96Num(p.h1):0}
+function v96MicroScore(x,mode='EARLY'){
+  const mc=v96Cap(x),vol=v96Vol(x),ratio=mc>0?vol/mc:0,h1=v96Num(x.h1),h4=v96Num(x.h4),h24=v96Num(x.h24),acc=h1-h24/24;
+  const volAccel=v96DeltaVol(x),h1Accel=v96DeltaH1(x);
+  const liq=v96Num(x.liquidity,Math.max(0,Math.min(100,20+Math.log10(Math.max(vol,1))*8)));
+  const br=v96Num(x.breakout,50),pump=typeof pumpRisk==='function'?pumpRisk(x):Math.max(0,h24-20);
+  let s;
+  if(mode==='EARLY'){
+    s=28+Math.max(0,acc)*9+Math.max(0,h1Accel)*4+Math.min(22,ratio*85)+Math.max(0,br-45)*.28+Math.max(0,volAccel)*.08+Math.max(0,liq-35)*.12;
+    if(h24>22)s-=(h24-22)*1.1;
+    if(h1>12)s-=8;
+  }else{
+    s=25+Math.max(0,h1)*2.5+Math.max(0,h4)*1.2+Math.max(0,h24)*.65+Math.min(18,ratio*60)+Math.max(0,volAccel)*.06+Math.max(0,br-50)*.18;
+    if(h24>65)s-=12;
+  }
+  s-=Math.max(0,pump-65)*.35;
+  if(mc>250e6)s-=12;
+  if(vol<20000)s-=18;
+  if(ratio<.002)s-=12;
+  return Math.round(Math.max(0,Math.min(100,s)));
+}
+function v96MicroUniverse(all){
+  return (all||[]).filter(x=>{
+    if(typeof isStable==='function'&&isStable(x))return false;
+    const mc=v96Cap(x),vol=v96Vol(x);
+    return mc>0&&mc<=500e6&&vol>=15000;
+  });
+}
+function v96MicroRank(all,mode){
+  const p=v96LoadPrefs();
+  return v96MicroUniverse(all)
+    .filter(x=>v96Cap(x)<=Math.max(25,p.maxCapM)*1e6)
+    .map(x=>({x,s:v96MicroScore(x,mode)}))
+    .sort((a,b)=>b.s-a.s||v96Num(b.x.h1)-v96Num(a.x.h1))
+    .slice(0,5);
+}
+function v96MicroRow(o,mode){
+  const x=o.x,s=o.s,mc=v96Cap(x),ratio=mc?v96Vol(x)/mc*100:0,pump=typeof pumpRisk==='function'?pumpRisk(x):0;
+  const cls=mode==='EARLY'?'v96-early':pump>=75?'v96-hot':'v96-run';
+  const stage=mode==='EARLY'?(v96Num(x.h24)>20?'LATE?':'PRE-IGNITION'):(v96Num(x.h24)>45?'FOMO / CHASE':'CONTINUATION');
+  return `<div class="v96-row"><div><div class="v96-sym">${v96Sym(x)} · ${stage}</div><div class="v96-meta">${x.name||''} · MC ${typeof eurCompact==='function'?eurCompact(mc):Math.round(mc/1e6)+'M'} · 1h ${typeof pct==='function'?pct(x.h1):x.h1+'%'} · 24h ${typeof pct==='function'?pct(x.h24):x.h24+'%'} · Vol/MC ${ratio.toFixed(1)}% · ΔVol ${v96DeltaVol(x).toFixed(0)}%</div><span class="v96-venue">${v96Venue(x)}</span></div><div class="v96-score ${cls}">${s}<div class="v96-meta">risk ${pump}</div></div></div>`;
+}
+function renderMicroV96(all){
+  const e=document.getElementById('v96EarlyRows'),r=document.getElementById('v96RunningRows');if(!e||!r)return;
+  const early=v96MicroRank(all,'EARLY'),running=v96MicroRank(all,'RUNNING');
+  e.innerHTML=early.length?early.map(o=>v96MicroRow(o,'EARLY')).join(''):'<div class="empty">Ei EARLY micro/small-cap kandidaatteja.</div>';
+  r.innerHTML=running.length?running.map(o=>v96MicroRow(o,'RUNNING')).join(''):'<div class="empty">Ei RUNNING kandidaatteja.</div>';
+}
+function v96InQuietHours(p=v96LoadPrefs()){
+  if(!p.quietOn)return false;
+  const mins=s=>{const a=String(s||'00:00').split(':').map(Number);return (a[0]||0)*60+(a[1]||0)};
+  const now=new Date(),n=now.getHours()*60+now.getMinutes(),a=mins(p.quietStart),b=mins(p.quietEnd);
+  return a===b?false:(a<b?(n>=a&&n<b):(n>=a||n<b));
+}
+async function v96ShowNotification(title,body,tag,url){
+  if(v96InQuietHours())return false;
+  try{
+    if(!('Notification'in window)||Notification.permission!=='granted')return false;
+    if('serviceWorker'in navigator){
+      const reg=await navigator.serviceWorker.ready;
+      await reg.showNotification(title,{body,tag,icon:'./icon-192.png',badge:'./icon-192.png',data:{url:url||location.href},renotify:false});
+      return true;
+    }
+    new Notification(title,{body,tag});
+    return true;
+  }catch(e){return false}
+}
+function v96NotifyAllowed(key,kind,p){
+  let mem={};try{mem=JSON.parse(localStorage.getItem(V96_NOTIFY_KEY)||'{}')}catch(e){}
+  const k=kind+':'+key,now=Date.now(),cd=Math.max(5,v96Num(p.cooldown,45))*60000;
+  if(mem[k]&&now-mem[k]<cd)return false;
+  mem[k]=now;try{localStorage.setItem(V96_NOTIFY_KEY,JSON.stringify(mem))}catch(e){}
+  return true;
+}
+function maybeAlertsV96(all){
+  const p=v96LoadPrefs();if(v96InQuietHours(p)||!(all||[]).length)return;
+  if(p.micro){
+    const o=v96MicroRank(all,'EARLY')[0];
+    if(o&&o.s>=p.minScore&&v96Num(o.x.h1)>=p.minH1&&v96NotifyAllowed(v96Sym(o.x),'MICRO',p)){
+      v96ShowNotification('🧬 MICRO EARLY: '+v96Sym(o.x),`Score ${o.s}/100 · 1h ${v96Num(o.x.h1).toFixed(2)}% · 24h ${v96Num(o.x.h24).toFixed(2)}% · ${v96Venue(o.x)}`,'kp-v96-micro-'+v96Sym(o.x));
+    }
+  }
+  if(p.mover){
+    const m=[...(all||[])].filter(x=>!(typeof isStable==='function'&&isStable(x))&&v96Num(x.h24)>=p.mover24).sort((a,b)=>v96Num(b.h24)-v96Num(a.h24))[0];
+    if(m&&v96NotifyAllowed(v96Sym(m),'MOVER',p))v96ShowNotification('🔥 TOP MOVER: '+v96Sym(m),`24h +${v96Num(m.h24).toFixed(1)}% · 1h ${v96Num(m.h1).toFixed(1)}% · ${v96Venue(m)}`,'kp-v96-mover-'+v96Sym(m));
+  }
+  if(p.exec&&typeof tradeAction==='function'){
+    const buys=(all||[]).filter(x=>typeof isTradableAllPlatforms==='function'&&isTradableAllPlatforms(x)).filter(x=>String(tradeAction(x)?.[0]||'').includes('OSTA')).sort((a,b)=>(typeof buySignalScore==='function'?buySignalScore(b):0)-(typeof buySignalScore==='function'?buySignalScore(a):0));
+    const x=buys[0];
+    if(x&&v96NotifyAllowed(v96Sym(x),'EXEC',p))v96ShowNotification('🟢 3/3 OSTA-ALUE: '+v96Sym(x),`Score ${buySignalScore(x)}/100 · ${typeof lifecycleStage==='function'?lifecycleStage(x).label:''} · tarkista toteutushinta`,'kp-v96-exec-'+v96Sym(x));
+  }
+}
+function v96ReadUI(){
+  return {
+    exec:!!document.getElementById('v96AlertExec')?.checked,
+    pos:!!document.getElementById('v96AlertPos')?.checked,
+    micro:!!document.getElementById('v96AlertMicro')?.checked,
+    mover:!!document.getElementById('v96AlertMover')?.checked,
+    minScore:v96Num(document.getElementById('v96MinScore')?.value,72),
+    minH1:v96Num(document.getElementById('v96MinH1')?.value,1.5),
+    maxCapM:v96Num(document.getElementById('v96MaxCap')?.value,250),
+    mover24:v96Num(document.getElementById('v96Mover24')?.value,20),
+    cooldown:v96Num(document.getElementById('v96Cooldown')?.value,45),
+    quietOn:!!document.getElementById('v96QuietOn')?.checked,
+    quietStart:document.getElementById('v96QuietStart')?.value||'22:30',
+    quietEnd:document.getElementById('v96QuietEnd')?.value||'07:00'
+  };
+}
+function v96PaintPrefs(){
+  const p=v96LoadPrefs(),set=(id,k,type='value')=>{const e=document.getElementById(id);if(e)e[type]=p[k]};
+  set('v96AlertExec','exec','checked');set('v96AlertPos','pos','checked');set('v96AlertMicro','micro','checked');set('v96AlertMover','mover','checked');
+  set('v96MinScore','minScore');set('v96MinH1','minH1');set('v96MaxCap','maxCapM');set('v96Mover24','mover24');set('v96Cooldown','cooldown');
+  set('v96QuietOn','quietOn','checked');set('v96QuietStart','quietStart');set('v96QuietEnd','quietEnd');
+  const id=localStorage.getItem(V96_OS_APP_KEY)||'',e=document.getElementById('v96OneSignalAppId');if(e)e.value=id;
+}
+let V96_OS_INIT=false;
+function v96OsPath(){
+  const base=new URL('./',location.href).pathname;
+  return {path:base+'push/onesignal/OneSignalSDKWorker.js',scope:base+'push/onesignal/'};
+}
+async function v96SyncOneSignalTags(){
+  const p=v96LoadPrefs();
+  window.OneSignalDeferred=window.OneSignalDeferred||[];
+  OneSignalDeferred.push(async function(OneSignal){
+    try{
+      OneSignal.User.addTags({
+        kp_alerts:'1',kp_exec:p.exec?'1':'0',kp_position:p.pos?'1':'0',kp_micro:p.micro?'1':'0',kp_mover:p.mover?'1':'0',
+        kp_min_score:String(p.minScore),kp_min_h1:String(p.minH1),kp_max_cap_m:String(p.maxCapM),kp_mover24:String(p.mover24)
+      });
+    }catch(e){}
+  });
+}
+async function v96InitOneSignal(requestPermission=false){
+  const appId=String(localStorage.getItem(V96_OS_APP_KEY)||'').trim(),status=document.getElementById('v96AlertStatus');
+  if(!appId){if(status)status.innerHTML='<span class="v96-warn">Taustapush ei asetettu:</span> lisää OneSignal App ID.';return}
+  window.OneSignalDeferred=window.OneSignalDeferred||[];
+  OneSignalDeferred.push(async function(OneSignal){
+    try{
+      if(!V96_OS_INIT){
+        const q=v96OsPath();
+        await OneSignal.init({appId,serviceWorkerPath:q.path,serviceWorkerParam:{scope:q.scope},autoResubscribe:true,notificationClickHandlerMatch:'origin',notificationClickHandlerAction:'focus'});
+        V96_OS_INIT=true;
+      }
+      if(requestPermission)await OneSignal.Notifications.requestPermission();
+      if(OneSignal.Notifications.permission)v96SyncOneSignalTags();
+      const opted=!!OneSignal.User?.PushSubscription?.optedIn;
+      if(status)status.innerHTML=`Taustapush: <span class="${opted?'v96-ok':'v96-warn'}">${opted?'LIVE':'ODOTTAA LUPAA'}</span> · Local: ${Notification.permission||'unknown'} · asetukset synkronoidaan OneSignal-tageiksi.`;
+    }catch(e){if(status)status.innerHTML='<span class="v96-bad">Push error:</span> '+String(e?.message||e)}
+  });
+}
+function v96InitUI(){
+  v96PaintPrefs();
+  document.getElementById('v96SaveAlerts')?.addEventListener('click',()=>{
+    const p=v96ReadUI();v96SavePrefs(p);
+    const id=String(document.getElementById('v96OneSignalAppId')?.value||'').trim();
+    if(id)localStorage.setItem(V96_OS_APP_KEY,id);else localStorage.removeItem(V96_OS_APP_KEY);
+    v96SyncOneSignalTags();
+    const s=document.getElementById('v96AlertStatus');if(s)s.textContent='Hälytysasetukset tallennettu tälle laitteelle.';
+  });
+  document.getElementById('v96EnableLocal')?.addEventListener('click',async()=>{
+    try{const p=await Notification.requestPermission();document.getElementById('v96AlertStatus').textContent='Laiteilmoitukset: '+p;}catch(e){}
+  });
+  document.getElementById('v96EnablePush')?.addEventListener('click',async()=>{
+    const id=String(document.getElementById('v96OneSignalAppId')?.value||'').trim();
+    if(id)localStorage.setItem(V96_OS_APP_KEY,id);
+    await v96InitOneSignal(true);
+  });
+  if(localStorage.getItem(V96_OS_APP_KEY))setTimeout(()=>v96InitOneSignal(false),900);
+}
+/* FAST SIMPLE MODE: do not repaint the huge hidden analysis DOM on every core update. */
+const V96_RENDER_BASE=render;
+render=function(){
+  const app=document.querySelector('.app'),advanced=!!app?.classList.contains('advanced');
+  if(!advanced){
+    try{
+      if(typeof applyV9Canonical==='function')applyV9Canonical(state.data||[]);
+      renderGalaxyOne(state.data||[]);
+      renderMicroV96(state.data||[]);
+      maybeAlertsV96(state.data||[]);
+      if(typeof maybePositionNotifications==='function'&&v96LoadPrefs().pos)maybePositionNotifications(state.data||[]);
+      const f=document.getElementById('v96FastState');if(f)f.textContent='FAST BOOT · SIMPLE MODE · '+(state.data?.length||0)+' assets · advanced lazy';
+    }catch(e){console.warn('v9.6 fast render',e)}
+    return;
+  }
+  V96_RENDER_BASE();
+  try{renderMicroV96(state.data||[]);maybeAlertsV96(state.data||[])}catch(e){}
+};
+document.addEventListener('DOMContentLoaded',()=>{
+  v96InitUI();
+  try{renderMicroV96(state.data||[])}catch(e){}
 });
 </script>
 

@@ -1,4 +1,4 @@
-const CACHE='kryptopulse-galaxy-v9-5-0-prediction-ledger-20260831';
+const CACHE='kryptopulse-galaxy-v9-6-0-micro-push-20260901';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
@@ -39,4 +39,23 @@ self.addEventListener('fetch',event=>{
       })
       .catch(()=>caches.match(event.request))
   );
+});
+
+
+self.addEventListener('message',event=>{
+  const d=event.data||{};
+  if(d.type==='KP_NOTIFY'&&d.title){
+    event.waitUntil(self.registration.showNotification(d.title,{
+      body:d.body||'',tag:d.tag||'kp-alert',icon:'./icon-192.png',badge:'./icon-192.png',data:{url:d.url||'./'}
+    }));
+  }
+});
+
+self.addEventListener('notificationclick',event=>{
+  event.notification.close();
+  const target=event.notification.data?.url||'./';
+  event.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(list=>{
+    for(const c of list){if('focus'in c){c.navigate?.(target);return c.focus()}}
+    return clients.openWindow?clients.openWindow(target):null;
+  }));
 });

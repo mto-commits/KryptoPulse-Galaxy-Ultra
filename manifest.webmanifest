@@ -1,12 +1,12 @@
 {
-  "name": "KryptoPulse GALAXY ONE v9.5.0 PREDICTION LEDGER",
-  "short_name": "Galaxy One AI",
+  "name": "KryptoPulse Galaxy One v9.6",
+  "short_name": "Galaxy One",
   "start_url": "./index.html?v=950-prediction-ledger",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070a0f",
   "theme_color": "#070a0f",
-  "description": "Hyper Crystal prediction ledger with time-aligned outcomes, local calibration, AUTO90 and server-first market data.",
+  "description": "Micro Rocket discovery, Hyper Crystal learning and configurable push alerts.",
   "icons": [
     {
       "src": "./icon-192.png",
