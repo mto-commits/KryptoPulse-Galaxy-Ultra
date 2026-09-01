@@ -5801,7 +5801,7 @@ function v96PaintPrefs(){
 let V96_OS_INIT=false;
 function v96OsPath(){
   const base=new URL('./',location.href).pathname;
-  return {path:base+'push/onesignal/OneSignalSDKWorker.js',scope:base+'push/onesignal/'};
+  return {path:(base+'push/onesignal/OneSignalSDKWorker.js').replace(/^\//,''),scope:base+'push/onesignal/'};
 }
 async function v96SyncOneSignalTags(){
   const p=v96LoadPrefs();
@@ -5850,7 +5850,8 @@ function v96InitUI(){
     if(id)localStorage.setItem(V96_OS_APP_KEY,id);
     await v96InitOneSignal(true);
   });
-  if(localStorage.getItem(V96_OS_APP_KEY))setTimeout(()=>v96InitOneSignal(false),900);
+  // Always initialize the configured production OneSignal app so the browser can create/restore a subscription.
+  setTimeout(()=>v96InitOneSignal(false),900);
 }
 /* FAST SIMPLE MODE: do not repaint the huge hidden analysis DOM on every core update. */
 const V96_RENDER_BASE=render;
