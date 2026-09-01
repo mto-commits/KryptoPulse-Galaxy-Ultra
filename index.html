@@ -5664,6 +5664,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 /* ===== GALAXY ONE v9.6 MICRO ROCKET + FAST BOOT + ALERT CENTER ===== */
 const V96_PREF_KEY='kp_v96_alert_prefs';
 const V96_OS_APP_KEY='kp_v96_onesignal_app';
+if(!localStorage.getItem(V96_OS_APP_KEY)) localStorage.setItem(V96_OS_APP_KEY,'99a1927a-8e6c-4e6e-b175-f2fc579c4494');
 const V96_NOTIFY_KEY='kp_v96_notify_memory';
 const V96_DEFAULTS={exec:true,pos:true,micro:true,mover:true,minScore:72,minH1:1.5,maxCapM:250,mover24:20,cooldown:45,quietOn:false,quietStart:'22:30',quietEnd:'07:00'};
 
@@ -5815,7 +5816,7 @@ async function v96SyncOneSignalTags(){
   });
 }
 async function v96InitOneSignal(requestPermission=false){
-  const appId=String(localStorage.getItem(V96_OS_APP_KEY)||'').trim(),status=document.getElementById('v96AlertStatus');
+  const appId=String(localStorage.getItem(V96_OS_APP_KEY)||'99a1927a-8e6c-4e6e-b175-f2fc579c4494').trim(),status=document.getElementById('v96AlertStatus');
   if(!appId){if(status)status.innerHTML='<span class="v96-warn">Taustapush ei asetettu:</span> lisää OneSignal App ID.';return}
   window.OneSignalDeferred=window.OneSignalDeferred||[];
   OneSignalDeferred.push(async function(OneSignal){
